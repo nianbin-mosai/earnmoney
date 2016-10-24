@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="vj_planets">
+        <item>0-16</item>
+        <item>17-22</item>
+        <item>23-35</item>
+        <item>35以上</item>
+    </string-array>
+    <string-array name="vj_spnum">
+        <item>20人以下</item>
+        <item>20-100人</item>
+        <item>100-500人</item>
+        <item>500-2000人</item>
+        <item>2000人以上</item>
+    </string-array>
+    <string-array name="vj_spsex">
+        <item>男</item>
+        <item>女</item>
+    </string-array>
+    <color name="vj_black_medium">#515151</color>
+    <color name="vj_black_small">#858585</color>
+    <color name="vj_blue">#3CB1EC</color>
+    <color name="vj_colorAccent">#FF4081</color>
+    <color name="vj_colorPrimary">#FF4081</color>
+    <color name="vj_colorPrimaryDark">#FF4081</color>
+    <color name="vj_content_bg">#F0F0F0</color>
+    <color name="vj_greyline">#EEEEEE</color>
+    <color name="vj_line_bg">#999999</color>
+    <color name="vj_navigation_text1">#666666</color>
+    <color name="vj_navigation_text2">#FFFFFF</color>
+    <color name="vj_navigation_textbg1">#FFFFFF</color>
+    <color name="vj_navigation_textbg2">#3CB1EC</color>
+    <color name="vj_qdi_line_bg">#A2A2A2</color>
+    <color name="vj_textblack">#000</color>
+    <color name="vj_textgray">#676767</color>
+    <color name="vj_textgrayno">#b2b2b2</color>
+    <color name="vj_textred">#FF644E</color>
+    <color name="vj_white">#FFF</color>
+    <color name="vj_whitebarbgstroke">#DCDCDC</color>
+    <declare-styleable name="vj_PullListView"><attr name="getMoreType">
+            <enum name="auto" value="0"/>
+            <enum name="click" value="1"/>
+        </attr><attr format="boolean" name="addPullHeaderByUser"/></declare-styleable>
+    <dimen name="vj_activity_horizontal_margin">16dp</dimen>
+    <dimen name="vj_activity_vertical_margin">16dp</dimen>
+    <dimen name="vj_qdi_content_padding">10dp</dimen>
+    <dimen name="vj_taskinfo_imgs_iv_h">230px</dimen>
+    <dimen name="vj_taskinfo_imgs_iv_w">140px</dimen>
+    <dimen name="vj_taskinfo_imgs_linear_w">150px</dimen>
+    <dimen name="vj_text_large">17sp</dimen>
+    <dimen name="vj_text_medium">14sp</dimen>
+    <dimen name="vj_text_small">12sp</dimen>
+    <dimen name="vj_text_title">20sp</dimen>
+    <dimen name="vj_user_info_id_h">50dp</dimen>
+    <dimen name="vj_user_info_id_toleft1">30dp</dimen>
+    <dimen name="vj_user_info_id_toright1">30dp</dimen>
+    <dimen name="vj_white_bar_margin_left">10dp</dimen>
+    <dimen name="vj_white_bar_margin_right">10dp</dimen>
+    <string name="vj_app_name">ifalemeSDK</string>
+    <style name="vj_AppTheme" parent="android:Theme.Holo.Light.NoActionBar">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="vj_falemeTheme" parent="android:Theme.Holo.Light.NoActionBar"/>
+    <style name="vj_level_text_black">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/vj_textgray</item>
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:background">#FFF</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="vj_level_text_gray">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/vj_textgrayno</item>
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:background">#FFF</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="vj_level_text_mediuml_black">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/vj_textgray</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    <style name="vj_level_text_mediuml_blue">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/vj_blue</item>
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">left</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    <style name="vj_loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+    <style name="vj_myincome_text_mediuml_black">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/vj_black_medium</item>
+        <item name="android:gravity">top</item>
+    </style>
+    <style name="vj_myincome_text_mediuml_blue">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/vj_blue</item>
+        <item name="android:gravity">top</item>
+    </style>
+    <style name="vj_myincome_text_small_black">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/vj_black_small</item>
+    </style>
+    <style name="vj_myincome_text_small_blue">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/vj_blue</item>
+    </style>
+    <style name="vj_qdi_text_large">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#2F2F2F</item>
+    </style>
+    <style name="vj_qdi_text_mediuml">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#2E2E2E</item>
+    </style>
+    <style name="vj_qdi_text_small">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#515151</item>
+    </style>
+    <style name="vj_task_text_mediuml">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#2A2A2A</item>
+    </style>
+    <style name="vj_task_text_small">
+        <item name="android:layout_gravity">center|left</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#5F5F5F</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="vj_withdrawal_text_mediuml_black">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#010101</item>
+    </style>
+    <style name="vj_withdrawal_text_small_black">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">#858585</item>
+    </style>
+</resources>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/blurbg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/head"
+    android:background="#ddffffff" >
+
+    <RelativeLayout
+        android:layout_width="281dp"
+        android:layout_height="260dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/vj_white_bg" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="23dp"
+            android:text="复制朋友圈文字"
+            android:textColor="#4f4f4f"
+            android:textSize="15sp" />
+
+        <RelativeLayout
+            android:id="@+id/close"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp" >
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/vj_close" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/show"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_below="@+id/close"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/vj_blue_line_bg"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/share_fri_words"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:lineSpacingExtra="5dp"
+                android:lines="3"
+                android:text=""
+                android:textColor="#4f4f4f"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/select"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_below="@+id/show" >
+
+            <ImageView
+                android:id="@+id/selectimg"
+                android:layout_width="20dp"
+                android:layout_height="10dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/vj_triangle" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textinfo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/select"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="点击按钮一件复制上方文字框内容，然后粘贴到朋友圈的编辑文字处，这样转发的内容好友点击的概率会翻倍哦！"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/submit"
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/textinfo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="复制文字，进入朋友圈页面"
+            android:textColor="#fff"
+            android:textSize="@dimen/vj_text_small" 
+            android:background="@drawable/vj_blue_bg"/>
+    </RelativeLayout>
+
+</RelativeLayout>

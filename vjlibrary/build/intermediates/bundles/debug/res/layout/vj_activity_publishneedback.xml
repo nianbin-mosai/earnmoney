@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/vj_head"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        layout="@layout/vj_head" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#E9E9E9" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@color/vj_line_bg"
+        android:minHeight="50dp"
+        android:orientation="horizontal"
+        android:padding="0.5dp" >
+
+        <TextView
+            android:id="@+id/needback"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="0.5dp"
+            android:layout_weight="1"
+            android:background="@color/vj_navigation_textbg1"
+            android:gravity="center"
+            android:text="意见反馈"
+            android:textColor="@color/vj_navigation_text1"
+            android:textSize="@dimen/vj_text_large" />
+
+        <TextView
+            android:id="@+id/mypublish"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="0.5dp"
+            android:layout_weight="1"
+            android:background="@color/vj_navigation_textbg1"
+            android:gravity="center"
+            android:text="我要发布"
+            android:textColor="@color/vj_navigation_text1"
+            android:textSize="@dimen/vj_text_large" />
+    </LinearLayout>
+
+</LinearLayout>

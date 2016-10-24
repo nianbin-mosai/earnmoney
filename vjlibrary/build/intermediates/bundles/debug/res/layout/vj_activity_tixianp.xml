@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/vj_content_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/vj_head" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/vj_white_bar_margin_left"
+                android:layout_marginRight="@dimen/vj_white_bar_margin_right"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/vj_white_bar_bg"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/vj_user_info_id_h"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/vj_user_info_id_toleft1"
+                        android:text="手机号："
+                        android:textSize="@dimen/vj_text_medium" />
+
+                    <EditText
+                        android:id="@+id/phonenum"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="@dimen/vj_user_info_id_toright1"
+                        android:background="@drawable/vj_content_bar_bg"
+                        android:gravity="center"
+                        android:hint="请输入手机号"
+                        android:phoneNumber="true"
+                        android:textColor="@color/vj_textblack"
+                        android:textSize="@dimen/vj_text_medium" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/vj_content_bg" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="70dp"
+                    android:orientation="horizontal"
+                    android:paddingTop="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/vj_user_info_id_toleft1"
+                        android:layout_marginTop="10dp"
+                        android:text="充值金额："
+                        android:textSize="@dimen/vj_text_medium" />
+
+                    <com.fingermobi.vj.view.MyGridView
+                        android:id="@+id/recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginRight="20dp"
+                        android:columnWidth="90dp"
+                        android:horizontalSpacing="10dp"
+                        android:numColumns="auto_fit"
+                        android:scrollbars="none"
+                        android:verticalSpacing="10dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/vj_task_blue_bg"
+                android:gravity="center"
+                android:text="提交"
+                android:textColor="#FFF"
+                android:textSize="@dimen/vj_text_large" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

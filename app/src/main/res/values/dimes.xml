@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="radius_default">5dp</dimen>
+    <dimen name="text_size_mini_">10sp</dimen>
+    <dimen name="text_size_mini">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_default">16sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_large">20sp</dimen>
+    <dimen name="text_size_very_large">25sp</dimen>
+    <dimen name="standard_margin_default">10dp</dimen>
+    <dimen name="standard_padding_default">10dp</dimen>
+    <dimen name="divider_height">1dp</dimen>
+    <dimen name="divider_height_small">0.7dp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+</resources>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/vj_white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/taska"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/vj_white"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/taska_center_item"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <RelativeLayout
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/taska_center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="80dp"
+                    android:background="#fff">
+
+                    <ImageView
+                        android:id="@+id/taska_headimg"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        />
+
+                    <LinearLayout
+                        android:id="@+id/taska_tag"
+                        android:layout_width="70dp"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentRight="true"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="fill_parent">
+
+                            <View
+                                android:id="@+id/right_cercen"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_centerVertical="true" />
+
+                            <TextView
+                                android:id="@+id/taska_anzhuang"
+                                android:layout_width="70dp"
+                                android:layout_height="24dp"
+                                android:layout_above="@+id/right_cercen"
+                                android:layout_marginBottom="-10dp"
+                                android:background="@drawable/vj_yzm_bg"
+                                android:gravity="center"
+                                android:text="安装"
+                                android:textColor="@color/vj_blue" />
+
+                            <TextView
+                                android:id="@+id/taska_reward"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/right_cercen"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="20dp"
+                                android:text="+0.00元"
+                                android:textColor="@color/vj_textred"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/taska_tagline"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toLeftOf="@+id/taska_tag"
+                        android:background="@color/vj_greyline" />
+
+                    <LinearLayout
+
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toLeftOf="@+id/taska_tagline"
+                        android:layout_toRightOf="@+id/taska_headimg"
+                        android:orientation="vertical"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp">
+
+
+                            <TextView
+                                android:id="@+id/taska_tv_filesize"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentRight="true"
+                                android:ellipsize="none"
+                                android:singleLine="true"
+                                android:text="0.00M"
+                                android:textColor="@color/vj_textgray"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/taska_tv_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginRight="3dp"
+                                android:layout_toLeftOf="@+id/taska_tv_filesize"
+                                android:ellipsize="none"
+                                android:singleLine="true"
+                                android:text=""
+                                android:textColor="@color/vj_textblack"
+                                android:textSize="16sp" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/taska_tv_info1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/vj_textgrayno"
+                            android:singleLine="true"
+                        android:ellipsize="end"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/taska_tv_info2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                        android:ellipsize="end"
+                            android:textColor="@color/vj_textgrayno"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/taska_itembg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/taska_center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/vj_task_text_small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="下载用户:" />
+
+                            <TextView
+                                android:id="@+id/taska_downloadednu"
+                                style="@style/vj_task_text_small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="2dp"
+                                android:text="0"
+                                android:textSize="@dimen/vj_text_medium" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/vj_task_text_small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="剩余次数:" />
+
+                            <TextView
+                                android:id="@+id/taska_overtasknu"
+                                style="@style/vj_task_text_small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="2dp"
+                                android:text="0"
+                                android:textSize="@dimen/vj_text_medium" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/taska_yqw"
+            android:layout_width="82dp"
+            android:layout_height="65dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="28dp"
+            android:src="@drawable/vj_item_task_jie"
+            android:visibility="gone" />
+    </RelativeLayout>
+</LinearLayout>
+

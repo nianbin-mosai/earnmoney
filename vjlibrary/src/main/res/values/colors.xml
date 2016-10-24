@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="vj_colorPrimary">#FF4081</color>
+    <color name="vj_colorPrimaryDark">#FF4081</color>
+    <color name="vj_colorAccent">#FF4081</color>
+
+
+    <color name="vj_qdi_line_bg">#A2A2A2</color>
+    <color name="vj_white">#FFF</color>
+    <color name="vj_content_bg">#F0F0F0</color>
+    <color name="vj_blue">#3CB1EC</color>
+    <color name="vj_black_medium">#515151</color>
+    <color name="vj_black_small">#858585</color>
+    <color name="vj_greyline">#EEEEEE</color>
+    <color name="vj_textgray">#676767</color>
+    <color name="vj_textblack">#000</color>
+    <color name="vj_textred">#FF644E</color>
+    <color name="vj_textgrayno">#b2b2b2</color>
+    <color name="vj_whitebarbgstroke">#DCDCDC</color>
+    <color name="vj_line_bg">#999999</color>
+    <color name="vj_navigation_text1">#666666</color>
+    <color name="vj_navigation_text2">#FFFFFF</color>
+    <color name="vj_navigation_textbg1">#FFFFFF</color>
+    <color name="vj_navigation_textbg2">#3CB1EC</color>
+</resources>

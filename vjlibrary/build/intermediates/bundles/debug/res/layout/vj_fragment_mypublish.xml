@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:background="@color/vj_white"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/vj_publish_icon" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:lineSpacingExtra="5dp"
+                    android:text="V+新媒体广告平台"
+                    android:textColor="@color/vj_textgrayno"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:lineSpacingExtra="5dp"
+                    android:text="最有效、透明、精准的社交媒体平台，触达千万用户，欢迎您联系并发布您的投放需求！"
+                    android:textColor="@color/vj_textgrayno"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/vj_white_dialog_bg"
+                android:paddingLeft="15dp" >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/vj_publish_1" />
+
+                <EditText
+                    android:id="@+id/et_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:background="@null"
+                    android:hint="联系人姓名"
+                    android:paddingLeft="40dp"
+                    android:textColorHighlight="@color/vj_textgray"
+                    android:textColorHint="@color/vj_textgrayno"
+                    android:textSize="@dimen/vj_text_medium" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/vj_white_dialog_bg"
+                android:paddingLeft="15dp" >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/vj_publish_2" />
+
+                <EditText
+                    android:id="@+id/et_userphone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:background="@null"
+                    android:hint="联系人手机号码"
+                    android:paddingLeft="40dp"
+                    android:phoneNumber="true"
+                    android:textColorHighlight="@color/vj_textgray"
+                    android:textColorHint="@color/vj_textgrayno"
+                    android:textSize="@dimen/vj_text_medium" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/vj_white_dialog_bg"
+                android:paddingLeft="15dp" >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/vj_publish_3" />
+
+                <EditText
+                    android:id="@+id/et_companyname"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:background="@null"
+                    android:hint="请投入投放的产品或公司名称"
+                    android:paddingLeft="40dp"
+                    android:textColorHighlight="@color/vj_textgray"
+                    android:textColorHint="@color/vj_textgrayno"
+                    android:textSize="@dimen/vj_text_medium" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/vj_white_dialog_bg"
+                android:paddingLeft="15dp" >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/vj_publish_4" />
+
+                <EditText
+                    android:id="@+id/et_money"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:background="@null"
+                    android:hint="请设定投放金额（需大于1000元）"
+                    android:inputType="number"
+                    android:paddingLeft="40dp"
+                    android:textColorHighlight="@color/vj_textgray"
+                    android:textColorHint="@color/vj_textgrayno"
+                    android:textSize="@dimen/vj_text_medium" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="信息提交后客户经理将与您即时联系具体投放事宜"
+                android:textColor="@color/vj_textgrayno"
+                android:textSize="@dimen/vj_text_medium" />
+
+            <TextView
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/vj_blue_bg"
+                android:gravity="center"
+                android:text="提   交"
+                android:textColor="@color/vj_white"
+                android:textSize="@dimen/vj_text_large" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

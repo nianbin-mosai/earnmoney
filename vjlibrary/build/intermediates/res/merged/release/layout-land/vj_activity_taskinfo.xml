@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/vj_white"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/head"
+        layout="@layout/vj_head" />
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/head"
+        android:layout_marginLeft="150dp"
+        android:layout_marginRight="150dp"
+        android:layout_weight="1" >
+    </WebView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_alignParentBottom="true"
+        android:background="#b0bfbfbf" >
+
+        <LinearLayout
+            android:id="@+id/r1"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="15dp" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left|bottom"
+                android:text="转发奖励"
+                android:textColor="#000"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/share_reveune"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50"
+                    android:textColor="@color/vj_blue"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/shareunit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/r2"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/r1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left|bottom"
+                android:text="浏览奖励"
+                android:textColor="#000"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/browser_reward"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50"
+                    android:textColor="@color/vj_blue"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="/次"
+                    android:textColor="#000"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="140dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/share"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/vj_blue_bg"
+                android:gravity="center"
+                android:textColor="#FFF"
+                android:textSize="16dp" />
+
+            <LinearLayout
+                android:id="@+id/increment_l"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textColor="#000"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/increment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20%"
+                    android:textColor="@color/vj_blue"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="奖励"
+                    android:textColor="#000"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <include layout="@layout/vj_layout_share_botton" />
+    
+    <RelativeLayout
+        android:id="@+id/sharetip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/head"
+        android:background="#ddffffff"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:layout_width="320dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/vj_showcenter_bg" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="23dp"
+                android:text="微信分享提示"
+                android:textColor="#4f4f4f"
+                android:textSize="15sp" />
+
+            <RelativeLayout
+                android:id="@+id/sharetip_close"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="16dp" >
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/vj_close" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/sharetip_show"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/sharetip_close"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/vj_blue_line_bg"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:lineSpacingExtra="5dp"
+                    android:text="微信分享采用了新的方式，分享成功后并没有记录，当分享被好友点击浏览时才会有记录。"
+                    android:textColor="#4f4f4f"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sharetip_select"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_below="@+id/sharetip_show"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:paddingLeft="30dp" >
+
+                <ImageView
+                    android:id="@+id/sharetip_selectimg"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/vj_select_no" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:text="下次不再提示"
+                    android:textColor="#515151"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+			<LinearLayout
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal"
+			    android:layout_below="@+id/sharetip_select" >
+
+			    <TextView
+			        android:text="继续分享"
+			        android:textColor="#FFF"
+			        android:gravity="center"
+			        android:id="@+id/sharetip_share"
+			        android:layout_width="match_parent"
+			        android:layout_height="30dp"
+			        android:layout_marginTop="8dp"
+			        android:layout_marginLeft="30dp"
+			        android:layout_marginRight="15dp"
+			        android:layout_weight="1"
+			        android:background="@drawable/vj_task_blue_bg" />
+
+			    <TextView
+			        android:id="@+id/sharetip_cancel"
+			        android:layout_width="match_parent"
+			        android:layout_height="30dp"
+			         android:text="取消"
+			        android:textColor="#FFF"
+			        android:gravity="center"
+			        android:layout_marginLeft="15dp"
+			        android:layout_marginRight="30dp"
+			        android:layout_marginTop="8dp"
+			        android:layout_weight="1"
+			        android:background="@drawable/vj_task_blue_bg" />
+			</LinearLayout>
+            
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

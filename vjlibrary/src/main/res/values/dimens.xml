@@ -1,0 +1,21 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="vj_activity_horizontal_margin">16dp</dimen>
+    <dimen name="vj_activity_vertical_margin">16dp</dimen>
+
+    <dimen name="vj_text_small">12sp</dimen>
+    <dimen name="vj_text_medium">14sp</dimen>
+    <dimen name="vj_text_large">17sp</dimen>
+    <dimen name="vj_text_title">20sp</dimen>
+
+    <dimen name="vj_qdi_content_padding">10dp</dimen>
+    <dimen name="vj_white_bar_margin_left">10dp</dimen>
+    <dimen name="vj_white_bar_margin_right">10dp</dimen>
+    <dimen name="vj_user_info_id_h">50dp</dimen>
+    <dimen name="vj_user_info_id_toleft1">30dp</dimen>
+    <dimen name="vj_user_info_id_toright1">30dp</dimen>
+    
+    <dimen name="vj_taskinfo_imgs_iv_w">140px</dimen>
+    <dimen name="vj_taskinfo_imgs_iv_h">230px</dimen>
+    <dimen name="vj_taskinfo_imgs_linear_w">150px</dimen>
+</resources>
