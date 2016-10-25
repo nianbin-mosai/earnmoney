@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical" >
@@ -12,12 +13,13 @@
         android:gravity="left|center_vertical"
         android:minHeight="@dimen/PreferenceItemHeight"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp" />
+        android:paddingRight="10dp"
+        tools:ignore="Orientation" />
 
     <!-- Preference should place its actual preference widget here. -->
 
     <LinearLayout
-        android:id="@+android:id/widget_frame"
+        android:id="@android:id/widget_frame"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:gravity="right|center_vertical"

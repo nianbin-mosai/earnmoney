@@ -1,11 +1,5 @@
 package net.sourceforge.simcpux;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.net.URL;
-
-import net.sourceforge.simcpux.uikit.CameraUtil;
-import net.sourceforge.simcpux.uikit.MMAlert;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -31,6 +25,13 @@ import com.tencent.mm.sdk.modelmsg.WXVideoObject;
 import com.tencent.mm.sdk.modelmsg.WXWebpageObject;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
+
+import net.sourceforge.simcpux.uikit.CameraUtil;
+import net.sourceforge.simcpux.uikit.MMAlert;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.net.URL;
 
 public class AddFavoriteToWXActivity extends Activity {
 	private static final int THUMB_SIZE = 150;
@@ -73,24 +74,24 @@ public class AddFavoriteToWXActivity extends Activity {
 							return;
 						}
 						
-						// 初始化一个WXTextObject对象
+						// ????????WXTextObject????
 						WXTextObject textObj = new WXTextObject();
 						textObj.text = text;
 
-						// 用WXTextObject对象初始化一个WXMediaMessage对象
+						// ??WXTextObject???????????WXMediaMessage????
 						WXMediaMessage msg = new WXMediaMessage();
 						msg.mediaObject = textObj;
-						// 发送文本类型的消息时，title字段不起作用
+						// ??????????????????title??尾???????
 						// msg.title = "Will be ignored";
 						msg.description = text;
 
-						// 构造一个Req
+						// ???????Req
 						SendMessageToWX.Req req = new SendMessageToWX.Req();
-						req.transaction = buildTransaction("text"); // transaction字段用于唯一标识一个请求
+						req.transaction = buildTransaction("text"); // transaction???????唯???????????
 						req.message = msg;
 						req.scene = SendMessageToWX.Req.WXSceneFavorite;
 						req.openId = getOpenId();
-						// 调用api接口发送数据到微信
+						// ????api??????????????
 						api.sendReq(req);
 						finish();
 					}
@@ -118,7 +119,7 @@ public class AddFavoriteToWXActivity extends Activity {
 							
 							Bitmap thumbBmp = Bitmap.createScaledBitmap(bmp, THUMB_SIZE, THUMB_SIZE, true);
 							bmp.recycle();
-							msg.thumbData = Util.bmpToByteArray(thumbBmp, true);  // 设置缩略图
+							msg.thumbData = Util.bmpToByteArray(thumbBmp, true);  // ?????????
 
 							SendMessageToWX.Req req = new SendMessageToWX.Req();
 							req.transaction = buildTransaction("img");
@@ -228,7 +229,7 @@ public class AddFavoriteToWXActivity extends Activity {
 							
 							Bitmap thumbBmp = Bitmap.createScaledBitmap(bmp, THUMB_SIZE, THUMB_SIZE, true);
 							bmp.recycle();
-							msg.thumbData = Util.bmpToByteArray(thumbBmp, true);  // 设置缩略图
+							msg.thumbData = Util.bmpToByteArray(thumbBmp, true);  // ?????????
 
 							SendMessageToWX.Req req = new SendMessageToWX.Req();
 							req.transaction = buildTransaction("file");

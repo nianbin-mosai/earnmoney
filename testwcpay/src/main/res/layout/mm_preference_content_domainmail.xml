@@ -18,6 +18,6 @@
 
 	<TextView
 		style="@style/MMFontPreferenceSmall"
-		android:id="@+android:id/summary"
+		android:id="@android:id/summary"
 		android:singleLine="true" />
 </LinearLayout>

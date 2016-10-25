@@ -1,11 +1,6 @@
 package net.sourceforge.simcpux;
 
 
-import org.json.JSONObject;
-import com.tencent.mm.sdk.constants.Build;
-import com.tencent.mm.sdk.modelpay.PayReq;
-import com.tencent.mm.sdk.openapi.IWXAPI;
-import com.tencent.mm.sdk.openapi.WXAPIFactory;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,35 +8,42 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.tencent.mm.sdk.constants.Build;
+import com.tencent.mm.sdk.modelpay.PayReq;
+import com.tencent.mm.sdk.openapi.IWXAPI;
+import com.tencent.mm.sdk.openapi.WXAPIFactory;
+
+import org.json.JSONObject;
+
 public class PayActivity extends Activity {
-	
+
 	private IWXAPI api;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.pay);
-		
+
 		api = WXAPIFactory.createWXAPI(this, "wxb4ba3c02aa476ea1");
 
 		Button appayBtn = (Button) findViewById(R.id.appay_btn);
 		appayBtn.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				String url = "http://wxpay.weixin.qq.com/pub_v2/app/app_pay.php?plat=android";
 				Button payBtn = (Button) findViewById(R.id.appay_btn);
 				payBtn.setEnabled(false);
-				Toast.makeText(PayActivity.this, "»ñÈ¡¶©µ¥ÖÐ...", Toast.LENGTH_SHORT).show();
-		        try{
+				Toast.makeText(PayActivity.this, "èŽ·å–è®¢å•ä¸­...", Toast.LENGTH_SHORT).show();
+				try{
 					byte[] buf = Util.httpGet(url);
 					if (buf != null && buf.length > 0) {
 						String content = new String(buf);
 						Log.e("get server pay params:",content);
-			        	JSONObject json = new JSONObject(content); 
+						JSONObject json = new JSONObject(content);
 						if(null != json && !json.has("retcode") ){
 							PayReq req = new PayReq();
-							//req.appId = "wxf8b4f85f3a794e77";  // ²âÊÔÓÃappId
+							//req.appId = "wxf8b4f85f3a794e77";  // æµ‹è¯•ç”¨appId
 							req.appId			= json.getString("appid");
 							req.partnerId		= json.getString("partnerid");
 							req.prepayId		= json.getString("prepayid");
@@ -50,27 +52,27 @@ public class PayActivity extends Activity {
 							req.packageValue	= json.getString("package");
 							req.sign			= json.getString("sign");
 							req.extData			= "app data"; // optional
-							Toast.makeText(PayActivity.this, "Õý³£µ÷ÆðÖ§¸¶", Toast.LENGTH_SHORT).show();
-							// ÔÚÖ§¸¶Ö®Ç°£¬Èç¹ûÓ¦ÓÃÃ»ÓÐ×¢²áµ½Î¢ÐÅ£¬Ó¦¸ÃÏÈµ÷ÓÃIWXMsg.registerApp½«Ó¦ÓÃ×¢²áµ½Î¢ÐÅ
+							Toast.makeText(PayActivity.this, "æ­£å¸¸è°ƒèµ·æ”¯ä»˜", Toast.LENGTH_SHORT).show();
+							// åœ¨æ”¯ä»˜ä¹‹å‰ï¼Œå¦‚æžœåº”ç”¨æ²¡æœ‰æ³¨å†Œåˆ°å¾®ä¿¡ï¼Œåº”è¯¥å…ˆè°ƒç”¨IWXMsg.registerAppå°†åº”ç”¨æ³¨å†Œåˆ°å¾®ä¿¡
 							api.sendReq(req);
 						}else{
-				        	Log.d("PAY_GET", "·µ»Ø´íÎó"+json.getString("retmsg"));
-				        	Toast.makeText(PayActivity.this, "·µ»Ø´íÎó"+json.getString("retmsg"), Toast.LENGTH_SHORT).show();
+							Log.d("PAY_GET", "è¿”å›žé”™è¯¯"+json.getString("retmsg"));
+							Toast.makeText(PayActivity.this, "è¿”å›žé”™è¯¯"+json.getString("retmsg"), Toast.LENGTH_SHORT).show();
 						}
 					}else{
-			        	Log.d("PAY_GET", "·þÎñÆ÷ÇëÇó´íÎó");
-			        	Toast.makeText(PayActivity.this, "·þÎñÆ÷ÇëÇó´íÎó", Toast.LENGTH_SHORT).show();
-			        }
-		        }catch(Exception e){
-		        	Log.e("PAY_GET", "Òì³££º"+e.getMessage());
-		        	Toast.makeText(PayActivity.this, "Òì³££º"+e.getMessage(), Toast.LENGTH_SHORT).show();
-		        }
-		        payBtn.setEnabled(true);
+						Log.d("PAY_GET", "æœåŠ¡å™¨è¯·æ±‚é”™è¯¯");
+						Toast.makeText(PayActivity.this, "æœåŠ¡å™¨è¯·æ±‚é”™è¯¯", Toast.LENGTH_SHORT).show();
+					}
+				}catch(Exception e){
+					Log.e("PAY_GET", "å¼‚å¸¸ï¼š"+e.getMessage());
+					Toast.makeText(PayActivity.this, "å¼‚å¸¸ï¼š"+e.getMessage(), Toast.LENGTH_SHORT).show();
+				}
+				payBtn.setEnabled(true);
 			}
-		});		
+		});
 		Button checkPayBtn = (Button) findViewById(R.id.check_pay_btn);
 		checkPayBtn.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				boolean isPaySupported = api.getWXAppSupportAPI() >= Build.PAY_SUPPORTED_SDK_INT;
@@ -78,5 +80,5 @@ public class PayActivity extends Activity {
 			}
 		});
 	}
-	
+
 }

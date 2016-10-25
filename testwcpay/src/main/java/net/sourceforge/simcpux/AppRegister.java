@@ -1,11 +1,11 @@
 package net.sourceforge.simcpux;
 
-import com.tencent.mm.sdk.openapi.IWXAPI;
-import com.tencent.mm.sdk.openapi.WXAPIFactory;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import com.tencent.mm.sdk.openapi.IWXAPI;
+import com.tencent.mm.sdk.openapi.WXAPIFactory;
 
 public class AppRegister extends BroadcastReceiver {
 
@@ -13,7 +13,7 @@ public class AppRegister extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 		final IWXAPI msgApi = WXAPIFactory.createWXAPI(context, null);
 
-		// ½«¸Ãapp×¢²áµ½Î¢ÐÅ
+		// å°†è¯¥appæ³¨å†Œåˆ°å¾®ä¿¡
 		msgApi.registerApp(Constants.APP_ID);
 	}
 }

@@ -84,12 +84,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\vj_close.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\vj_arrows_left.png",
-        "source": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\vj_arrows_left.png"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\vj_triangle.png",
         "source": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\vj_triangle.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\vj_arrows_left.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\vj_arrows_left.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\vj_showcenter_border.png",
@@ -148,12 +148,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\vj_lv6.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_launcher.png",
-        "source": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_launcher.png"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\vj_publish_4.png",
         "source": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\vj_publish_4.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\vj_showcenter_bg.png",

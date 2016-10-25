@@ -1,12 +1,11 @@
 package net.sourceforge.simcpux.wxapi;
 
 
-
-
-
-
-import net.sourceforge.simcpux.Constants;
-import net.sourceforge.simcpux.R;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 
 import com.tencent.mm.sdk.constants.ConstantsAPI;
 import com.tencent.mm.sdk.modelbase.BaseReq;
@@ -15,11 +14,8 @@ import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
+import net.sourceforge.simcpux.Constants;
+import net.sourceforge.simcpux.R;
 
 public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler{
 	

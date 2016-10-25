@@ -16,12 +16,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\drawable-hdpi\\vj_lv9.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\vj_publish_2.png",
-        "source": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\drawable-hdpi\\vj_publish_2.png"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\vj_searchimg.jpg",
         "source": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\drawable-hdpi\\vj_searchimg.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\vj_publish_2.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\drawable-hdpi\\vj_publish_2.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\vj_level_gray.png",
