@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
+        "outputFile": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -12,7 +12,7 @@
                     "endOffset": 213
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\arrays.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\arrays.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -33,7 +33,7 @@
                     "endOffset": 414
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\arrays.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\arrays.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -54,7 +54,7 @@
                     "endOffset": 515
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\arrays.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\arrays.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 4,
@@ -74,7 +74,7 @@
                     "endOffset": 565
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -93,7 +93,7 @@
                     "endOffset": 614
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
@@ -112,7 +112,7 @@
                     "endOffset": 656
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -131,7 +131,7 @@
                     "endOffset": 705
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -150,7 +150,7 @@
                     "endOffset": 755
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -169,7 +169,7 @@
                     "endOffset": 809
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -188,7 +188,7 @@
                     "endOffset": 857
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -207,7 +207,7 @@
                     "endOffset": 903
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -226,7 +226,7 @@
                     "endOffset": 948
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
@@ -245,7 +245,7 @@
                     "endOffset": 1002
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
@@ -264,7 +264,7 @@
                     "endOffset": 1056
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -283,7 +283,7 @@
                     "endOffset": 1112
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 22,
                         "startColumn": 4,
@@ -302,7 +302,7 @@
                     "endOffset": 1168
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 23,
                         "startColumn": 4,
@@ -321,7 +321,7 @@
                     "endOffset": 1217
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -340,7 +340,7 @@
                     "endOffset": 1261
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -359,7 +359,7 @@
                     "endOffset": 1307
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -378,7 +378,7 @@
                     "endOffset": 1355
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 17,
                         "startColumn": 4,
@@ -397,7 +397,7 @@
                     "endOffset": 1400
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 4,
@@ -416,7 +416,7 @@
                     "endOffset": 1440
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -435,7 +435,7 @@
                     "endOffset": 1494
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 4,
@@ -454,7 +454,7 @@
                     "endOffset": 1799
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -473,7 +473,7 @@
                     "endOffset": 1858
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -492,7 +492,7 @@
                     "endOffset": 1912
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -511,7 +511,7 @@
                     "endOffset": 1966
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 4,
@@ -530,7 +530,7 @@
                     "endOffset": 2020
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 17,
                         "startColumn": 4,
@@ -549,7 +549,7 @@
                     "endOffset": 2078
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
@@ -568,7 +568,7 @@
                     "endOffset": 2123
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -587,7 +587,7 @@
                     "endOffset": 2169
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -606,7 +606,7 @@
                     "endOffset": 2214
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -625,7 +625,7 @@
                     "endOffset": 2259
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -644,7 +644,7 @@
                     "endOffset": 2308
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -663,7 +663,7 @@
                     "endOffset": 2363
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -682,7 +682,7 @@
                     "endOffset": 2419
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -701,7 +701,7 @@
                     "endOffset": 2475
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -720,7 +720,7 @@
                     "endOffset": 2532
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
@@ -739,7 +739,7 @@
                     "endOffset": 2583
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\strings.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 1,
                         "startColumn": 4,
@@ -759,7 +759,7 @@
                     "endOffset": 2890
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -779,7 +779,7 @@
                     "endOffset": 2971
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -799,7 +799,7 @@
                     "endOffset": 3351
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 88,
                         "startColumn": 4,
@@ -820,7 +820,7 @@
                     "endOffset": 3732
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 97,
                         "startColumn": 4,
@@ -841,7 +841,7 @@
                     "endOffset": 4095
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 106,
                         "startColumn": 4,
@@ -862,7 +862,7 @@
                     "endOffset": 4494
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 114,
                         "startColumn": 4,
@@ -883,7 +883,7 @@
                     "endOffset": 4952
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
@@ -904,7 +904,7 @@
                     "endOffset": 5182
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 56,
                         "startColumn": 4,
@@ -925,7 +925,7 @@
                     "endOffset": 5403
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 62,
                         "startColumn": 4,
@@ -946,7 +946,7 @@
                     "endOffset": 5582
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 73,
                         "startColumn": 4,
@@ -967,7 +967,7 @@
                     "endOffset": 5753
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 68,
                         "startColumn": 4,
@@ -988,7 +988,7 @@
                     "endOffset": 5907
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 39,
                         "startColumn": 4,
@@ -1009,7 +1009,7 @@
                     "endOffset": 6063
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 29,
                         "startColumn": 4,
@@ -1030,7 +1030,7 @@
                     "endOffset": 6217
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 34,
                         "startColumn": 4,
@@ -1051,7 +1051,7 @@
                     "endOffset": 6374
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 51,
                         "startColumn": 4,
@@ -1072,7 +1072,7 @@
                     "endOffset": 6644
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 44,
                         "startColumn": 4,
@@ -1093,7 +1093,7 @@
                     "endOffset": 6813
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 83,
                         "startColumn": 4,
@@ -1114,7 +1114,7 @@
                     "endOffset": 6980
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 78,
                         "startColumn": 4,

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="dialog" parent="@android:style/Theme.Holo.Light.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">false</item><!--半透明-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
+    </style>
+
+
+    <style name="Base.TextView" parent="@android:style/Widget.Holo.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_default</item>
+        <item name="android:textColor">@color/default_text</item>
+    </style>
+
+    <style name="Line" parent="@android:style/Widget">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/divider_height_small</item>
+        <item name="android:background">@color/gray_transparent</item>
+    </style>
+
+    <style name="Line.Gray.D" parent="Line">
+        <item name="android:background">@color/gray_d</item>
+    </style>
+
+
+    -<style name="TextViewStyle">
+
+    <item name="android:layout_width">fill_parent</item>
+
+    <item name="android:layout_height">wrap_content</item>
+
+    <item name="android:layout_margin">10dp</item>
+
+    <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+
+</style>
+
+
+    <style parent="TextViewStyle" name="BtnStyle">
+    <item name="android:background">@drawable/buttonbg</item>
+    <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+</style>
+</resources>

@@ -1,1 +1,1 @@
-include ':app', ':litepal', ':vjlibrary'
+include ':apptest', ':litepal', ':vjlibrary', ':app', ':testwcpay', ':testalipay'
