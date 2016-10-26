@@ -6,6 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/apptest/apptest.iml" filepath="$PROJECT_DIR$/apptest/apptest.iml" />
       <module fileurl="file://$PROJECT_DIR$/earnmoney.iml" filepath="$PROJECT_DIR$/earnmoney.iml" />
       <module fileurl="file://$PROJECT_DIR$/litepal/litepal.iml" filepath="$PROJECT_DIR$/litepal/litepal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pulltorefresh/pulltorefresh.iml" filepath="$PROJECT_DIR$/pulltorefresh/pulltorefresh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qmmz/qmmz.iml" filepath="$PROJECT_DIR$/qmmz/qmmz.iml" />
       <module fileurl="file://$PROJECT_DIR$/testalipay/testalipay.iml" filepath="$PROJECT_DIR$/testalipay/testalipay.iml" />
       <module fileurl="file://$PROJECT_DIR$/testwcpay/testwcpay.iml" filepath="$PROJECT_DIR$/testwcpay/testwcpay.iml" />
       <module fileurl="file://$PROJECT_DIR$/vjlibrary/vjlibrary.iml" filepath="$PROJECT_DIR$/vjlibrary/vjlibrary.iml" />

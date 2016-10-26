@@ -1,147 +1,11 @@
 [
     {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_item_cuserwitlog.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_item_cuserwitlog.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_withdrawal.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_withdrawal.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_activity_taskcenter_page.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_activity_taskcenter_page.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_dialog_layout.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_dialog_layout.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_activity_half_myincome.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_activity_half_myincome.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_item_level.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_item_level.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_dialog_share.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_dialog_share.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_activity_myincome.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_activity_myincome.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_userinfo.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_userinfo.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_view_line.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_view_line.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_layout_share_alert.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_layout_share_alert.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_layout_cpa_task_process.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_layout_cpa_task_process.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_item_cuserwitlog.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_item_cuserwitlog.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_item_myincome.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_item_myincome.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_activity_qdi.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_activity_qdi.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_activity_weiboshare.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_activity_weiboshare.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_taskinfo.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_taskinfo.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_item_qdi.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_item_qdi.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_cuserwitlog.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_cuserwitlog.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_fragment_mypublish.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_fragment_mypublish.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_pull_list_view_foot.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_pull_list_view_foot.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_item_myincome.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_item_myincome.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_cpa_taskinfo.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_cpa_taskinfo.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_item_qdi.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_item_qdi.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_levelexplain.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_levelexplain.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_layout_share_alert.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_layout_share_alert.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_layout_share_botton.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_layout_share_botton.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_item_sharetask.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_item_sharetask.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_item_downloadtask.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_item_downloadtask.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_activity_levelexplain.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_activity_levelexplain.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_tixianp.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_tixianp.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_activity_tixianz.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_activity_tixianz.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_activity_cpa_taskinfo.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_activity_cpa_taskinfo.xml"
-    },
-    {
         "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_weiboshare.xml",
         "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_weiboshare.xml"
     },
     {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_item_xingxu.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_item_xingxu.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_activity_tixianq.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_activity_tixianq.xml"
+        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_withdrawal.xml",
+        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_withdrawal.xml"
     },
     {
         "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_qdi.xml",
@@ -160,6 +24,14 @@
         "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_publishneedback.xml"
     },
     {
+        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_dialog_share.xml",
+        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_dialog_share.xml"
+    },
+    {
+        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_userinfo.xml",
+        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_userinfo.xml"
+    },
+    {
         "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_main.xml",
         "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_main.xml"
     },
@@ -172,44 +44,48 @@
         "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_taskcenter_page.xml"
     },
     {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_activity_withdrawal.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_activity_withdrawal.xml"
-    },
-    {
         "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_tixianq.xml",
         "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_tixianq.xml"
+    },
+    {
+        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_layout_share_alert.xml",
+        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_layout_share_alert.xml"
+    },
+    {
+        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_item_cuserwitlog.xml",
+        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_item_cuserwitlog.xml"
     },
     {
         "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_item_level.xml",
         "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_item_level.xml"
     },
     {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_fragment_needback.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_fragment_needback.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_dialog_share.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_dialog_share.xml"
-    },
-    {
         "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_item_income_record.xml",
         "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_item_income_record.xml"
     },
     {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_layout_share_botton.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_layout_share_botton.xml"
+        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_taskinfo.xml",
+        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_taskinfo.xml"
     },
     {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_activity_userinfo.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_activity_userinfo.xml"
+        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_cuserwitlog.xml",
+        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_cuserwitlog.xml"
     },
     {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_item_downloadtask.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_item_downloadtask.xml"
+        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_item_myincome.xml",
+        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_item_myincome.xml"
     },
     {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_activity_taskinfo.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_activity_taskinfo.xml"
+        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_cpa_taskinfo.xml",
+        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_cpa_taskinfo.xml"
+    },
+    {
+        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_item_qdi.xml",
+        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_item_qdi.xml"
+    },
+    {
+        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_levelexplain.xml",
+        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_levelexplain.xml"
     },
     {
         "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_item_xingxu.xml",
@@ -228,16 +104,20 @@
         "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_fragment_mypublish.xml"
     },
     {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_head.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_head.xml"
+        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_layout_share_botton.xml",
+        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_layout_share_botton.xml"
     },
     {
         "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_head.xml",
         "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_head.xml"
     },
     {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_activity_tixianp.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_activity_tixianp.xml"
+        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_item_sharetask.xml",
+        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_item_sharetask.xml"
+    },
+    {
+        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_item_downloadtask.xml",
+        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_item_downloadtask.xml"
     },
     {
         "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_pull_list_view_foot.xml",
@@ -248,35 +128,15 @@
         "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_tixianz.xml"
     },
     {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_item_income_record.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_item_income_record.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_activity_main.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_activity_main.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_activity_cuserwitlog.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_activity_cuserwitlog.xml"
+        "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_tixianp.xml",
+        "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_tixianp.xml"
     },
     {
         "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_activity_myincome.xml",
         "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_activity_myincome.xml"
     },
     {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_pull_list_view_head.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_pull_list_view_head.xml"
-    },
-    {
         "merged": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/res/merged/androidTest/debug/layout/vj_view_line.xml",
         "source": "/Users/Macx/Desktop/github/earnmoney/vjlibrary/build/intermediates/bundles/debug/res/layout/vj_view_line.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_activity_publishneedback.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_activity_publishneedback.xml"
-    },
-    {
-        "merged": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\vj_item_sharetask.xml",
-        "source": "/Users/Macx/Desktop/github/earnmoney/C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\vj_item_sharetask.xml"
     }
 ]

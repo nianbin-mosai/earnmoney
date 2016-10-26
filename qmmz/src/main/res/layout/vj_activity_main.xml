@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+			<TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvtext"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="mid" />
+
+            <EditText
+                android:id="@+id/mid"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="3db531c723749a80de2d3686951fbf25" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="gameid" />
+
+            <EditText
+                android:id="@+id/gameid"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="gameid" />
+
+            <Button
+                android:id="@+id/send"
+                android:text="显示广告"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/send1"
+                android:text="显示json"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/backjson"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+            
+            <Button
+                android:id="@+id/add"
+                android:text="add"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/update"
+                android:text="update"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/del"
+                android:text="del"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/sel"
+                android:text="sel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
