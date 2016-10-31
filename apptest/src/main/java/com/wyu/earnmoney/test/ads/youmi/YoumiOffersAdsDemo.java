@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -64,7 +63,7 @@ public class YoumiOffersAdsDemo extends Activity
 	private void initYoumi() {
 		// 自v6.3.0起，所有其他代码必须在初始化接口调用之后才能生效
 		// 初始化接口，应用启动的时候调用(appId, appSecret, isTestModel, isEnableYoumiLog)
-		AdManager.getInstance(this).init("cfdbdd2786ea88ea", "d8edde7d10dd0073", false, true);
+		AdManager.getInstance(this).init("f0c17f8844bbd845", "20d4b90ab7e0d4d1", true, true);
 
 		// 有米android 积分墙sdk 5.0.0之后支持定制浏览器顶部标题栏的部分UI
 		 setOfferBrowserConfig();
@@ -368,7 +367,7 @@ public class YoumiOffersAdsDemo extends Activity
 		OffersBrowserConfig.getInstance(this).setBrowserTitleText("秒取积分");
 
 		// 设置标题栏——背景颜色（ps：积分墙标题栏默认背景颜色为#FFBB34）
-		OffersBrowserConfig.getInstance(this).setBrowserTitleBackgroundColor(Color.BLUE);
+//		OffersBrowserConfig.getInstance(this).setBrowserTitleBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
 
 		// 设置标题栏——是否显示积分墙右上角积分余额区域 true：是 false：否
 		OffersBrowserConfig.getInstance(this).setPointsLayoutVisibility(true);
