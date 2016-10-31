@@ -1,16 +1,5 @@
 package com.mdxx.qmmz.activity;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-import net.youmi.android.AdManager;
-import net.youmi.android.offers.OffersManager;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
@@ -61,6 +50,17 @@ import com.umeng.socialize.exception.SocializeException;
 import com.umeng.socialize.utils.Log;
 import com.umeng.socialize.weixin.controller.UMWXHandler;
 import com.yow.YoManage;
+
+import net.youmi.android.AdManager;
+import net.youmi.android.offers.OffersManager;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class MainActivity extends BaseActivity implements OnClickListener {
 	private long mExitTime;
@@ -805,6 +805,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+		PgyCrashManager.unregister();
 		OffersManager.getInstance(MainActivity.this).onAppExit();
 	}
 

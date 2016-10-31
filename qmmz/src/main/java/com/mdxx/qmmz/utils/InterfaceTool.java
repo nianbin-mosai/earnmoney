@@ -1,9 +1,5 @@
 package com.mdxx.qmmz.utils;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Map;
-import java.util.Random;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -20,6 +16,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.mdxx.qmmz.Configure;
+
+import java.io.UnsupportedEncodingException;
+import java.util.Map;
+import java.util.Random;
 
 public class InterfaceTool {
 

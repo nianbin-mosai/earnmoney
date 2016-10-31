@@ -1,12 +1,8 @@
 package com.mdxx.qmmz;
 
-import java.util.Iterator;
-import java.util.Map;
-
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
-
 
 import com.mdxx.qmmz.utils.MyVolley;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -14,6 +10,9 @@ import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+
+import java.util.Iterator;
+import java.util.Map;
 
 public class MyApplication extends Application {
 	// 处放时间
