@@ -25,7 +25,6 @@ import com.mdxx.qmmz.activity.BaseActivity;
 import com.mdxx.qmmz.utils.FileUtils;
 import com.mdxx.qmmz.utils.InterfaceTool;
 import com.newqm.pointwall.QSdkManager;
-import com.pgyersdk.crash.PgyCrashManager;
 import com.pgyersdk.feedback.PgyFeedbackShakeManager;
 import com.pgyersdk.javabean.AppBean;
 import com.pgyersdk.update.PgyUpdateManager;
@@ -80,11 +79,11 @@ public class NMainActivity extends BaseActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_nmain);
 		
-		PgyCrashManager.register(this);// 蒲公英
+//		PgyCrashManager.register(this);// 蒲公英
 		String channel1 = FileUtils.getChannel1(this);
 		issim();
-		mPushAgent = PushAgent.getInstance(this);
-		mPushAgent.enable();
+//		mPushAgent = PushAgent.getInstance(this);
+//		mPushAgent.enable();
 		initguanggao();
 		youmeng();
 		initUI();

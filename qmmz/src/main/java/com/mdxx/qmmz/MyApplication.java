@@ -4,6 +4,12 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.mdxx.qmmz.common.CrashCatcher;
+import com.mdxx.qmmz.common.LogUtils;
+import com.mdxx.qmmz.common.SystemUtil;
+import com.mdxx.qmmz.common.UserPF;
+import com.mdxx.qmmz.network.AsyncHttp;
+import com.mdxx.qmmz.network.cache.DataCache;
 import com.mdxx.qmmz.utils.MyVolley;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
@@ -16,18 +22,44 @@ import java.util.Map;
 
 public class MyApplication extends Application {
 	// 处放时间
+	public static MyApplication INSTANCE;
 	public static Map<String, Long> map;
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		INSTANCE = this;
 		initImageLoader(getApplicationContext());
 		MyVolley.init(this);
-		
 		SharedPreferences pre = this.getSharedPreferences("userdata",
 				MODE_PRIVATE);
 		mUserDatas = (Map<String, Object>) pre.getAll();
+		if (!SystemUtil.isCurProcess(this)) {
+			LogUtils.i(android.os.Process.myPid() + "不是主进程");
+			return;
+		}
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				long time = System.currentTimeMillis();
+				UserPF.getInstance().init(INSTANCE);
+				AsyncHttp.getInstance().init(INSTANCE);
+				DataCache.getInstance().init(INSTANCE);
+				LogUtils.i("Application init finish, Time=" + (System.currentTimeMillis() - time));
+			}
+		}).start();
+		initCrashCatcher();
 	}
-	
+	private void initCrashCatcher() {
+		// 崩溃捕捉
+		final CrashCatcher crashCatcher = new CrashCatcher(this);
+		crashCatcher.register(new Thread.UncaughtExceptionHandler() {
+			@Override
+			public void uncaughtException(Thread thread, Throwable throwable) {
+				// 崩溃时自动重启，不弹出 crash dialog
+				// crashCatcher.restart(SplashActivity.class);
+			}
+		});
+	}
 	/**
 	 * 保存sharedpreferemce里的值
 	 */

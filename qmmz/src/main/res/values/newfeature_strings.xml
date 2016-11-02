@@ -26,4 +26,7 @@
     <string name="password_cannot_be_empty">密码不可为空</string>
     <string name="password_verify">您的密码长度不符合要求(密码长度: 5&#8211;20)。</string>
     <string name="confirm_password_verify">密码不匹配</string>
+    <string name="parse_data_error">数据分析错误</string>
+    <string name="server_response_value_error">服务器返回错误，错误代码为 %1$s</string>
+    <string name="network_request_timeout">网络请求超出时限，请检查网络设置</string>
 </resources>

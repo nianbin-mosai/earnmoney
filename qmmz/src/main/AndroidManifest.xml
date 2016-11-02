@@ -451,11 +451,11 @@
             android:name=".activity.GonggaoActivity"
             android:label="@string/title_activity_gonggao"></activity>
         <activity android:name=".activity.HelloActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".activity.GuideActivity"></activity>
         <activity
@@ -476,10 +476,10 @@
             android:launchMode="singleTop"
             android:theme="@style/AnimBottomIn"
             android:windowSoftInputMode="stateUnspecified|adjustPan" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
             </activity>
         <activity
             android:name="com.mdxx.qmmz.newfeature.RegisterActivity"

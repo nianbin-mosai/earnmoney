@@ -1,7 +1,5 @@
 package com.mdxx.qmmz.activity;
 
-import java.util.ArrayList;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -16,7 +14,10 @@ import android.widget.LinearLayout;
 import com.mdxx.qmmz.MyApplication;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.adapter.ViewPagerAdapter;
+import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.newp.NMainActivity;
+
+import java.util.ArrayList;
 
 public class GuideActivity extends BaseActivity implements OnClickListener,
 		OnPageChangeListener {
@@ -199,6 +200,7 @@ public class GuideActivity extends BaseActivity implements OnClickListener,
 	public void ToMain() {
 
 		MyApplication myApp = (MyApplication) getApplication();
+		UserPF.getInstance().setFirstRunning(false);
 		myApp.setUserData("isFirst", "1");
 		myApp.updateUserData();
 		Intent intent = new Intent();

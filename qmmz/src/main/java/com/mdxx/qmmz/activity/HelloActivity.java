@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import com.mdxx.qmmz.MyApplication;
 import com.mdxx.qmmz.R;
+import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.newp.NMainActivity;
 import com.mdxx.qmmz.utils.BitMapUtils;
 
@@ -47,7 +48,9 @@ public class HelloActivity extends BaseActivity {
 				 
 		 getApplicationContext(), R.drawable.ic_hello_bg));
 
-		if ("".equals(myApp.getUserData("isFirst", ""))) {
+
+
+		if (UserPF.getInstance().isFirstRunning()) {
 			mHandler.sendEmptyMessageDelayed(GO_GUIDE, SPLASH_DELAY_MILLIS);
 		} else {
 			mHandler.sendEmptyMessageDelayed(GO_HOME, SPLASH_DELAY_MILLIS);
