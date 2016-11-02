@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="vj_planets">
+        <item>0-16</item>
+        <item>17-22</item>
+        <item>23-35</item>
+        <item>35以上</item>
+    </string-array>
+    <string-array name="vj_spnum">
+        <item>20人以下</item>
+        <item>20-100人</item>
+        <item>100-500人</item>
+        <item>500-2000人</item>
+        <item>2000人以上</item>
+    </string-array>
+    <string-array name="vj_spsex">
+        <item>男</item>
+        <item>女</item>
+    </string-array>
+
+</resources>

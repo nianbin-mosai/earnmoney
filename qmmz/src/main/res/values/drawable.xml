@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="addqq_normal">#00BB00</drawable>
+    <drawable name="addqq_pressed">#00A600</drawable>
+     <drawable name="dialog_normal">#ffffff</drawable>
+    <drawable name="dialog_pressed">#bebebe</drawable>
+</resources>

@@ -1,0 +1,161 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NMainActivity" >
+
+   <FrameLayout
+        android:id="@+id/tab_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="55dp" >
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/tabs_rg"
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/home_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/sy_image"
+                android:layout_width="27dp"
+                android:layout_height="24dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" 
+                />
+
+            <TextView
+                android:id="@+id/sy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sy_image"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dp"
+                android:text="首页"
+                android:textSize="12sp"
+                 />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rank_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/ph_image"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" 
+                />
+
+            <TextView
+                android:id="@+id/ph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ph_image"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dp"
+                android:text="排行"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <!-- <RelativeLayout
+            android:id="@+id/center_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:visibility="visible" >
+        </RelativeLayout> -->
+
+        <RelativeLayout
+            android:id="@+id/dui_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/dh_image"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" 
+                />
+
+            <TextView
+                android:id="@+id/dh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dh_image"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dp"
+                android:text="兑换"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/me_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/wo_image"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" 
+                />
+
+            <TextView
+                android:id="@+id/wo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/wo_image"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dp"
+                android:text="我"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_gravity="bottom|center_horizontal" 
+        android:layout_marginBottom="55dp"
+        android:background="#8e8e8e"
+         />
+
+    <!-- <RelativeLayout
+        android:id="@+id/zhuan_layout"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_gravity="bottom|center_horizontal" 
+        android:layout_marginBottom="2dp" >
+
+        <ImageView
+            android:id="@+id/z_image"
+            android:layout_width="63dp"
+            android:layout_height="63dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout> -->
+
+</FrameLayout>

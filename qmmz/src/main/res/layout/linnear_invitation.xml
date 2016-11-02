@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/white" >
+
+        <ImageView
+            android:id="@+id/image_head"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/follow" />
+
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/image_head"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/image_head"
+            android:maxLength="10"
+            android:textColor="#4a4aff"
+            />
+
+        <TextView
+            android:id="@+id/text_level_allmoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/image_head"
+            android:layout_alignLeft="@+id/text_name"
+            android:textColor="#adadad"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btn_addqq"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:background="@drawable/addqq_selector"
+            android:text="加QQ" />
+
+        <TextView
+            android:id="@+id/text_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/text_name"
+            android:layout_toLeftOf="@+id/btn_addqq"
+            android:textColor="#adadad"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
