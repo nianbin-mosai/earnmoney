@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.itutorgroup.liveh2h.R;
-import com.itutorgroup.liveh2h.util.ViewUtil;
+import com.mdxx.qmmz.R;
+
 
 /**
  * 提示框

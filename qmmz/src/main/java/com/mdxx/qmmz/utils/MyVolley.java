@@ -15,12 +15,12 @@
  */
 package com.mdxx.qmmz.utils;
 
+import android.app.ActivityManager;
+import android.content.Context;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
-
-import android.app.ActivityManager;
-import android.content.Context;
 
 
 

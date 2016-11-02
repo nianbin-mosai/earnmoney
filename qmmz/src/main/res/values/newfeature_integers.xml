@@ -2,4 +2,5 @@
 <resources>
     <integer name="phone_max_lenght">13</integer>
     <integer name="password_max_length">20</integer>
+    <integer name="password_min_length">5</integer>
 </resources>

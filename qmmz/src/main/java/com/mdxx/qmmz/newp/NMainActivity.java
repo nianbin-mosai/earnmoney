@@ -1,17 +1,5 @@
 package com.mdxx.qmmz.newp;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import net.youmi.android.AdManager;
-import net.youmi.android.offers.OffersManager;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -51,6 +39,18 @@ import com.umeng.socialize.controller.listener.SocializeListeners.UMDataListener
 import com.umeng.socialize.exception.SocializeException;
 import com.umeng.socialize.weixin.controller.UMWXHandler;
 import com.yow.YoManage;
+
+import net.youmi.android.AdManager;
+import net.youmi.android.offers.OffersManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import de.greenrobot.event.EventBus;
 

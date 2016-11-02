@@ -1,2 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="phone_number">电话号码</string>
+    <string name="default_area_code">+86</string>
+    <string name="password">密码</string>
+    <string name="help_">帮助</string>
+    <string name="login">登录</string>
+    <string name="free_sign_up">免费注册</string>
+    <string name="password_show">显示</string>
+    <string name="password_hide">隐藏</string>
+    <string name="send_a_verification_code_hint">我们将会发一个校验码到您的手机</string>
+    <string name="name">名字</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="sign_up">注册</string>
+    <string name="get_verification_code">获取校验码</string>
+    <string name="seconds">%1$d 秒</string>
+    <string name="check_your_email_hint_format">我们发送了一封邮件至 %1$s。 点击邮件中的链接来重置您的密码</string>
+    <string name="ok">确定</string>
+    <string name="loading_text">加载中&#8230;</string>
+    <string name="phone_number_cannot_be_empty">电话号码不可为空</string>
+    <string name="phone_number_format_error">电话号码格式错误</string>
+    <string name="first_name_cannot_be_empty">名不可为空</string>
+    <string name="last_name_cannot_be_empty">姓不可为空</string>
+    <string name="name_cannot_be_empty">名字不可为空</string>
+    <string name="verification_code_cannot_be_empty">校验码不能为空</string>
+    <string name="password_cannot_be_empty">密码不可为空</string>
+    <string name="password_verify">您的密码长度不符合要求(密码长度: 5&#8211;20)。</string>
+    <string name="confirm_password_verify">密码不匹配</string>
+</resources>

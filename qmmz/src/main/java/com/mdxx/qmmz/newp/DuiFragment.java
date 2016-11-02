@@ -1,13 +1,5 @@
 package com.mdxx.qmmz.newp;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -27,6 +19,14 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.Reward;
 import com.mdxx.qmmz.utils.InterfaceTool;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DuiFragment extends Fragment implements OnClickListener {
 	private PullToRefreshListView pull_reward;

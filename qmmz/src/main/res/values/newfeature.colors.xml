@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <color name="default_text">#4A4A4A</color>
+    <color name="text_hint_gray">#B7B7B9</color>
+    <color name="gray_transparent">#55efefef</color>
+    <color name="black9">#999999</color>
+    <color name="btn_login_bg">#FC3466</color>
+    <color name="black_translucent_login">#54000000</color>
+    <color name="dark_gray">#A1A1A1</color>
+    <color name="drak_red">#A2301F</color>
+    <color name="gray_d">#DDDDDD</color>
+</resources>

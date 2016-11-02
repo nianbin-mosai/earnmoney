@@ -10,15 +10,12 @@ import android.content.pm.Signature;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Looper;
-import android.provider.CalendarContract;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-
-import com.itutorgroup.liveh2h.R;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -481,7 +478,6 @@ public class SystemUtil {
      */
     public static boolean isTablet(Context context) {
         if(context == null){
-            LogUtils.e("context is null!!! default return last isTablet value.");
             return isTablet;
         }
         isTablet = (context.getResources().getConfiguration().screenLayout
@@ -544,40 +540,6 @@ public class SystemUtil {
 
     }
 
-    /**
-     * 调用系统日历添加事件页面
-     * @param context
-     * @param subject
-     * @param meetingId
-     * @param hostName
-     * @param startTime
-     * @param endTime
-     */
-    public static void insertCalendar(Context context, String subject, String meetingId, String hostName, long startTime, long endTime) {
-        String description = context.getString(R.string.add_to_calendar_description, meetingId, hostName);
-        insertCalendar(context, subject, description, startTime, endTime);
-    }
-
-    /**
-     * 调用系统日历添加事件页面
-     * @param context
-     * @param title
-     * @param description
-     * @param beginTime
-     * @param endTime
-     */
-    public static void insertCalendar(Context context, String title, String description, long beginTime, long endTime) {
-        Intent intent = new Intent(Intent.ACTION_INSERT)
-                .setData(CalendarContract.Events.CONTENT_URI)
-                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime)
-                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime)
-                .putExtra(CalendarContract.Events.TITLE, title)
-                .putExtra(CalendarContract.Events.DESCRIPTION, description)
-//                .putExtra(CalendarContract.Events.EVENT_LOCATION, "The gym")
-//                .putExtra(Intent.EXTRA_EMAIL, "rowan@example.com,trevor@example.com")
-                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
-        context.startActivity(intent);
-    }
 
     /**
      * 获取sha1

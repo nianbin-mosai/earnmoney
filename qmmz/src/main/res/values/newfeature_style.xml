@@ -1,2 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <style name="Base.Imageview" parent="@android:style/Widget">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Imageview.Logo" parent="Base.Imageview">
+        <item name="android:layout_width">@dimen/logo_width</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">@dimen/standard_margin_default</item>
+        <item name="android:layout_marginBottom">@dimen/standard_margin_medium</item>
+        <item name="android:src">@drawable/icon_logo_small</item>
+    </style>
+    <style name="Imageview.Logo.Big" parent="Imageview.Logo">
+        <item name="android:src">@drawable/icon_logo</item>
+    </style>
+
+    <style name="Base"></style>
+    <style name="Base.Layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Base.LinearLayout" parent="Base.Layout">
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="LinearLayout.InputLayout.Base" parent="Base.LinearLayout">
+        <item name="android:layout_marginLeft">@dimen/content_margin_left_right</item>
+        <item name="android:layout_marginRight">@dimen/content_margin_left_right</item>
+        <item name="android:layout_marginTop">@dimen/standard_margin_default</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+    <style name="Base.TextView" parent="@android:style/Widget.Holo.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_default</item>
+        <item name="android:textColor">@color/default_text</item>
+    </style>
+    <style name="LinearLayout.InputLayout" parent="LinearLayout.InputLayout.Base"></style>
+    <style name="TextView.InputLabel" parent="Base.TextView">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:alpha">0.5</item>
+        <item name="android:visibility">invisible</item>
+        <item name="android:textSize">@dimen/text_size_mini</item>
+    </style>
+
+    <style name="Button.InputClear" parent="@android:style/Widget.Holo.ImageButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:src">@drawable/ic_edittext_clear</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:visibility">invisible</item>
+        <item name="android:padding">5dp</item>
+    </style>
+    <style name="Base.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:inputType">text</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:lines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">@dimen/text_size_default</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:textColorHint">@color/text_hint_gray</item>
+    </style>
+    <style name="EditText.Login" parent="Base.EditText">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:paddingBottom">@dimen/standard_padding_default</item>
+        <item name="android:paddingTop">@dimen/standard_padding_default</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/text_size_default</item>
+        <item name="android:textColorHint">@android:color/white</item>
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+
+
+    <style name="Line" parent="@android:style/Widget">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/divider_height_small</item>
+        <item name="android:background">@color/gray_transparent</item>
+    </style>
+
+    <style name="Line.InputBottom" parent="Line">
+        <item name="android:layout_marginBottom">@dimen/standard_margin_default</item>
+    </style>
+    <style name="Base.Button" parent="@style/Widget.AppCompat.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- 登录/注册模块确认按钮 -->
+    <style name="Button.LoginConfirm" parent="Base.Button">
+        <item name="android:layout_marginTop">@dimen/standard_margin_large</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">@dimen/text_size_default</item>
+        <item name="android:background">@drawable/btn_login_bg</item>
+        <item name="android:textColor">@color/white_gray_selector</item>
+    </style>
+    <style name="TextView.Password.Show.Hide" parent="Base.TextView">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:alpha">0.6</item>
+        <item name="android:text">@string/password_show</item>
+        <item name="android:tag">false</item>
+        <item name="android:visibility">invisible</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+
+    <style name="dialog" parent="@android:style/Theme.Holo.Light.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">false</item><!--半透明-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
+    </style>
+
+
+
+    <style name="Line.Gray.D" parent="Line">
+        <item name="android:background">@color/gray_d</item>
+    </style>
+</resources>

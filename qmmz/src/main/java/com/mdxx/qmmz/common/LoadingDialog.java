@@ -7,9 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.itutorgroup.liveh2h.R;
-import com.itutorgroup.liveh2h.util.LogUtils;
-import com.itutorgroup.liveh2h.util.ViewUtil;
+import com.mdxx.qmmz.R;
+
 
 /**
  * 加载框
@@ -53,9 +52,7 @@ public class LoadingDialog extends Dialog {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (checkback) {
-			LogUtils.e("loadingDialog-onKey");
 			if (keyCode == KeyEvent.KEYCODE_BACK) {
-				LogUtils.e("loadingDialog-onKeyBack");
 				if (isShowing()) {
 					if (backCallback != null) {
 						backCallback.back();

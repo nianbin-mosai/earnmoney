@@ -1,13 +1,20 @@
 package com.mdxx.qmmz.activity;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.annotation.StringRes;
+import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +22,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.mdxx.qmmz.Configure;
 import com.mdxx.qmmz.R;
+import com.mdxx.qmmz.common.AppManager;
+import com.mdxx.qmmz.common.HintDialog;
+import com.mdxx.qmmz.common.LoadingDialog;
+import com.mdxx.qmmz.common.SystemUtil;
 import com.mdxx.qmmz.utils.InterfaceTool;
 import com.mdxx.qmmz.utils.MyVolley;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -40,7 +51,11 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BaseActivity extends FragmentActivity {
+public class BaseActivity extends AppCompatActivity implements View.OnClickListener{
+	private Toast toast;
+	private HintDialog hintDialog;
+	private LoadingDialog loadingDialog;
+	protected Context mContext;
 	public ProgressDialog m_pDialog;
 	public SharedPreferences sp;
 	public RequestQueue queue;
@@ -58,6 +73,8 @@ public class BaseActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		mContext = this;
+		AppManager.getAppManager().addActivity(this);
 		queue = MyVolley.getRequestQueue();
 		sp = getSharedPreferences(Configure.Project, 0);
 		mTencent = Tencent.createInstance("1105646565", this.getApplication());
@@ -95,6 +112,10 @@ public class BaseActivity extends FragmentActivity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+		dismissHintDialog();
+		dismissLoadingDialog();
+		toast = null;
+		AppManager.getAppManager().removeActivity(this);
 	}
 
 
@@ -344,5 +365,148 @@ public class BaseActivity extends FragmentActivity {
 		Intent intent = new Intent(this,WebActivity.class);
 		intent.putExtra("url", qqurl);
 		startActivity(intent);
+	}
+
+	@Override
+	public void onClick(View view) {
+
+	}
+	public void showHintMessages(CharSequence text) {
+		showToast(text);
+	}
+
+	public void showHintMessages(@StringRes int resid) {
+		showToast(resid);
+	}
+
+	/**
+	 * 显示Toast
+	 */
+	public void showToast(final CharSequence text) {
+		if (SystemUtil.isUiThread()) {
+			showToastUiThread(text);
+		} else {
+			runOnUiThread(new Runnable() {
+				@Override
+				public void run() {
+					showToastUiThread(text);
+				}
+			});
+		}
+	}
+
+	/**
+	 * 显示Toast
+	 */
+	public void showToast(@StringRes  int resId) {
+		showToast(getText(resId));
+	}
+
+	private void showToastUiThread(CharSequence text) {
+		if (toast != null) {
+			toast.cancel();
+		}
+		toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
+		toast.setGravity(Gravity.CENTER, 0, 0);
+		toast.show();
+	}
+
+
+	/**
+	 * 显示提示框
+	 */
+	public void showHintDialog(int resId) {
+		showHintDialog(getText(resId));
+	}
+
+	/**
+	 * 显示提示框
+	 */
+	public void showHintDialog(CharSequence title, CharSequence msg, DialogInterface.OnCancelListener listener) {
+		if (hintDialog == null) {
+			hintDialog = new HintDialog(this);
+		}
+		hintDialog.setTitle(title);
+		hintDialog.setMessages(msg);
+		hintDialog.setCanceledOnTouchOutside(false);
+		hintDialog.setOnCancelListener(listener);
+		safeShowDialog(hintDialog);
+	}
+
+	/**
+	 * 显示提示框
+	 */
+	public void showHintDialog(CharSequence msg) {
+		showHintDialog(null, msg, null);
+	}
+
+	/**
+	 * 隐藏提示框
+	 */
+	public void dismissHintDialog() {
+		if (hintDialog != null) {
+			hintDialog.dismiss();
+			hintDialog = null;
+		}
+	}
+
+	@Override
+	public Resources getResources() {
+		Resources res = super.getResources();
+		Configuration config = new Configuration();
+		config.setToDefaults();
+		res.updateConfiguration(config, res.getDisplayMetrics());
+		return res;
+	}
+	/**
+	 * 安全地show dialog
+	 *
+	 * @param dialog
+	 */
+	public void safeShowDialog(final Dialog dialog){
+		if (dialog == null || dialog.isShowing()) {
+			return;
+		}
+		SystemUtil.runOnUiThread(this, new Runnable() {
+			@Override
+			public void run() {
+				try {
+					if(!isFinishing()){
+						dialog.show();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * 显示加载框
+	 */
+	public void showLoadingDialog() {
+		showLoadingDialog(null);
+	}
+
+	/**
+	 * 显示加载框
+	 */
+	public void showLoadingDialog(String text) {
+		if (loadingDialog == null) {
+			loadingDialog = new LoadingDialog(this);
+		}
+		if (text != null) {
+			loadingDialog.setMessages(text);
+		}
+		safeShowDialog(loadingDialog);
+	}
+	/**
+	 * 隐藏加载框
+	 */
+	public void dismissLoadingDialog() {
+		if (loadingDialog != null) {
+			loadingDialog.dismiss();
+			loadingDialog = null;
+		}
 	}
 }

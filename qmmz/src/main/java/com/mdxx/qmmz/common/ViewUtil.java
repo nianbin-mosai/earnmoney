@@ -21,7 +21,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.wyu.earnmoney.R;
+import com.mdxx.qmmz.R;
 
 
 public class ViewUtil {

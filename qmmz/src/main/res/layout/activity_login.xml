@@ -1,6 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<FrameLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.mdxx.qmmz.newfeature.LoginActivity">
 
-</LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            style="@style/Imageview.Logo.Big" />
+
+        <LinearLayout
+            style="@style/LinearLayout.InputLayout"
+            android:layout_marginTop="@dimen/standard_margin_default"
+            android:layout_below="@id/ivLogo">
+
+            <TextView
+                android:id="@+id/tvPhoneNumber"
+                style="@style/TextView.InputLabel"
+                android:text="@string/phone_number"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/tvRegion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingRight="@dimen/standard_margin_default"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_default"
+                    android:text="@string/default_area_code"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <RelativeLayout style="@style/Base.Layout">
+                        <ImageButton
+                            android:id="@+id/ibPhoneNumberClear"
+                            style="@style/Button.InputClear"/>
+                        <EditText
+                            android:id="@+id/etPhoneNumber"
+                            style="@style/EditText.Login"
+                            android:layout_toLeftOf="@id/ibPhoneNumberClear"
+                            android:layout_toStartOf="@id/ibPhoneNumberClear"
+                            android:hint="@string/phone_number"
+                            android:maxLength="@integer/phone_max_lenght"
+                            android:inputType="number"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/Line.InputBottom"/>
+
+            <TextView
+                android:id="@+id/tvPassword"
+                style="@style/TextView.InputLabel"
+                android:text="@string/password" />
+
+            <RelativeLayout style="@style/Base.Layout">
+
+                <ImageButton
+                    android:id="@+id/ibPasswordClear"
+                    style="@style/Button.InputClear" />
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/tvHelp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:alpha="0.6"
+                    android:background="@android:color/transparent"
+                    android:paddingTop="@dimen/standard_padding_default"
+                    android:paddingBottom="@dimen/standard_padding_default"
+                    android:text="@string/help_"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_size_small" />
+
+                <EditText
+                    android:id="@+id/etPassword"
+                    style="@style/EditText.Login"
+                    android:layout_toLeftOf="@id/ibPasswordClear"
+                    android:layout_toStartOf="@id/ibPasswordClear"
+                    android:hint="@string/password"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:maxLength="@integer/password_max_length" />
+
+            </RelativeLayout>
+
+            <View style="@style/Line.InputBottom" />
+
+            <Button
+                android:id="@+id/btnLogin"
+                style="@style/Button.LoginConfirm"
+                android:text="@string/login" />
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/black"
+            android:text="@string/free_sign_up"
+            android:textColor="@android:color/white"
+            android:layout_alignParentBottom="true"></Button>
+    </RelativeLayout>
+
+    <include layout="@layout/header_close"/>
+
+</FrameLayout>
