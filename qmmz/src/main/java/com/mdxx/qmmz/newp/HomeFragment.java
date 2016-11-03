@@ -1,6 +1,7 @@
 package com.mdxx.qmmz.newp;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,13 +20,13 @@ import com.mdxx.qmmz.EventMessage;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.activity.WebActivity;
 import com.mdxx.qmmz.common.ToastUtils;
-import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.utils.InterfaceTool;
 import com.qm.lo.inter.QEarnNotifier;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.bean.SocializeEntity;
 import com.umeng.socialize.controller.listener.SocializeListeners.SnsPostListener;
 
+import net.youmi.android.listener.Interface_ActivityListener;
 import net.youmi.android.offers.OffersManager;
 
 import org.json.JSONException;
@@ -101,12 +102,17 @@ public class HomeFragment extends Fragment implements OnClickListener,
 //					activity.islogin();
 //					return;
 //				}
-				OffersManager.getInstance(getActivity()).setCustomUserId(
-						UserPF.getInstance().getPhone());
-				OffersManager.getInstance(getActivity())
-						.setUsingServerCallBack(true);
-				OffersManager.getInstance(getActivity()).showOffersWall();
+//				OffersManager.getInstance(getActivity()).setCustomUserId(
+//						UserPF.getInstance().getPhone());
+//				OffersManager.getInstance(getActivity())
+//						.setUsingServerCallBack(true);
+//				OffersManager.getInstance(getActivity()).showOffersWall();
 //			}
+			// 调用方式一：直接打开全屏积分墙
+			// OffersManager.getInstance(this).showOffersWall();
+
+			// 调用方式二：直接打开全屏积分墙，并且监听积分墙退出的事件onDestory
+			showYMOffersWall();
 			break;
 		case R.id.renwu_two:
 			ToastUtils.showToast(getActivity(),getString(R.string.tip_developing));
@@ -245,6 +251,7 @@ public class HomeFragment extends Fragment implements OnClickListener,
 			break;
 		}
 	}
+
 
 	private void getqdurl() {
 		Map params = new HashMap<String, String>();
@@ -428,5 +435,17 @@ public class HomeFragment extends Fragment implements OnClickListener,
 			instance.close();
 		}
 		EventBus.getDefault().unregister(this);// 取消事件总线
+	}
+
+	private void showYMOffersWall() {
+		OffersManager.getInstance(getActivity()).showOffersWall(new Interface_ActivityListener() {
+			/**
+			 * 当积分墙销毁的时候，即积分墙的Activity调用了onDestory的时候回调
+			 */
+			@Override
+			public void onActivityDestroy(Context context) {
+				Toast.makeText(context, "全屏积分墙退出了", Toast.LENGTH_SHORT).show();
+			}
+		});
 	}
 }

@@ -2,6 +2,7 @@ package com.mdxx.qmmz.newp;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -34,7 +35,13 @@ import com.umeng.socialize.exception.SocializeException;
 import com.umeng.socialize.weixin.controller.UMWXHandler;
 
 import net.youmi.android.AdManager;
+import net.youmi.android.offers.EarnPointsOrderInfo;
+import net.youmi.android.offers.EarnPointsOrderList;
+import net.youmi.android.offers.OffersBrowserConfig;
 import net.youmi.android.offers.OffersManager;
+import net.youmi.android.offers.PointsChangeNotify;
+import net.youmi.android.offers.PointsEarnNotify;
+import net.youmi.android.offers.PointsManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,7 +54,7 @@ import java.util.Set;
 
 import de.greenrobot.event.EventBus;
 
-public class NMainActivity extends BaseActivity implements OnClickListener {
+public class NMainActivity extends BaseActivity implements OnClickListener ,PointsChangeNotify, PointsEarnNotify {
 	public List<Fragment> fragments = new ArrayList<Fragment>();
 	public List<TextView> textList = new ArrayList<TextView>();
 	private RelativeLayout home_layout;
@@ -72,15 +79,15 @@ public class NMainActivity extends BaseActivity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_nmain);
-		checkLogin();
 //		PgyCrashManager.register(this);// 蒲公英
 		String channel1 = FileUtils.getChannel1(this);
 		issim();
 //		mPushAgent = PushAgent.getInstance(this);
 //		mPushAgent.enable();
-		initguanggao();
+//		initguanggao();
 //		youmeng();
 		initUI();
+		initYoumi();
 		initTabData();
 //		islogin();
 	}
@@ -323,6 +330,16 @@ public class NMainActivity extends BaseActivity implements OnClickListener {
 	protected void onDestroy() {
 		super.onDestroy();
 		fragments.clear();
+		// （可选）注销积分监听
+		// 如果在onCreate调用了PointsManager.getInstance(this).registerNotify(this)进行积分余额监听器注册，那这里必须得注销
+		PointsManager.getInstance(this).unRegisterNotify(this);
+
+		// （可选）注销积分订单赚取监听
+		// 如果在onCreate调用了PointsManager.getInstance(this).registerPointsEarnNotify(this)进行积分订单赚取监听器注册，那这里必须得注销
+		PointsManager.getInstance(this).unRegisterPointsEarnNotify(this);
+
+		// 回收积分广告占用的资源
+		OffersManager.getInstance(this).onAppExit();
 	}
 
 	private void issim() {
@@ -585,7 +602,106 @@ public class NMainActivity extends BaseActivity implements OnClickListener {
 					}
 				}, map);
 	}
-	private void checkLogin(){
 
+
+
+	private void initYoumi() {
+		// 自v6.3.0起，所有其他代码必须在初始化接口调用之后才能生效
+		// 初始化接口，应用启动的时候调用(appId, appSecret, isTestModel, isEnableYoumiLog)
+		AdManager.getInstance(this).init(Configs.YMAppId, Configs.YMAppSecret, false, true);
+
+		// 有米android 积分墙sdk 5.0.0之后支持定制浏览器顶部标题栏的部分UI
+		setOfferBrowserConfig();
+
+		// 如果开发者使用积分墙的服务器回调,
+		// 1.需要告诉sdk，现在采用服务器回调
+		// 2.建议开发者传入自己系统中用户id（如：邮箱账号之类的）（请限制在50个字符串以内）
+		// 3.务必在下面的OffersManager.getInstance(this).onAppLaunch();代码之前声明使用服务器回调
+
+		// OffersManager.getInstance(this).setUsingServerCallBack(true);
+		// OffersManager.getInstance(this).setCustomUserId("user_id");
+
+		// 如果使用积分广告，请务必调用积分广告的初始化接口:
+		OffersManager.getInstance(this).onAppLaunch();
+
+		// (可选)注册积分监听-随时随地获得积分的变动情况
+		PointsManager.getInstance(this).registerNotify(this);
+
+		// (可选)注册积分订单赚取监听（sdk v4.10版本新增功能）
+		PointsManager.getInstance(this).registerPointsEarnNotify(this);
+
+		// (可选)设置是否在通知栏显示下载相关提示。默认为true，标识开启；设置为false则关闭。（sdk v4.10版本新增功能）
+		// AdManager.getInstance(this).setIsDownloadTipsDisplayOnNotification(false);
+
+		// (可选)设置安装完成后是否在通知栏显示已安装成功的通知。默认为true，标识开启；设置为false则关闭。（sdk v4.10版本新增功能）
+		// AdManager.getInstance(this).setIsInstallationSuccessTipsDisplayOnNotification(false);
+
+		// (可选)设置是否在通知栏显示积分赚取提示。默认为true，标识开启；设置为false则关闭。
+		// 如果开发者采用了服务器回调积分的方式，那么本方法将不会生效
+		// PointsManager.getInstance(this).setEnableEarnPointsNotification(false);
+
+		// (可选)设置是否开启积分赚取的Toast提示。默认为true，标识开启；设置为false这关闭。
+		// 如果开发者采用了服务器回调积分的方式，那么本方法将不会生效
+		// PointsManager.getInstance(this).setEnableEarnPointsToastTips(false);
+
+		// -------------------------------------------------------------------------------------------
+		// 积分墙SDK 5.3.0 新增分享任务，下面为新增接口
+
+		// (可选) 获取当前应用的签名md5字符串，可用于申请微信appid时使用
+		// 注意：获取是确保应用采用的是发布版本的签名而不是debug签名
+
+		// Log.d("youmi", String.format("包名：%s\n签名md5值：%s", this.getPackageName(),
+		//		OffersManager.getInstance(this).getSignatureMd5String()));
+
+		// (重要) 如果开发者需要开启分享任务墙，需要调用下面代码以注册微信appid（这里的appid为贵应用在微信平台上注册获取得到的appid）
+		// 1. 微信的appid，请开发者在微信官网上自行注册
+		// 2. 如果注册失败(返回false)，请参考/doc/有米AndroidSDK常见问题.html
+		boolean isRegisterSuccess = OffersManager.getInstance(this).registerToWx("wxbe86d519b643cf08");
+		Toast.makeText(this, String.format("注册微信appid %s", isRegisterSuccess ? "成功" : "失败"), Toast.LENGTH_SHORT).show();
+
+		// 查询积分余额
+		// 从5.3.0版本起，客户端积分托管将由 int 转换为 float
+		float pointsBalance = PointsManager.getInstance(this).queryPoints();
+//		mTextViewPoints.setText("积分余额：" + pointsBalance);
+	}
+	/**
+	 * 设置积分墙浏览器标题栏样式
+	 */
+	private void setOfferBrowserConfig() {
+
+		// 设置标题栏——标题
+		OffersBrowserConfig.getInstance(this).setBrowserTitleText("秒取积分");
+
+		// 设置标题栏——背景颜色（ps：积分墙标题栏默认背景颜色为#FFBB34）
+//		OffersBrowserConfig.getInstance(this).setBrowserTitleBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+
+		// 设置标题栏——是否显示积分墙右上角积分余额区域 true：是 false：否
+		OffersBrowserConfig.getInstance(this).setPointsLayoutVisibility(true);
+
+	}
+
+	/**
+	 * 积分余额发生变动时，就会回调本方法（本回调方法执行在UI线程中）
+	 * <p/>
+	 * 从5.3.0版本起，客户端积分托管将由 int 转换为 float
+	 */
+	@Override
+	public void onPointBalanceChange(float pointsBalance) {
+//		mTextViewPoints.setText("积分余额：" + pointsBalance);
+	}
+
+	/**
+	 * 积分订单赚取时会回调本方法（本回调方法执行在UI线程中）
+	 */
+	@Override
+	public void onPointEarn(Context context, EarnPointsOrderList list) {
+		if (list == null || list.isEmpty()) {
+			return;
+		}
+		// 遍历订单并且toast提示
+		for (int i = 0; i < list.size(); ++i) {
+			EarnPointsOrderInfo info = list.get(i);
+			Toast.makeText(this, info.getMessage(), Toast.LENGTH_LONG).show();
+		}
 	}
 }
