@@ -12,7 +12,7 @@ public class HttpResponse implements Serializable {
     /**
      * 状态码，0为成功
      */
-    public int returnCode = CODE_ERROR;
+    public int code = CODE_ERROR;
     /**
      * 状态码不为0时，才有这个值
      */
@@ -26,8 +26,8 @@ public class HttpResponse implements Serializable {
         this.message = message;
     }
 
-    public HttpResponse(int returnCode, String message) {
-        this.returnCode = returnCode;
+    public HttpResponse(int code, String message) {
+        this.code = code;
         this.message = message;
     }
 
@@ -36,6 +36,6 @@ public class HttpResponse implements Serializable {
      * @return
      */
     public boolean isSuccess() {
-        return  returnCode == CODE_OK;
+        return  code == CODE_OK;
     }
 }

@@ -4,6 +4,7 @@ package com.mdxx.qmmz.newfeature;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +14,11 @@ import android.widget.TextView;
 
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.activity.BaseActivity;
+import com.mdxx.qmmz.common.Constants;
+import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.common.ViewUtil;
+import com.mdxx.qmmz.newp.NMainActivity;
+import com.mdxx.qmmz.utils.HexUtil;
 
 /**
  * 描述:
@@ -32,6 +37,7 @@ public class LoginActivity extends BaseActivity {
         setContentView(R.layout.activity_login);
         initViews();
         initListener();
+        autoLogin();
     }
     private void initViews() {
         tvPhoneNumber = ViewUtil.findViewById(this, R.id.tvPhoneNumber);
@@ -78,6 +84,15 @@ public class LoginActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnLogin:
+                if(TextUtils.isEmpty(etPhoneNumber.getText().toString())){
+                    showToast(R.string.tip_empty_phone);
+                    return;
+                }
+                if(TextUtils.isEmpty(etPassword.getText().toString())){
+                    showToast(R.string.tip_empty_password);
+                    return;
+                }
+                login(etPhoneNumber.getText().toString(), HexUtil.getEncryptedPwd(etPassword.getText().toString()));
                 break;
             case R.id.tvHelp:
                 break;
@@ -86,6 +101,52 @@ public class LoginActivity extends BaseActivity {
                 break;
             default:
                 break;
+        }
+    }
+
+    private void autoLogin(){
+        UserPF.getInstance().setPhone("13713692364");
+        UserPF.getInstance().setPassword(HexUtil.getEncryptedPwd(""));
+       String phone = UserPF.getInstance().getPhone();
+        String password = UserPF.getInstance().getPassword();
+        if(!TextUtils.isEmpty(phone)&&!TextUtils.isEmpty(password)){
+            login(phone,password);
+        }
+    }
+    private void login(String phone,String password) {
+        Intent intent = new Intent();
+        intent.setClass(mContext, NMainActivity.class);
+        startActivity(intent);
+        showToast(R.string.tip_login_success);
+        finish();
+//        AppAction.login(mContext, phone, password, new HttpResponseHandler(mContext) {
+//            @Override
+//            public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
+//                Intent intent = new Intent();
+//                intent.setClass(mContext, LoginActivity.class);
+//                startActivity(intent);
+//                finish();
+//                showToast(R.string.tip_login_success);
+//            }
+//
+//            @Override
+//            public void onResponeseFail(int statusCode, HttpResponse response, String responseString) {
+//                showToast(R.string.tip_login_fail);
+//            }
+//
+//        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==0 && resultCode==RESULT_OK && data!=null){
+            if(data.hasExtra(Constants.registerSuccess)){
+                if(data.getBooleanExtra(Constants.registerSuccess,false)){
+                    login(UserPF.getInstance().getPhone(),UserPF.getInstance().getPassword());
+                }
+
+            }
         }
     }
 }

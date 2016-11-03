@@ -9,7 +9,6 @@ import com.mdxx.qmmz.common.LogUtils;
 import com.mdxx.qmmz.common.SystemUtil;
 import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.network.AsyncHttp;
-import com.mdxx.qmmz.network.cache.DataCache;
 import com.mdxx.qmmz.utils.MyVolley;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
@@ -43,7 +42,7 @@ public class MyApplication extends Application {
 				long time = System.currentTimeMillis();
 				UserPF.getInstance().init(INSTANCE);
 				AsyncHttp.getInstance().init(INSTANCE);
-				DataCache.getInstance().init(INSTANCE);
+//				DataCache.getInstance().init(INSTANCE);
 				LogUtils.i("Application init finish, Time=" + (System.currentTimeMillis() - time));
 			}
 		}).start();

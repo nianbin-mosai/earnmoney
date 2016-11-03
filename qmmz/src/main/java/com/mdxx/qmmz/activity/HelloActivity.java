@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import com.mdxx.qmmz.MyApplication;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.common.UserPF;
-import com.mdxx.qmmz.newp.NMainActivity;
+import com.mdxx.qmmz.newfeature.LoginActivity;
 import com.mdxx.qmmz.utils.BitMapUtils;
 
 public class HelloActivity extends BaseActivity {
@@ -27,7 +27,7 @@ public class HelloActivity extends BaseActivity {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case GO_HOME:
-				goHome();
+				goLogin();
 				// goGuide();
 				break;
 			case GO_GUIDE:
@@ -58,8 +58,8 @@ public class HelloActivity extends BaseActivity {
 
 	}
 
-	private void goHome() {
-		Intent intent = new Intent(HelloActivity.this, NMainActivity.class);
+	private void goLogin() {
+		Intent intent = new Intent(HelloActivity.this, LoginActivity.class);
 		HelloActivity.this.startActivity(intent);
 		HelloActivity.this.finish();
 	}

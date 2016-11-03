@@ -2,6 +2,7 @@ package com.mdxx.qmmz.common;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
 
 
 /**
@@ -13,7 +14,9 @@ import android.content.SharedPreferences;
 public class UserPF {
 	private static final String appConfig = "appConfig";
 	private static final String isFirstRunning = "isFirstRunning";
-
+	private static final String phone = "phone";
+	private static final String password = "password";
+	private static final String logId = "logId";
     private static final UserPF instance = new UserPF();
 
     private SharedPreferences sharedPreferences;
@@ -69,5 +72,31 @@ public class UserPF {
 	}
 	public boolean isFirstRunning(){
 		return getBoolean(isFirstRunning,false);
+	}
+	public void setPhone(String phone){
+		putString(this.phone,phone);
+	}
+	public String getPhone(){
+		return getString(this.phone,"");
+	}
+	public void setPassword(String password){
+		putString(this.password,password);
+	}
+	public String getPassword(){
+		return getString(this.password,"");
+	}
+	public void setLogId(String logId){
+		putString(this.logId,logId);
+	}
+	public String getLogId(){
+		return getString(this.logId,"");
+	}
+
+	public boolean isLogin(){
+		return !TextUtils.isEmpty(getPhone()) && !TextUtils.isEmpty(getPassword());
+	}
+	public void logout(){
+		setPhone("");
+		setPassword("");
 	}
 }

@@ -1,13 +1,5 @@
 package com.mdxx.qmmz.newp;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import net.youmi.android.offers.OffersManager;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,19 +15,24 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.datouniao.AdPublisher.AppConfig;
 import com.datouniao.AdPublisher.AppConnect;
-import com.fingermobi.vj.activity.QdiActivity;
-import com.fingermobi.vj.listener.IVJAPI;
-import com.fingermobi.vj.listener.IVJAppidStatus;
 import com.mdxx.qmmz.EventMessage;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.activity.WebActivity;
+import com.mdxx.qmmz.common.ToastUtils;
+import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.utils.InterfaceTool;
-import com.newqm.pointwall.QSdkManager;
 import com.qm.lo.inter.QEarnNotifier;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.bean.SocializeEntity;
 import com.umeng.socialize.controller.listener.SocializeListeners.SnsPostListener;
-import com.yow.YoManage;
+
+import net.youmi.android.offers.OffersManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import de.greenrobot.event.EventBus;
 
@@ -87,143 +84,152 @@ public class HomeFragment extends Fragment implements OnClickListener,
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.banner_layout:
-			if (activity.islogin()) {
-				if ("".equals(activity.sp.getString("token", ""))) {
-					activity.sp.edit().putBoolean("islogin", false).commit();
-					activity.islogin();
-					return;
-				}
-				activity.getdbaUrl();
-			}
+//			if (activity.islogin()) {
+//				if ("".equals(activity.sp.getString("token", ""))) {
+//					activity.sp.edit().putBoolean("islogin", false).commit();
+//					activity.islogin();
+//					return;
+//				}
+//				activity.getdbaUrl();
+//			}
 			break;
+		//有米
 		case R.id.renwu_one:
-			if (activity.islogin()) {
-				if ("".equals(activity.sp.getString("token", ""))) {
-					activity.sp.edit().putBoolean("islogin", false).commit();
-					activity.islogin();
-					return;
-				}
+//			if (activity.islogin()) {
+//				if ("".equals(activity.sp.getString("token", ""))) {
+//					activity.sp.edit().putBoolean("islogin", false).commit();
+//					activity.islogin();
+//					return;
+//				}
 				OffersManager.getInstance(getActivity()).setCustomUserId(
-						activity.getuseid());
+						UserPF.getInstance().getPhone());
 				OffersManager.getInstance(getActivity())
 						.setUsingServerCallBack(true);
 				OffersManager.getInstance(getActivity()).showOffersWall();
-			}
+//			}
 			break;
 		case R.id.renwu_two:
-			if (activity.islogin()) {
-				if ("".equals(activity.sp.getString("token", ""))) {
-					activity.sp.edit().putBoolean("islogin", false).commit();
-					activity.islogin();
-					return;
-				}
-				instance.ShowAdsOffers();
-			}
+			ToastUtils.showToast(getActivity(),getString(R.string.tip_developing));
+			//大头鸟
+//			if (activity.islogin()) {
+//				if ("".equals(activity.sp.getString("token", ""))) {
+//					activity.sp.edit().putBoolean("islogin", false).commit();
+//					activity.islogin();
+//					return;
+//				}
+//				instance.ShowAdsOffers();
+//			}
 			break;
 
 		case R.id.renwu_three:
-			if (activity.islogin()) {
-				if ("".equals(activity.sp.getString("token", ""))) {
-					activity.sp.edit().putBoolean("islogin", false).commit();
-					activity.islogin();
-					return;
-				}
-				QSdkManager.getsdkInstance().showOffers(this);
-			}
+			ToastUtils.showToast(getActivity(),getString(R.string.tip_developing));
+//			if (activity.islogin()) {
+//				if ("".equals(activity.sp.getString("token", ""))) {
+//					activity.sp.edit().putBoolean("islogin", false).commit();
+//					activity.islogin();
+//					return;
+//				}
+//				QSdkManager.getsdkInstance().showOffers(this);
+//			}
 			break;
 		case R.id.renwu_four:
-			if (activity.islogin()) {
-				if ("".equals(activity.sp.getString("token", ""))) {
-					activity.sp.edit().putBoolean("islogin", false).commit();
-					activity.islogin();
-					return;
-				}
-				YoManage.showOffer(activity, activity.getuseid());
-			}
+			ToastUtils.showToast(getActivity(),getString(R.string.tip_developing));
+//			if (activity.islogin()) {
+//				if ("".equals(activity.sp.getString("token", ""))) {
+//					activity.sp.edit().putBoolean("islogin", false).commit();
+//					activity.islogin();
+//					return;
+//				}
+//				YoManage.showOffer(activity, activity.getuseid());
+//			}
 			break;
 		case R.id.weishare:
-			if (activity.islogin()) {
-				if ("".equals(activity.sp.getString("token", ""))) {
-					activity.sp.edit().putBoolean("islogin", false).commit();
-					activity.islogin();
-					return;
-				}
-				IVJAPI ivjapi = new IVJAPI();
-				ivjapi.setAppid("ae7304f92345fc939e9edfb27c1d7305");
-				ivjapi.setGameid(activity.getuseid());
-				ivjapi.init(activity, new IVJAppidStatus() {
-
-					@Override
-					public void appidStatus(int status) {
-						switch (status) {
-						case IVJAPI.VJ_ERROR:
-							// 失败
-							break;
-						case IVJAPI.VJ_APPID_INVALID:
-							// 广告位关闭
-							break;
-						case IVJAPI.VJ_SUCCESS:
-							// 广告位打开
-							startActivity(new Intent(activity,
-									QdiActivity.class));
-							break;
-						case IVJAPI.VJ_CLOSE:
-							// 界面被关闭
-							break;
-						case IVJAPI.VJ_ON_PRESENT:
-							// 界面被展示出来
-							break;
-						}
-					}
-				});
-			}
+			ToastUtils.showToast(getActivity(),getString(R.string.tip_developing));
+//			if (activity.islogin()) {
+//				if ("".equals(activity.sp.getString("token", ""))) {
+//					activity.sp.edit().putBoolean("islogin", false).commit();
+//					activity.islogin();
+//					return;
+//				}
+//				IVJAPI ivjapi = new IVJAPI();
+//				ivjapi.setAppid("ae7304f92345fc939e9edfb27c1d7305");
+//				ivjapi.setGameid(activity.getuseid());
+//				ivjapi.init(activity, new IVJAppidStatus() {
+//
+//					@Override
+//					public void appidStatus(int status) {
+//						switch (status) {
+//						case IVJAPI.VJ_ERROR:
+//							// 失败
+//							break;
+//						case IVJAPI.VJ_APPID_INVALID:
+//							// 广告位关闭
+//							break;
+//						case IVJAPI.VJ_SUCCESS:
+//							// 广告位打开
+//							startActivity(new Intent(activity,
+//									QdiActivity.class));
+//							break;
+//						case IVJAPI.VJ_CLOSE:
+//							// 界面被关闭
+//							break;
+//						case IVJAPI.VJ_ON_PRESENT:
+//							// 界面被展示出来
+//							break;
+//						}
+//					}
+//				});
+//			}
 			break;
 		case R.id.weiguanzhu:
 			Toast.makeText(getActivity(), "开发中...", Toast.LENGTH_SHORT).show();
 			break;
+		//签到有礼
 		case R.id.g_image2:
-			if (activity.islogin()) {
-				if ("".equals(activity.sp.getString("token", ""))) {
-					activity.sp.edit().putBoolean("islogin", false).commit();
-					activity.islogin();
-					return;
-				}
-				getqdurl();
-			}
+//			if (activity.islogin()) {
+//				if ("".equals(activity.sp.getString("token", ""))) {
+//					activity.sp.edit().putBoolean("islogin", false).commit();
+//					activity.islogin();
+//					return;
+//				}
+//				getqdurl();
+//			}
 			break;
+		//幸运大转盘
 		case R.id.g_image3:
-			if (activity.islogin()) {
-				if ("".equals(activity.sp.getString("token", ""))) {
-					activity.sp.edit().putBoolean("islogin", false).commit();
-					activity.islogin();
-					return;
-				}
-				Toast.makeText(getActivity(), "开发中...", Toast.LENGTH_SHORT)
-						.show();
-			}
+//			if (activity.islogin()) {
+//				if ("".equals(activity.sp.getString("token", ""))) {
+//					activity.sp.edit().putBoolean("islogin", false).commit();
+//					activity.islogin();
+//					return;
+//				}
+//				Toast.makeText(getActivity(), "开发中...", Toast.LENGTH_SHORT)
+//						.show();
+//			}
 			break;
-
+		//赚钱才是硬道理
 		case R.id.g_image1:
-			if (activity.islogin()) {
-				if ("".equals(activity.sp.getString("token", ""))) {
-					activity.sp.edit().putBoolean("islogin", false).commit();
-					activity.islogin();
-					return;
-				}
-				Toast.makeText(getActivity(), "开发中...", Toast.LENGTH_SHORT)
-						.show();
-			}
+//			if (activity.islogin()) {
+//				if ("".equals(activity.sp.getString("token", ""))) {
+//					activity.sp.edit().putBoolean("islogin", false).commit();
+//					activity.islogin();
+//					return;
+//				}
+//				Toast.makeText(getActivity(), "开发中...", Toast.LENGTH_SHORT)
+//						.show();
+//			}
 			break;
+		//支付宝/微信 支付
 		case R.id.g_image4:
-			if (activity.islogin()) {
-				if ("".equals(activity.sp.getString("token", ""))) {
-					activity.sp.edit().putBoolean("islogin", false).commit();
-					activity.islogin();
-					return;
-				}
-				Toast.makeText(getActivity(), "开发中...", Toast.LENGTH_SHORT)
-						.show();
-			}
+//			if (activity.islogin()) {
+//				if ("".equals(activity.sp.getString("token", ""))) {
+//					activity.sp.edit().putBoolean("islogin", false).commit();
+//					activity.islogin();
+//					return;
+//				}
+//				Toast.makeText(getActivity(), "开发中...", Toast.LENGTH_SHORT)
+//						.show();
+//			}
 			break;
 		case R.id.layout_qqkj:
 			activity.mController.postShare(activity, SHARE_MEDIA.QZONE,

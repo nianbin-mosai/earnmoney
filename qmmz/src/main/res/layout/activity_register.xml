@@ -67,6 +67,23 @@
 
                 <View style="@style/Line.InputBottom"/>
 
+
+                <TextView
+                    android:id="@+id/tvName"
+                    style="@style/TextView.InputLabel"
+                    android:text="@string/name"/>
+                <RelativeLayout style="@style/Base.Layout">
+                    <ImageButton
+                        android:id="@+id/ibNameClear"
+                        style="@style/Button.InputClear"/>
+                    <EditText
+                        android:id="@+id/etName"
+                        style="@style/EditText.Login"
+                        android:layout_toLeftOf="@id/ibNameClear"
+                        android:layout_toStartOf="@id/ibNameClear"
+                        android:hint="@string/name"/>
+                </RelativeLayout>
+                <View style="@style/Line.InputBottom"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -92,6 +109,7 @@
                             android:textColor="@color/selector_text_color_white_gray"
                             android:background="@drawable/bg_white_line_black_content_radius"/>
                         <EditText
+                            android:gravity="center"
                             android:id="@+id/etCode"
                             style="@style/EditText.Login"
                             android:layout_width="0dp"
@@ -101,7 +119,7 @@
                             android:paddingRight="@dimen/standard_padding_default"
                             android:background="@drawable/bg_gray_line_transparent_content_radius"
                             android:inputType="number"
-                            android:maxLength="4"
+                            android:maxLength="7"
                             tools:text="1234"/>
                     </LinearLayout>
 
@@ -111,23 +129,6 @@
                         android:textColor="@color/text_hint_gray"
                         android:text="@string/send_a_verification_code_hint"/>
                 </LinearLayout>
-
-                <TextView
-                    android:id="@+id/tvName"
-                    style="@style/TextView.InputLabel"
-                    android:text="@string/name"/>
-                <RelativeLayout style="@style/Base.Layout">
-                    <ImageButton
-                        android:id="@+id/ibNameClear"
-                        style="@style/Button.InputClear"/>
-                    <EditText
-                        android:id="@+id/etName"
-                        style="@style/EditText.Login"
-                        android:layout_toLeftOf="@id/ibNameClear"
-                        android:layout_toStartOf="@id/ibNameClear"
-                        android:hint="@string/name"/>
-                </RelativeLayout>
-                <View style="@style/Line.InputBottom"/>
 
                 <TextView
                     android:id="@+id/tvPassword"

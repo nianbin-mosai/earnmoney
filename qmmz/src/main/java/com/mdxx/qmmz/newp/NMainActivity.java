@@ -22,14 +22,9 @@ import com.mdxx.qmmz.Configure;
 import com.mdxx.qmmz.EventMessage;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.activity.BaseActivity;
+import com.mdxx.qmmz.common.Configs;
 import com.mdxx.qmmz.utils.FileUtils;
 import com.mdxx.qmmz.utils.InterfaceTool;
-import com.newqm.pointwall.QSdkManager;
-import com.pgyersdk.feedback.PgyFeedbackShakeManager;
-import com.pgyersdk.javabean.AppBean;
-import com.pgyersdk.update.PgyUpdateManager;
-import com.pgyersdk.update.UpdateManagerListener;
-import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.PushAgent;
 import com.umeng.message.proguard.k.e;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -37,7 +32,6 @@ import com.umeng.socialize.controller.listener.SocializeListeners.UMAuthListener
 import com.umeng.socialize.controller.listener.SocializeListeners.UMDataListener;
 import com.umeng.socialize.exception.SocializeException;
 import com.umeng.socialize.weixin.controller.UMWXHandler;
-import com.yow.YoManage;
 
 import net.youmi.android.AdManager;
 import net.youmi.android.offers.OffersManager;
@@ -78,62 +72,62 @@ public class NMainActivity extends BaseActivity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_nmain);
-		
+		checkLogin();
 //		PgyCrashManager.register(this);// 蒲公英
 		String channel1 = FileUtils.getChannel1(this);
 		issim();
 //		mPushAgent = PushAgent.getInstance(this);
 //		mPushAgent.enable();
 		initguanggao();
-		youmeng();
+//		youmeng();
 		initUI();
 		initTabData();
-		islogin();
+//		islogin();
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		PgyFeedbackShakeManager.register(NMainActivity.this, false);
-		MobclickAgent.onResume(this);
-
-		// 版本检测方式2：带更新回调监听
-		PgyUpdateManager.register(NMainActivity.this,
-				new UpdateManagerListener() {
-					@Override
-					public void onUpdateAvailable(final String result) {
-						final AppBean appBean = getAppBeanFromString(result);
-
-						new AlertDialog.Builder(NMainActivity.this)
-								.setTitle("更新")
-								.setMessage("")
-								.setNegativeButton("确定",
-										new DialogInterface.OnClickListener() {
-
-											@Override
-											public void onClick(
-													DialogInterface dialog,
-													int which) {
-												startDownloadTask(
-														NMainActivity.this,
-														appBean.getDownloadURL());
-											}
-										}).show();
-
-					}
-
-					@Override
-					public void onNoUpdateAvailable() {
-//						Toast.makeText(MainActivity.this, "已经是最新版本",
-//								Toast.LENGTH_SHORT).show();
-					}
-				});
+//		PgyFeedbackShakeManager.register(NMainActivity.this, false);
+//		MobclickAgent.onResume(this);
+//
+//		// 版本检测方式2：带更新回调监听
+//		PgyUpdateManager.register(NMainActivity.this,
+//				new UpdateManagerListener() {
+//					@Override
+//					public void onUpdateAvailable(final String result) {
+//						final AppBean appBean = getAppBeanFromString(result);
+//
+//						new AlertDialog.Builder(NMainActivity.this)
+//								.setTitle("更新")
+//								.setMessage("")
+//								.setNegativeButton("确定",
+//										new DialogInterface.OnClickListener() {
+//
+//											@Override
+//											public void onClick(
+//													DialogInterface dialog,
+//													int which) {
+//												startDownloadTask(
+//														NMainActivity.this,
+//														appBean.getDownloadURL());
+//											}
+//										}).show();
+//
+//					}
+//
+//					@Override
+//					public void onNoUpdateAvailable() {
+////						Toast.makeText(MainActivity.this, "已经是最新版本",
+////								Toast.LENGTH_SHORT).show();
+//					}
+//				});
 	}
 	
 	public void onPause() {
 		super.onPause();
-		PgyFeedbackShakeManager.unregister();
-		MobclickAgent.onPause(this);
+//		PgyFeedbackShakeManager.unregister();
+//		MobclickAgent.onPause(this);
 	}
 	
 	private void initUI() {
@@ -342,16 +336,16 @@ public class NMainActivity extends BaseActivity implements OnClickListener {
 	@SuppressWarnings("static-access")
 	private void initguanggao() {
 		// 有米
-		AdManager.getInstance(NMainActivity.this).init("80348d0604765fff",
-				"56a9137c34d7d1d7", false, false);
+		AdManager.getInstance(NMainActivity.this).init(Configs.YMAppId,
+				Configs.YMAppSecret, false, false);
 		OffersManager.getInstance(NMainActivity.this).onAppLaunch();
-		// 趣米
-		QSdkManager.init(this, "73f3521a4e9297d4", "2d0ba3847ae2cd2a", "",
-				getuseid());
-		QSdkManager.getsdkInstance(this).initOfferAd(this);
+//		// 趣米
+//		QSdkManager.init(this, "73f3521a4e9297d4", "2d0ba3847ae2cd2a", "",
+//				getuseid());
+//		QSdkManager.getsdkInstance(this).initOfferAd(this);
 		// 聚优
-		YoManage.getInstance(this, "cfb116dc2e79e022982faaf31977c141", "qq")
-				.init();
+//		YoManage.getInstance(this, "cfb116dc2e79e022982faaf31977c141", "qq")
+//				.init();
 	}
 	
 	private void youmeng() {
@@ -591,5 +585,7 @@ public class NMainActivity extends BaseActivity implements OnClickListener {
 					}
 				}, map);
 	}
-	
+	private void checkLogin(){
+
+	}
 }

@@ -13,5 +13,16 @@
     <string name="title_activity_qhb_detail">QhbDetailActivity</string>
     <string name="title_activity_nmain">NMainActivity</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tip_empty_phone">手机号码不能为空</string>
+    <string name="tip_empty_name">用户名不能为空</string>
+    <string name="tip_verifycode_sending">验证码将会发送到你的手机</string>
+    <string name="tip_register_success">注册成功</string>
+    <string name="tip_register_fail">注册失败</string>
+    <string name="tip_empty_password">密码不能为空</string>
+    <string name="tip_login_fail">登录失败</string>
+    <string name="tip_login_success">登录成功</string>
+    <string name="tip_getCode_fail">获取验证吗失败</string>
+    <string name="tip_verifycode_fail">验证码验证失败</string>
+    <string name="tip_developing">开发中。。。</string>
 
 </resources>

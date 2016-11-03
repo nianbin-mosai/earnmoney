@@ -15,7 +15,7 @@ import com.mdxx.qmmz.MyApplication;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.adapter.ViewPagerAdapter;
 import com.mdxx.qmmz.common.UserPF;
-import com.mdxx.qmmz.newp.NMainActivity;
+import com.mdxx.qmmz.newfeature.LoginActivity;
 
 import java.util.ArrayList;
 
@@ -68,7 +68,7 @@ public class GuideActivity extends BaseActivity implements OnClickListener,
 				if (fromType == 1) {
 					finish();
 				} else {
-					ToMain();
+					toLogin();
 
 				}
 			}
@@ -197,14 +197,13 @@ public class GuideActivity extends BaseActivity implements OnClickListener,
 //		currentIndex = positon;
 //	}
 
-	public void ToMain() {
-
+	public void toLogin() {
 		MyApplication myApp = (MyApplication) getApplication();
 		UserPF.getInstance().setFirstRunning(false);
 		myApp.setUserData("isFirst", "1");
 		myApp.updateUserData();
 		Intent intent = new Intent();
-		intent.setClass(GuideActivity.this, NMainActivity.class);
+		intent.setClass(GuideActivity.this, LoginActivity.class);
 		startActivity(intent);
 		finish();
 	}

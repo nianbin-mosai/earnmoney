@@ -1,5 +1,6 @@
 package com.mdxx.qmmz.newfeature;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,8 +13,17 @@ import android.widget.TextView;
 
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.activity.BaseActivity;
+import com.mdxx.qmmz.common.Constants;
 import com.mdxx.qmmz.common.GlobalUtils;
+import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.common.ViewUtil;
+import com.mdxx.qmmz.network.AppAction;
+import com.mdxx.qmmz.network.HttpResponse;
+import com.mdxx.qmmz.network.HttpResponseHandler;
+import com.mdxx.qmmz.utils.HexUtil;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class RegisterActivity extends BaseActivity {
@@ -97,8 +107,30 @@ public class RegisterActivity extends BaseActivity {
             case R.id.btnGetCode:
                 String phone = checkPhone();
                 if(phone == null){
+                    showToast(R.string.tip_empty_phone);
                     return;
                 }
+                if(TextUtils.isEmpty(etName.getText().toString())){
+                    showToast(R.string.tip_empty_name);
+                    return;
+                }
+                AppAction.getVerifyCode(mContext,etPhoneNumber.getText().toString(),etName.getText().toString(), new HttpResponseHandler(mContext,HttpResponse.class) {
+                    @Override
+                    public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
+                        try {
+                            JSONObject result = new JSONObject(responseString);
+                            UserPF.getInstance().setLogId(result.optString("log_id"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        showToast(R.string.tip_verifycode_sending);
+                    }
+
+                    @Override
+                    public void onResponeseFail(int statusCode, HttpResponse response, String responseString) {
+                        showToast(R.string.tip_getCode_fail);
+                    }
+                });
                 break;
             default:
                 break;
@@ -144,6 +176,33 @@ public class RegisterActivity extends BaseActivity {
             showHintMessages(R.string.confirm_password_verify);
             return;
         }
-        final String areaCode = tvRegion.getText().toString();
+        AppAction.checkVerifyCode(mContext, etPhoneNumber.getText().toString(), etName.getText().toString(), etCode.getText().toString(), new HttpResponseHandler(mContext,HttpResponse.class) {
+            @Override
+            public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
+                AppAction.register(mContext, etPhoneNumber.getText().toString(), HexUtil.getEncryptedPwd(etPassword.getText().toString()), new HttpResponseHandler(mContext,HttpResponse.class) {
+                    @Override
+                    public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
+                        showToast(R.string.tip_register_success);
+                        UserPF.getInstance().setPhone(etPhoneNumber.getText().toString());
+                        UserPF.getInstance().setPassword(HexUtil.getEncryptedPwd(etPassword.getText().toString()));
+                        Intent intent = new Intent();
+                        intent.putExtra(Constants.registerSuccess,true);
+                        setResult(RESULT_OK,intent);
+                        finish();
+                    }
+
+                    @Override
+                    public void onResponeseFail(int statusCode, HttpResponse response, String responseString) {
+                        showToast(R.string.tip_register_fail);
+                    }
+                });
+
+            }
+
+            @Override
+            public void onResponeseFail(int statusCode, HttpResponse response, String responseString) {
+                showToast(R.string.tip_verifycode_fail);
+            }
+        });
     }
 }
