@@ -17,7 +17,9 @@ import com.mdxx.qmmz.activity.BaseActivity;
 import com.mdxx.qmmz.common.Constants;
 import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.common.ViewUtil;
-import com.mdxx.qmmz.newp.NMainActivity;
+import com.mdxx.qmmz.network.AppAction;
+import com.mdxx.qmmz.network.HttpResponse;
+import com.mdxx.qmmz.network.HttpResponseHandler;
 import com.mdxx.qmmz.utils.HexUtil;
 
 /**
@@ -105,36 +107,38 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void autoLogin(){
-        UserPF.getInstance().setPhone("13713692364");
-        UserPF.getInstance().setPassword(HexUtil.getEncryptedPwd(""));
+//        UserPF.getInstance().setPhone("13713692364");
+//        UserPF.getInstance().setPassword(HexUtil.getEncryptedPwd("123456"));
        String phone = UserPF.getInstance().getPhone();
         String password = UserPF.getInstance().getPassword();
         if(!TextUtils.isEmpty(phone)&&!TextUtils.isEmpty(password)){
+//            etPhoneNumber.setText(UserPF.getInstance().getPhone());
+//            etPassword.setText(UserPF.getInstance().getPassword());
             login(phone,password);
         }
     }
     private void login(String phone,String password) {
-        Intent intent = new Intent();
-        intent.setClass(mContext, NMainActivity.class);
-        startActivity(intent);
-        showToast(R.string.tip_login_success);
-        finish();
-//        AppAction.login(mContext, phone, password, new HttpResponseHandler(mContext) {
-//            @Override
-//            public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
-//                Intent intent = new Intent();
-//                intent.setClass(mContext, LoginActivity.class);
-//                startActivity(intent);
-//                finish();
-//                showToast(R.string.tip_login_success);
-//            }
-//
-//            @Override
-//            public void onResponeseFail(int statusCode, HttpResponse response, String responseString) {
-//                showToast(R.string.tip_login_fail);
-//            }
-//
-//        });
+//        Intent intent = new Intent();
+//        intent.setClass(mContext, NMainActivity.class);
+//        startActivity(intent);
+//        showToast(R.string.tip_login_success);
+//        finish();
+        AppAction.login(mContext, phone, password, new HttpResponseHandler(mContext) {
+            @Override
+            public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
+                Intent intent = new Intent();
+                intent.setClass(mContext, LoginActivity.class);
+                startActivity(intent);
+                finish();
+                showToast(R.string.tip_login_success);
+            }
+
+            @Override
+            public void onResponeseFail(int statusCode, HttpResponse response, String responseString) {
+                showToast(R.string.tip_login_fail);
+            }
+
+        });
     }
 
     @Override
@@ -143,6 +147,8 @@ public class LoginActivity extends BaseActivity {
         if(requestCode==0 && resultCode==RESULT_OK && data!=null){
             if(data.hasExtra(Constants.registerSuccess)){
                 if(data.getBooleanExtra(Constants.registerSuccess,false)){
+//                    etPhoneNumber.setText(UserPF.getInstance().getPhone());
+//                    etPassword.setText(UserPF.getInstance().getPassword());
                     login(UserPF.getInstance().getPhone(),UserPF.getInstance().getPassword());
                 }
 

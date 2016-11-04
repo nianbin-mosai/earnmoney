@@ -9,4 +9,5 @@
     <color name="dark_gray">#A1A1A1</color>
     <color name="drak_red">#A2301F</color>
     <color name="gray_d">#DDDDDD</color>
+    <color name="titlebar_color">#FD651C</color>
 </resources>

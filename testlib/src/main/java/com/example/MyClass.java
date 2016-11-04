@@ -8,7 +8,10 @@ public class MyClass {
 //        System.out.println(++i);
 //        System.out.println(limitStringLength(test,0));
 //        System.out.println(limitStringLength(test,5));
-        System.out.println(HexUtil.getEncryptedPwd("123456"));
+        System.out.println(HexUtil.MD5("123456"));
+        System.out.println(HexUtil.MD5("123456"));
+        System.out.println(HexUtil.MD5("123456"));
+        System.out.println(HexUtil.MD5("123456"));
     }
     public static String limitStringLength(String src,int count){
         return src.length()>count?src.substring(0,count):src;

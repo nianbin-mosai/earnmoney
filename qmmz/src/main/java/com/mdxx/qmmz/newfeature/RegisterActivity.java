@@ -176,7 +176,7 @@ public class RegisterActivity extends BaseActivity {
             showHintMessages(R.string.confirm_password_verify);
             return;
         }
-        AppAction.checkVerifyCode(mContext, etPhoneNumber.getText().toString(), etName.getText().toString(), etCode.getText().toString(), new HttpResponseHandler(mContext,HttpResponse.class) {
+        AppAction.checkVerifyCode(mContext, etPhoneNumber.getText().toString(), etCode.getText().toString(), etName.getText().toString(), new HttpResponseHandler(mContext,HttpResponse.class) {
             @Override
             public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
                 AppAction.register(mContext, etPhoneNumber.getText().toString(), HexUtil.getEncryptedPwd(etPassword.getText().toString()), new HttpResponseHandler(mContext,HttpResponse.class) {

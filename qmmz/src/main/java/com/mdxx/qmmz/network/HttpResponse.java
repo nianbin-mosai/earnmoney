@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class HttpResponse implements Serializable {
 
-    public static final int CODE_OK = 0;// 请求返回值成功可用
+    public static final int CODE_OK = 200;// 请求返回值成功可用
     public static final int CODE_ERROR = -500;// 错误码
     /**
      * 状态码，0为成功
