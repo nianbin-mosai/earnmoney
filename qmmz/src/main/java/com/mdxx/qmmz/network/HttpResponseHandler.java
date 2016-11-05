@@ -49,8 +49,11 @@ public abstract class HttpResponseHandler extends TextHttpResponseHandler implem
     }
 
 	@Override
-	public void onSuccess(final int statusCode, Header[] headers, final String responseString) {
+	public void onSuccess(final int statusCode, Header[] headers, String responseString) {
 		LogUtils.i("状态码：" + statusCode + " 返回值：" + responseString);
+        if(responseString.startsWith("\n")){
+            responseString = responseString.replaceFirst("\n","");
+        }
         parseData(statusCode, responseString, false);
     }
 

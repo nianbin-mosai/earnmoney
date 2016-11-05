@@ -15,7 +15,7 @@
             android:layout_height="45dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:background="@color/title_gray" >
+            android:background="@color/titlebar_color" >
 
             <TextView
                 android:id="@+id/textView1"
@@ -36,64 +36,6 @@
                 android:layout_marginRight="10dp"
                 android:clickable="true"
                 android:src="@drawable/shell_icon_refresh" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/relativeLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_below="@+id/relativeLayout1"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/sy_click_selector"
-            android:clickable="true" >
-
-            <ImageView
-                android:id="@+id/touxiang"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:scaleType="fitXY" />
-
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/touxiang"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="3dp"
-                android:layout_toRightOf="@+id/touxiang"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/userid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/touxiang"
-                android:layout_alignLeft="@+id/name"
-                android:layout_marginBottom="3dp"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/residue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/name"
-                android:layout_alignBottom="@+id/name"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                android:text="余额(元):0"
-                android:textColor="@color/blue" />
-
-            <TextView
-                android:id="@+id/jifen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/userid"
-                android:layout_alignRight="@+id/residue"
-                android:text="积分:0"
-                android:textColor="@color/blue" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -277,6 +219,65 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
                 android:src="@drawable/jinru" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/sy_click_selector"
+            android:clickable="true"
+            android:layout_below="@+id/relativeLayout1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <ImageView
+                android:id="@+id/touxiang"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/touxiang"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@+id/touxiang"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/userid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/touxiang"
+                android:layout_alignLeft="@+id/name"
+                android:layout_marginBottom="3dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/residue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/name"
+                android:layout_alignBottom="@+id/name"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:text="余额(元):0"
+                />
+
+            <TextView
+                android:id="@+id/jifen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/userid"
+                android:layout_alignRight="@+id/residue"
+                android:text="积分:0"
+                 />
         </RelativeLayout>
     </RelativeLayout>
 

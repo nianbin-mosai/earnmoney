@@ -3,6 +3,7 @@ package com.mdxx.qmmz.network;
 import android.content.Context;
 
 import com.loopj.android.http.RequestParams;
+import com.mdxx.qmmz.common.GlobalUtils;
 import com.mdxx.qmmz.common.UserPF;
 
 /**
@@ -40,8 +41,8 @@ public class AppAction {
         RequestParams params = new RequestParams();
         params.put("mobile",mobile);
         params.put("password", password);
-        params.put("imei","");
-        params.put("mac","");
+        params.put("imei", GlobalUtils.getIMEI(context));
+        params.put("mac",GlobalUtils.getMacAddress(context));
         AsyncHttp.getInstance().execute(context,getUrl("User/register"),params,AsyncHttp.METHOD_POST,responseHandler);
     }
 }

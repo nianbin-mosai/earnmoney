@@ -21,8 +21,10 @@
     <string name="tip_empty_password">密码不能为空</string>
     <string name="tip_login_fail">登录失败</string>
     <string name="tip_login_success">登录成功</string>
-    <string name="tip_getCode_fail">获取验证吗失败</string>
+    <string name="tip_getCode_fail">获取验证码失败</string>
     <string name="tip_verifycode_fail">验证码验证失败</string>
     <string name="tip_developing">开发中。。。</string>
+    <string name="title_pay_type">请选择付款方式</string>
+    <string name="choose">选择</string>
 
 </resources>

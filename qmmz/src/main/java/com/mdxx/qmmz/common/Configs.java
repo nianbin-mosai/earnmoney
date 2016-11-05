@@ -9,4 +9,6 @@ package com.mdxx.qmmz.common;
 public interface Configs {
     String YMAppId = "80348d0604765fff";
     String YMAppSecret = "56a9137c34d7d1d7";
+
+    String YowId = "cfb116dc2e79e022982faaf31977c141";
 }

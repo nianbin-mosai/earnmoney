@@ -199,14 +199,14 @@ public class DuiFragment extends Fragment implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.duihuan_layout:
-			if (activity.islogin()) {
-				if ("".equals(activity.sp.getString("token", ""))) {
-					activity.sp.edit().putBoolean("islogin", false).commit();
-					activity.islogin();
-					return;
-				}
-				activity.getdbaUrl();
-			}
+//			if (activity.islogin()) {
+////				if ("".equals(activity.sp.getString("token", ""))) {
+////					activity.sp.edit().putBoolean("islogin", false).commit();
+////					activity.islogin();
+////					return;
+////				}
+////				activity.getdbaUrl();
+//			}
 			break;
 		}
 	}

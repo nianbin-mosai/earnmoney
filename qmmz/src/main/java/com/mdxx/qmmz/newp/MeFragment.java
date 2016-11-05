@@ -1,11 +1,5 @@
 package com.mdxx.qmmz.newp;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -25,6 +19,12 @@ import com.mdxx.qmmz.activity.InvitationActivity;
 import com.mdxx.qmmz.activity.KeFuActivity;
 import com.mdxx.qmmz.activity.YaoQingActivity;
 import com.mdxx.qmmz.utils.InterfaceTool;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MeFragment extends Fragment implements OnClickListener {
 
@@ -62,47 +62,47 @@ public class MeFragment extends Fragment implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.mymes_layout://客服
-			if (activity.islogin()) {
-				if ("".equals(activity.sp.getString("token", ""))) {
-					activity.sp.edit().putBoolean("islogin", false).commit();
-					activity.islogin();
-					return;
-				}
-				startActivity(new Intent(activity, KeFuActivity.class));
-			}
+//			if (activity.islogin()) {
+//				if ("".equals(activity.sp.getString("token", ""))) {
+//					activity.sp.edit().putBoolean("islogin", false).commit();
+//					activity.islogin();
+//					return;
+//				}
+//			}
+			startActivity(new Intent(activity, KeFuActivity.class));
 			break;
 		case R.id.xiaxian://公告
-			if (activity.islogin()) {
-				if ("".equals(activity.sp.getString("token", ""))) {
-					activity.sp.edit().putBoolean("islogin", false).commit();
-					activity.islogin();
-					return;
-				}
-				startActivity(new Intent(activity,
-						GonggaoActivity.class));
-			}
+//			if (activity.islogin()) {
+//				if ("".equals(activity.sp.getString("token", ""))) {
+//					activity.sp.edit().putBoolean("islogin", false).commit();
+//					activity.islogin();
+//					return;
+//				}
+//			}
+			startActivity(new Intent(activity,
+					GonggaoActivity.class));
 			break;
 		case R.id.paimingsai://排名赛
-			if (activity.islogin()) {
-				if ("".equals(activity.sp.getString("token", ""))) {
-					activity.sp.edit().putBoolean("islogin", false).commit();
-					activity.islogin();
-					return;
-				}
+//			if (activity.islogin()) {
+//				if ("".equals(activity.sp.getString("token", ""))) {
+//					activity.sp.edit().putBoolean("islogin", false).commit();
+//					activity.islogin();
+//					return;
+//				}
 				startActivity(new Intent(activity,
 						YaoQingActivity.class));
-			}
+//			}
 			break;
 		case R.id.yaoqingmx://邀请明细
-			if (activity.islogin()) {
-				if ("".equals(activity.sp.getString("token", ""))) {
-					activity.sp.edit().putBoolean("islogin", false).commit();
-					activity.islogin();
-					return;
-				}
+//			if (activity.islogin()) {
+//				if ("".equals(activity.sp.getString("token", ""))) {
+//					activity.sp.edit().putBoolean("islogin", false).commit();
+//					activity.islogin();
+//					return;
+//				}
 				startActivity(new Intent(activity,
 						InvitationActivity.class));
-			}
+//			}
 			break;
 		case R.id.refresh_date:
 			refresh_date.startAnimation(loadAnimation);
