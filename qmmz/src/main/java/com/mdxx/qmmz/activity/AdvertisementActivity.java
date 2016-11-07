@@ -1,23 +1,21 @@
 package com.mdxx.qmmz.activity;
 
-import net.youmi.android.offers.OffersManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 
-import com.datouniao.AdPublisher.AppConfig;
-import com.datouniao.AdPublisher.AppConnect;
 import com.fingermobi.vj.activity.QdiActivity;
 import com.fingermobi.vj.listener.IVJAPI;
 import com.fingermobi.vj.listener.IVJAppidStatus;
 import com.mdxx.qmmz.BannerBean;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.utils.InterfaceTool;
-import com.newqm.pointwall.QSdkManager;
 import com.qm.lo.inter.QEarnNotifier;
 import com.yow.YoManage;
+
+import tj.zl.op.os.OffersManager;
 
 public class AdvertisementActivity extends BaseActivity implements
 		OnClickListener, QEarnNotifier {
@@ -25,7 +23,6 @@ public class AdvertisementActivity extends BaseActivity implements
 //	private ImageView banner_image2;
 	private final String banner_url = InterfaceTool.ULR + "banner/index";
 	private BannerBean bannerBean;
-	private AppConnect instance;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +42,6 @@ public class AdvertisementActivity extends BaseActivity implements
 		findViewById(R.id.layout_qumi).setOnClickListener(this);
 		findViewById(R.id.layout_juyou).setOnClickListener(this);
 		findViewById(R.id.layout_qingsongzhuan).setOnClickListener(this);
-		AppConfig config = new AppConfig();//大头鸟
-		config.setCtx(this);
-		config.setClientUserID(getuseid());
-		instance = AppConnect.getInstance(config);
 	}
 
 	@Override
@@ -64,10 +57,9 @@ public class AdvertisementActivity extends BaseActivity implements
 			OffersManager.getInstance(AdvertisementActivity.this).showOffersWall();
 			break;
 		case R.id.layout_datouniao:
-			instance.ShowAdsOffers();
 			break;
 		case R.id.layout_qumi:
-			QSdkManager.getsdkInstance().showOffers(this);
+//			QSdkManager.getsdkInstance().showOffers(this);
 			break;
 		case R.id.layout_juyou:
 			YoManage.showOffer(this,getuseid());
@@ -143,9 +135,6 @@ public class AdvertisementActivity extends BaseActivity implements
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		if (instance != null) {
-			instance.close();
-		}
 	}
 
 	@Override

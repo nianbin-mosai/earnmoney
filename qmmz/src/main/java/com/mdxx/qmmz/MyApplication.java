@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.mdxx.qmmz.activity.HelloActivity;
 import com.mdxx.qmmz.common.CrashCatcher;
 import com.mdxx.qmmz.common.LogUtils;
 import com.mdxx.qmmz.common.SystemUtil;
@@ -55,7 +56,7 @@ public class MyApplication extends Application {
 			@Override
 			public void uncaughtException(Thread thread, Throwable throwable) {
 				// 崩溃时自动重启，不弹出 crash dialog
-				// crashCatcher.restart(SplashActivity.class);
+				 crashCatcher.restart(HelloActivity.class);
 			}
 		});
 	}

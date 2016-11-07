@@ -32,7 +32,6 @@ import com.mdxx.qmmz.adapter.PullAdapter;
 import com.mdxx.qmmz.customview.AutoScrollTextView;
 import com.mdxx.qmmz.utils.FileUtils;
 import com.mdxx.qmmz.utils.InterfaceTool;
-import com.newqm.pointwall.QSdkManager;
 import com.pgyersdk.feedback.PgyFeedbackShakeManager;
 import com.pgyersdk.javabean.AppBean;
 import com.pgyersdk.update.PgyUpdateManager;
@@ -50,9 +49,6 @@ import com.umeng.socialize.utils.Log;
 import com.umeng.socialize.weixin.controller.UMWXHandler;
 import com.yow.YoManage;
 
-import net.youmi.android.AdManager;
-import net.youmi.android.offers.OffersManager;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,6 +56,9 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+
+import tj.zl.op.AdManager;
+import tj.zl.op.os.OffersManager;
 
 public class MainActivity extends BaseActivity implements OnClickListener {
 	private long mExitTime;
@@ -168,9 +167,9 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 				"56a9137c34d7d1d7", false, false);
 		OffersManager.getInstance(MainActivity.this).onAppLaunch();
 		// 趣米
-		QSdkManager.init(this, "73f3521a4e9297d4", "2d0ba3847ae2cd2a", "",
-				getuseid());
-		QSdkManager.getsdkInstance(this).initOfferAd(this);
+//		QSdkManager.init(this, "73f3521a4e9297d4", "2d0ba3847ae2cd2a", "",
+//				getuseid());
+//		QSdkManager.getsdkInstance(this).initOfferAd(this);
 		// 聚优
 		YoManage.getInstance(this, "cfb116dc2e79e022982faaf31977c141", "qq")
 				.init();

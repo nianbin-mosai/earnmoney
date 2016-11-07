@@ -10,7 +10,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.Response;
@@ -18,6 +17,7 @@ import com.mdxx.qmmz.EventMessage;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.activity.WebActivity;
 import com.mdxx.qmmz.common.ToastUtils;
+import com.mdxx.qmmz.newfeature.PayActivity;
 import com.mdxx.qmmz.utils.InterfaceTool;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.bean.SocializeEntity;
@@ -183,7 +183,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
 //			}
                 break;
             case R.id.weiguanzhu:
-                Toast.makeText(getActivity(), "开发中...", Toast.LENGTH_SHORT).show();
+                ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
                 break;
             //签到有礼
             case R.id.g_image2:
@@ -441,7 +441,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
                 .show();
     }
     private void alipay(){
-
+        startActivityForResult(new Intent(getActivity(), PayActivity.class),0);
     }
     private void weixinpay(){
 

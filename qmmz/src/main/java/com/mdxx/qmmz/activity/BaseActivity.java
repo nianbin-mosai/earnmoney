@@ -26,6 +26,8 @@ import com.mdxx.qmmz.common.AppManager;
 import com.mdxx.qmmz.common.HintDialog;
 import com.mdxx.qmmz.common.LoadingDialog;
 import com.mdxx.qmmz.common.SystemUtil;
+import com.mdxx.qmmz.network.AsyncHttp;
+import com.mdxx.qmmz.network.progress.IProgressIndicator;
 import com.mdxx.qmmz.utils.InterfaceTool;
 import com.mdxx.qmmz.utils.MyVolley;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -51,7 +53,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BaseActivity extends AppCompatActivity implements View.OnClickListener{
+public class BaseActivity extends AppCompatActivity implements View.OnClickListener,IProgressIndicator{
 	private Toast toast;
 	private HintDialog hintDialog;
 	private LoadingDialog loadingDialog;
@@ -116,6 +118,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 		dismissLoadingDialog();
 		toast = null;
 		AppManager.getAppManager().removeActivity(this);
+		AsyncHttp.getInstance().getClient().cancelRequests(mContext, true);
 	}
 
 
@@ -369,8 +372,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
 	@Override
 	public void onClick(View view) {
-
 	}
+
 	public void showHintMessages(CharSequence text) {
 		showToast(text);
 	}
@@ -508,5 +511,20 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 			loadingDialog.dismiss();
 			loadingDialog = null;
 		}
+	}
+
+	@Override
+	public void showProgress() {
+		showLoadingDialog(getString(R.string.requesting));
+	}
+
+	@Override
+	public void showProgress(String message) {
+		showLoadingDialog(message);
+	}
+
+	@Override
+	public void dismissProgress() {
+		dismissLoadingDialog();
 	}
 }

@@ -7,6 +7,7 @@ package com.mdxx.qmmz.common;
  * 邮箱：nianbin@mosainet.com
  */
 public interface Configs {
+    String alipayUrl = "http://wapi.angles1131.com/alipay/alipay.php";
     String YMAppId = "80348d0604765fff";
     String YMAppSecret = "56a9137c34d7d1d7";
 

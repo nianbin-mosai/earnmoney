@@ -38,15 +38,6 @@ import com.umeng.socialize.weixin.controller.UMWXHandler;
 import com.yow.PointListener;
 import com.yow.YoManage;
 
-import net.youmi.android.AdManager;
-import net.youmi.android.offers.EarnPointsOrderInfo;
-import net.youmi.android.offers.EarnPointsOrderList;
-import net.youmi.android.offers.OffersBrowserConfig;
-import net.youmi.android.offers.OffersManager;
-import net.youmi.android.offers.PointsChangeNotify;
-import net.youmi.android.offers.PointsEarnNotify;
-import net.youmi.android.offers.PointsManager;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -57,8 +48,16 @@ import java.util.Map;
 import java.util.Set;
 
 import de.greenrobot.event.EventBus;
+import tj.zl.op.AdManager;
 import tj.zl.op.listener.Interface_ActivityListener;
 import tj.zl.op.onlineconfig.OnlineConfigCallBack;
+import tj.zl.op.os.EarnPointsOrderInfo;
+import tj.zl.op.os.EarnPointsOrderList;
+import tj.zl.op.os.OffersBrowserConfig;
+import tj.zl.op.os.OffersManager;
+import tj.zl.op.os.PointsChangeNotify;
+import tj.zl.op.os.PointsEarnNotify;
+import tj.zl.op.os.PointsManager;
 
 public class NMainActivity extends BaseActivity implements OnClickListener, PointsChangeNotify, PointsEarnNotify {
     public List<Fragment> fragments = new ArrayList<Fragment>();
@@ -728,7 +727,7 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
              */
             @Override
             public void onActivityDestroy(Context context) {
-                Toast.makeText(context, "全屏积分墙退出了", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "全屏积分墙退出了", Toast.LENGTH_SHORT).show();
             }
         });
         showYoumiPoints();

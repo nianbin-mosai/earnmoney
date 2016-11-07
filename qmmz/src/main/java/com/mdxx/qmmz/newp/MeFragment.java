@@ -2,7 +2,10 @@ package com.mdxx.qmmz.newp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,12 +15,22 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.Response;
 import com.mdxx.qmmz.R;
+import com.mdxx.qmmz.activity.BaseActivity;
 import com.mdxx.qmmz.activity.GonggaoActivity;
 import com.mdxx.qmmz.activity.InvitationActivity;
 import com.mdxx.qmmz.activity.KeFuActivity;
 import com.mdxx.qmmz.activity.YaoQingActivity;
+import com.mdxx.qmmz.common.UserPF;
+import com.mdxx.qmmz.network.AppAction;
+import com.mdxx.qmmz.network.HttpResponse;
+import com.mdxx.qmmz.network.HttpResponseHandler;
+import com.mdxx.qmmz.newfeature.LoginActivity;
+import com.mdxx.qmmz.newfeature.PayActivity;
+import com.mdxx.qmmz.newfeature.bean.WebViewConfigs;
 import com.mdxx.qmmz.utils.InterfaceTool;
 
 import org.json.JSONException;
@@ -27,7 +40,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MeFragment extends Fragment implements OnClickListener {
-
+	private WebViewConfigs webViewConfigs = new WebViewConfigs();
 	private NMainActivity activity;
 	private ImageView touxiang;
 	private TextView name;
@@ -51,10 +64,15 @@ public class MeFragment extends Fragment implements OnClickListener {
 		view.findViewById(R.id.xiaxian).setOnClickListener(this);
 		view.findViewById(R.id.paimingsai).setOnClickListener(this);
 		view.findViewById(R.id.yaoqingmx).setOnClickListener(this);
+		view.findViewById(R.id.rl_pay).setOnClickListener(this);
+		view.findViewById(R.id.rl_exchange_point).setOnClickListener(this);
+		view.findViewById(R.id.rl_game_center).setOnClickListener(this);
+		view.findViewById(R.id.rl_vip).setOnClickListener(this);
+		view.findViewById(R.id.btn_logout).setOnClickListener(this);
 		refresh_date = (ImageView) view.findViewById(R.id.refresh_date);
 		refresh_date.setOnClickListener(this);
 		loadAnimation = AnimationUtils.loadAnimation(activity,R.anim.refresh_date_anim);
-		getinfo();
+//		getinfo();
 		return view;
 	}
 
@@ -108,9 +126,55 @@ public class MeFragment extends Fragment implements OnClickListener {
 			refresh_date.startAnimation(loadAnimation);
 			getinfo();
 			break;
+
+			case R.id.rl_vip:
+				if(!TextUtils.isEmpty(webViewConfigs.member)){
+
+				}
+				break;
+			case R.id.rl_exchange_point:
+				if(!TextUtils.isEmpty(webViewConfigs.exchange)){
+
+				}
+				break;
+			case R.id.rl_game_center:
+				if(!TextUtils.isEmpty(webViewConfigs.game)){
+
+				}
+				break;
+			case R.id.rl_pay:
+				if(!TextUtils.isEmpty(webViewConfigs.pay)){
+					Intent intent = new Intent(getActivity(), PayActivity.class);
+					intent.putExtra("url",getFormatUrl(webViewConfigs.pay));
+					startActivityForResult(intent,0);
+				}
+				break;
+			case  R.id.btn_logout:
+				logout();
+				break;
 		}
 	}
-
+	private void logout(){
+		new MaterialDialog.Builder(getActivity()).title(getString(R.string.tip_logout))
+		.negativeText(getString(R.string.cancel))
+		.positiveText(getString(R.string.ok))
+		.onNegative(new MaterialDialog.SingleButtonCallback() {
+			@Override
+			public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+				dialog.dismiss();
+			}
+		})
+		.onPositive(new MaterialDialog.SingleButtonCallback() {
+			@Override
+			public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+				dialog.dismiss();
+				UserPF.getInstance().logout();
+				startActivity(new Intent(getActivity(), LoginActivity.class));
+				getActivity().finish();
+			}
+		})
+		.show();
+	}
 	private void getinfo() {
 		Map map = new HashMap<String, String>();
 		map.put("userid", activity.getuseid());
@@ -150,5 +214,33 @@ public class MeFragment extends Fragment implements OnClickListener {
 						}
 					}
 				}, map);
+	}
+
+	@Override
+	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
+		getWebViewConfigs();
+	}
+	private void getWebViewConfigs(){
+		AppAction.getWebViewConfigs(getActivity(), new HttpResponseHandler(getActivity(),HttpResponse.class,(BaseActivity)getActivity()) {
+			@Override
+			public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
+				try {
+					JSONObject result = new JSONObject(responseString);
+					JSONObject data = result.optJSONObject("data");
+					webViewConfigs.exchange = data.optString("exchange");
+					webViewConfigs.game = data.optString("game");
+					webViewConfigs.member = data.optString("member");
+					webViewConfigs.pay = data.optString("pay");
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+
+
+		});
+	}
+	private String getFormatUrl(String url){
+		return String.format("%s?userid=%s&token=%s",url, UserPF.getInstance().getUserid(),UserPF.getInstance().getToken());
 	}
 }

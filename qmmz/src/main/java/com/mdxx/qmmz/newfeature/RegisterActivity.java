@@ -114,7 +114,7 @@ public class RegisterActivity extends BaseActivity {
                     showToast(R.string.tip_empty_name);
                     return;
                 }
-                AppAction.getVerifyCode(mContext,etPhoneNumber.getText().toString(),etName.getText().toString(), new HttpResponseHandler(mContext,HttpResponse.class) {
+                AppAction.getVerifyCode(mContext,etPhoneNumber.getText().toString(),etName.getText().toString(), new HttpResponseHandler(mContext,HttpResponse.class,RegisterActivity.this) {
                     @Override
                     public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
                         try {
@@ -176,15 +176,24 @@ public class RegisterActivity extends BaseActivity {
             showHintMessages(R.string.confirm_password_verify);
             return;
         }
-        AppAction.checkVerifyCode(mContext, etPhoneNumber.getText().toString(), etCode.getText().toString(), etName.getText().toString(), new HttpResponseHandler(mContext,HttpResponse.class) {
+        AppAction.checkVerifyCode(mContext, etPhoneNumber.getText().toString(), etCode.getText().toString(), etName.getText().toString(), new HttpResponseHandler(mContext,HttpResponse.class,RegisterActivity.this) {
             @Override
             public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
-                AppAction.register(mContext, etPhoneNumber.getText().toString(), HexUtil.getEncryptedPwd(etPassword.getText().toString()), new HttpResponseHandler(mContext,HttpResponse.class) {
+                AppAction.register(mContext, etPhoneNumber.getText().toString(), HexUtil.getEncryptedPwd(etPassword.getText().toString()), new HttpResponseHandler(mContext,HttpResponse.class,RegisterActivity.this) {
                     @Override
                     public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
                         showToast(R.string.tip_register_success);
                         UserPF.getInstance().setPhone(etPhoneNumber.getText().toString());
                         UserPF.getInstance().setPassword(HexUtil.getEncryptedPwd(etPassword.getText().toString()));
+                        UserPF.getInstance().setOriginPassword(etPassword.getText().toString());
+                        try {
+                            JSONObject result = new JSONObject(responseString);
+                            JSONObject data = result.optJSONObject("data");
+                            String userid = data.optString("userid");
+                            UserPF.getInstance().setUserid(userid);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                         Intent intent = new Intent();
                         intent.putExtra(Constants.registerSuccess,true);
                         setResult(RESULT_OK,intent);

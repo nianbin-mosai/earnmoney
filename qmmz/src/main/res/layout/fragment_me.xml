@@ -1,9 +1,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MeFragment" >
-
+    >
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -86,6 +87,7 @@
             </RelativeLayout>
 
             <TextView
+                android:visibility="invisible"
                 android:id="@+id/line1"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
@@ -97,6 +99,7 @@
             </TextView>
 
             <RelativeLayout
+                android:layout_marginTop="5dp"
                 android:id="@+id/xiaxian"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -136,6 +139,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:visibility="gone"
             android:id="@+id/relativeLayout5"
             android:layout_width="match_parent"
             android:layout_height="45dp"
@@ -184,6 +188,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:visibility="gone"
             android:id="@+id/yaoqingmx"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -220,6 +225,187 @@
                 android:layout_marginRight="20dp"
                 android:src="@drawable/jinru" />
         </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/rl_pay"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/yaoqingmx"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@color/white" >
+
+            <ImageView
+                android:visibility="invisible"
+                android:id="@+id/iv_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/push_dada" />
+
+            <TextView
+                android:id="@+id/tv_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/iv_pay"
+                android:text="@string/pay"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/jinru" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_vip"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/rl_pay"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:background="@color/white" >
+
+            <ImageView
+                android:visibility="invisible"
+                android:id="@+id/iv_vip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/push_dada" />
+
+            <TextView
+                android:id="@+id/tv_vip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/iv_vip"
+                android:text="@string/vip"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/jinru" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rl_exchange_point"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/rl_vip"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:background="@color/white" >
+
+            <ImageView
+                android:visibility="invisible"
+                android:id="@+id/iv_exchange_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/push_dada" />
+
+            <TextView
+                android:id="@+id/tv_exchange_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/iv_exchange_point"
+                android:text="@string/exchange_point"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/jinru" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_game_center"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/rl_exchange_point"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:background="@color/white" >
+
+            <ImageView
+                android:visibility="invisible"
+                android:id="@+id/iv_game_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/push_dada" />
+
+            <TextView
+                android:id="@+id/tv_game_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/iv_game_center"
+                android:text="@string/game_center"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/jinru" />
+        </RelativeLayout>
+
+
+<Button
+    android:text="@string/logout"
+    android:layout_margin="5dp"
+    android:layout_below="@+id/rl_game_center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/btn_logout"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <RelativeLayout
             android:id="@+id/relativeLayout2"
@@ -280,5 +466,5 @@
                  />
         </RelativeLayout>
     </RelativeLayout>
-
+</ScrollView>
 </FrameLayout>
