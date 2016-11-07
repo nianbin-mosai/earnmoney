@@ -45,4 +45,10 @@ public class AppAction {
         params.put("mac",GlobalUtils.getMacAddress(context));
         AsyncHttp.getInstance().execute(context,getUrl("User/register"),params,AsyncHttp.METHOD_POST,responseHandler);
     }
+    public static void getWebViewConfigs(Context context,HttpResponseHandler responseHandler){
+        RequestParams params = new RequestParams();
+        params.put("token", UserPF.getInstance().getToken());
+        params.put("userid",GlobalUtils.getMacAddress(context));
+        AsyncHttp.getInstance().execute(context,getUrl("Tool/webview"),params,AsyncHttp.METHOD_GET,responseHandler);
+    }
 }

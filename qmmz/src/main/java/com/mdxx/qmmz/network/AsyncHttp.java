@@ -8,6 +8,7 @@ import com.loopj.android.http.MySSLSocketFactory;
 import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
 import com.mdxx.qmmz.common.LogUtils;
+import com.mdxx.qmmz.common.UserPF;
 
 import java.security.KeyStore;
 import java.util.Map;
@@ -56,22 +57,25 @@ public class AsyncHttp {
     }
 
     protected void execute(Context context, String url, int method,
-                           AsyncHttpResponseHandler responseHandler){
-        execute(context, url, null, null, method, responseHandler);
+                           AsyncHttpResponseHandler responseHandler,boolean withToken){
+        execute(context, url, null, null, method, responseHandler,withToken);
     }
 
     protected void execute(Context context, String url, Map<String, String> headerMap, int method,
-                           AsyncHttpResponseHandler responseHandler){
-        execute(context, url, null, headerMap, method, responseHandler);
+                           AsyncHttpResponseHandler responseHandler,boolean withToken){
+        execute(context, url, null, headerMap, method, responseHandler,withToken);
     }
 
     protected void execute(Context context, String url, RequestParams params, int method,
                            AsyncHttpResponseHandler responseHandler){
-        execute(context, url, params, null, method, responseHandler);
+        execute(context, url, params, null, method, responseHandler,false);
     }
 
     protected void execute(Context context, String url, RequestParams params, Map<String, String> headerMap, int method,
-                           AsyncHttpResponseHandler responseHandler){
+                           AsyncHttpResponseHandler responseHandler,boolean withToken){
+        if(params!=null && withToken){
+            params.put("token", UserPF.getInstance().getToken());
+        }
         LogUtils.i(url + (params == null ? "" : ("?" + params.toString())));
         client.removeAllHeaders();
         if (headerMap != null) {

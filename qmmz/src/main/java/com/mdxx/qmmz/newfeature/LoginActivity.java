@@ -20,7 +20,11 @@ import com.mdxx.qmmz.common.ViewUtil;
 import com.mdxx.qmmz.network.AppAction;
 import com.mdxx.qmmz.network.HttpResponse;
 import com.mdxx.qmmz.network.HttpResponseHandler;
+import com.mdxx.qmmz.newp.NMainActivity;
 import com.mdxx.qmmz.utils.HexUtil;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * 描述:
@@ -94,7 +98,7 @@ public class LoginActivity extends BaseActivity {
                     showToast(R.string.tip_empty_password);
                     return;
                 }
-                login(etPhoneNumber.getText().toString(), HexUtil.getEncryptedPwd(etPassword.getText().toString()));
+                login(etPhoneNumber.getText().toString(), HexUtil.getEncryptedPwd(etPassword.getText().toString()),etPassword.getText().toString());
                 break;
             case R.id.tvHelp:
                 break;
@@ -107,30 +111,36 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void autoLogin(){
-//        UserPF.getInstance().setPhone("13713692364");
-//        UserPF.getInstance().setPassword(HexUtil.getEncryptedPwd("123456"));
        String phone = UserPF.getInstance().getPhone();
         String password = UserPF.getInstance().getPassword();
         if(!TextUtils.isEmpty(phone)&&!TextUtils.isEmpty(password)){
-//            etPhoneNumber.setText(UserPF.getInstance().getPhone());
-//            etPassword.setText(UserPF.getInstance().getPassword());
-            login(phone,password);
+            etPhoneNumber.setText(UserPF.getInstance().getPhone());
+            etPassword.setText(UserPF.getInstance().getOriginPassword());
+            login(phone,password,UserPF.getInstance().getOriginPassword());
         }
     }
-    private void login(String phone,String password) {
-//        Intent intent = new Intent();
-//        intent.setClass(mContext, NMainActivity.class);
-//        startActivity(intent);
-//        showToast(R.string.tip_login_success);
-//        finish();
-        AppAction.login(mContext, phone, password, new HttpResponseHandler(mContext) {
+    private void login(final String phone,final String password,final String originPassword) {
+        AppAction.login(mContext, phone, password, new HttpResponseHandler(mContext,HttpResponse.class,LoginActivity.this) {
             @Override
             public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
                 Intent intent = new Intent();
-                intent.setClass(mContext, LoginActivity.class);
+                intent.setClass(mContext, NMainActivity.class);
                 startActivity(intent);
-                finish();
                 showToast(R.string.tip_login_success);
+                UserPF.getInstance().setPhone(phone);
+                UserPF.getInstance().setPassword(password);
+                UserPF.getInstance().setOriginPassword(originPassword);
+                try {
+                    JSONObject result = new JSONObject(responseString);
+                    JSONObject data = result.optJSONObject("data");
+                    String userid = data.optString("userid");
+                    String token = data.optString("token");
+                    UserPF.getInstance().setUserid(userid);
+                    UserPF.getInstance().setToken(token);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                finish();
             }
 
             @Override
@@ -147,9 +157,9 @@ public class LoginActivity extends BaseActivity {
         if(requestCode==0 && resultCode==RESULT_OK && data!=null){
             if(data.hasExtra(Constants.registerSuccess)){
                 if(data.getBooleanExtra(Constants.registerSuccess,false)){
-//                    etPhoneNumber.setText(UserPF.getInstance().getPhone());
-//                    etPassword.setText(UserPF.getInstance().getPassword());
-                    login(UserPF.getInstance().getPhone(),UserPF.getInstance().getPassword());
+                    etPhoneNumber.setText(UserPF.getInstance().getPhone());
+                    etPassword.setText(UserPF.getInstance().getOriginPassword());
+                    login(UserPF.getInstance().getPhone(),UserPF.getInstance().getPassword(),UserPF.getInstance().getOriginPassword());
                 }
 
             }

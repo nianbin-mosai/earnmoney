@@ -16,7 +16,10 @@ public class UserPF {
 	private static final String isFirstRunning = "isFirstRunning";
 	private static final String phone = "phone";
 	private static final String password = "password";
+	private static final String originPassword = "originPassword";
 	private static final String logId = "logId";
+	private static final String token = "token";
+	private static final String userid = "userid";
     private static final UserPF instance = new UserPF();
 
     private SharedPreferences sharedPreferences;
@@ -85,6 +88,12 @@ public class UserPF {
 	public String getPassword(){
 		return getString(this.password,"");
 	}
+	public void setOriginPassword(String originPassword){
+		putString(this.originPassword,originPassword);
+	}
+	public String getOriginPassword(){
+		return getString(this.originPassword,"");
+	}
 	public void setLogId(String logId){
 		putString(this.logId,logId);
 	}
@@ -93,10 +102,29 @@ public class UserPF {
 	}
 
 	public boolean isLogin(){
-		return !TextUtils.isEmpty(getPhone()) && !TextUtils.isEmpty(getPassword());
+		return !TextUtils.isEmpty(getPhone()) && !TextUtils.isEmpty(getPassword())
+				&& !TextUtils.isEmpty(getOriginPassword()) && !TextUtils.isEmpty(getUserid())
+				&& !TextUtils.isEmpty(getToken())
+				;
 	}
 	public void logout(){
 		setPhone("");
 		setPassword("");
+		setOriginPassword("");
+		setUserid("");
+		setToken("");
+	}
+	public void setUserid(String userid){
+		putString(this.userid,userid);
+	}
+	public String getUserid(){
+		return getString(this.userid,"");
+	}
+
+	public void setToken(String token){
+		putString(this.token,token);
+	}
+	public String getToken(){
+		return getString(this.token,"");
 	}
 }

@@ -46,7 +46,7 @@ public class DuiFragment extends Fragment implements OnClickListener {
 		activity = (NMainActivity) getActivity();
 		View view = inflater.inflate(R.layout.fragment_dui, container, false);
 		initview(view);
-		getreward(true);
+//		getreward(true);
 		return view;
 	}
 

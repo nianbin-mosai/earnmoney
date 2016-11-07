@@ -5,18 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.mdxx.qmmz.newfeature.LoginActivity">
 
+    <include layout="@layout/header_close"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
         <ImageView
+            android:visibility="gone"
             android:id="@+id/ivLogo"
             style="@style/Imageview.Logo.Big" />
 
         <LinearLayout
             style="@style/LinearLayout.InputLayout"
-            android:layout_marginTop="@dimen/standard_margin_default"
+            android:layout_marginTop="180dp"
             android:layout_below="@id/ivLogo">
 
             <TextView
@@ -117,7 +120,5 @@
             android:textColor="@android:color/white"
             android:layout_alignParentBottom="true"></Button>
     </RelativeLayout>
-
-    <include layout="@layout/header_close"/>
 
 </FrameLayout>
