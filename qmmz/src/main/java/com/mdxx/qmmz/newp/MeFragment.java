@@ -124,7 +124,8 @@ public class MeFragment extends Fragment implements OnClickListener {
 			break;
 		case R.id.refresh_date:
 			refresh_date.startAnimation(loadAnimation);
-			getinfo();
+			getWebViewConfigs();
+//			getinfo();
 			break;
 
 			case R.id.rl_vip:

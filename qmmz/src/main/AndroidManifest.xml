@@ -157,152 +157,6 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <!-- ############ QQ空间和QQ SSO授权的Activity注册 ############ -->
-        <activity
-            android:name="com.tencent.tauth.AuthActivity"
-            android:launchMode="singleTask"
-            android:noHistory="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="tencent1105646565" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.tencent.connect.common.AssistActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity
-            android:name=".activity.AdvertisementActivity"
-            android:launchMode="singleTask" />
-
-        <!-- 趣米 -->
-        <activity
-            android:name="com.newqm.pointwall.ShowActivity"
-            android:configChanges="keyboardHidden|orientation" />
-
-        <service android:name="com.newqm.pointwall.AppStartListenService" />
-        <!-- 趣米 -->
-        <!-- 有米 -->
-        <activity
-            android:name="net.youmi.android.AdBrowser"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:theme="@android:style/Theme.Light.NoTitleBar" />
-
-        <service
-            android:name="net.youmi.android.AdService"
-            android:exported="false" />
-        <service
-            android:name="net.youmi.android.ExpService"
-            android:exported="false" />
-
-        <receiver android:name="net.youmi.android.AdReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
-        <!-- 有米 -->
-        <!-- 大头鸟 -->
-        <meta-data
-            android:name="DTN_SECRET_KEY"
-            android:value="dibduidbjasw" />
-        <meta-data
-            android:name="DTN_APP_ID"
-            android:value="7d247781-4022-4468-8e18-27bb24659312" />
-
-        <activity
-            android:name="com.datouniao.AdPublisher.AdsOffersWebView"
-            android:configChanges="keyboardHidden|orientation" />
-
-        <service
-            android:name="com.datouniao.AdPublisher.service.AdsService"
-            android:exported="false" />
-
-        <receiver android:name="com.datouniao.AdPublisher.service.AppReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-                <action android:name="com.datouniao.AdPublisher.service.check" />
-
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
-
-        <!-- 大头鸟 -->
-
-
-        <!-- 轻松赚 -->
-        <activity
-            android:name="com.fingermobi.vj.activity.QdiActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:launchMode="singleTask" />
-        <activity
-            android:name="com.fingermobi.vj.activity.TaskInfoActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name="com.fingermobi.vj.activity.WithDrawalActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name="com.fingermobi.vj.activity.MyincomeActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name="com.fingermobi.vj.activity.TiXianAActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name="com.fingermobi.vj.activity.TiXianPActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name="com.fingermobi.vj.activity.TiXianQActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name="com.fingermobi.vj.activity.CuserwitLogActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name="com.fingermobi.vj.activity.UserInfoActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name="com.fingermobi.vj.activity.LevelExplainActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name="com.fingermobi.vj.activity.WeiBoShareActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name="com.fingermobi.vj.activity.CpaTaskInfoActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name="com.fingermobi.vj.activity.TaskCenterPageActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-
-        <service android:name="com.fingermobi.vj.utils.DownloadService" />
-
-        <receiver android:name="com.fingermobi.vj.utils.AppChangeBrocastreceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
-        <!-- 轻松赚 -->
-
-
-        <!-- 蒲公英 -->
-        <meta-data
-            android:name="PGYER_APPID"
-            android:value="351fcc685c5c177418ccc36b37e663b6" />
-
-        <!-- QQ -->
-        <meta-data
-            android:name="TA_APPKEY"
-            android:value="Aqc123456" />
-
-        <activity android:name=".activity.InvitationActivity" />
-        <activity android:name=".activity.RewardActivity" />
-        <activity android:name=".activity.RecordActivity" />
         <!-- 监听通知点击或者忽略处理的广播 -->
         <receiver
             android:name="com.umeng.message.NotificationProxyBroadcastReceiver"
@@ -527,6 +381,11 @@
             android:parentActivityName=".activity.BaseActivity"
             android:theme="@style/AppTheme">
         </activity>
+
+        <meta-data
+            android:name="PGYER_APPID"
+            android:value="284e6e764acad16c5d2278cd511632ee" >
+        </meta-data>
     </application>
 
 </manifest>

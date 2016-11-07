@@ -1,19 +1,16 @@
 package com.mdxx.qmmz.activity;
 
-import com.mdxx.qmmz.R;
-import com.tencent.open.wpa.WPA;
-import com.tencent.tauth.Tencent;
-
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 
+import com.mdxx.qmmz.R;
+
 public class KeFuActivity extends BaseActivity implements OnClickListener{
 
-	private Tencent mTencent;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

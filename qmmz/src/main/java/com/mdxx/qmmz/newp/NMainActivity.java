@@ -28,6 +28,9 @@ import com.mdxx.qmmz.common.LogUtils;
 import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.utils.FileUtils;
 import com.mdxx.qmmz.utils.InterfaceTool;
+import com.pgyersdk.javabean.AppBean;
+import com.pgyersdk.update.PgyUpdateManager;
+import com.pgyersdk.update.UpdateManagerListener;
 import com.umeng.message.PushAgent;
 import com.umeng.message.proguard.k.e;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -87,7 +90,7 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
         setContentView(R.layout.activity_nmain);
 //		PgyCrashManager.register(this);// 蒲公英
         String channel1 = FileUtils.getChannel1(this);
-        issim();
+//        issim();
 //		mPushAgent = PushAgent.getInstance(this);
 //		mPushAgent.enable();
 //		initguanggao();
@@ -96,6 +99,7 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
         initYoumi();
         initYow();
         initTabData();
+        checkVersion();
 //		islogin();
     }
 
@@ -332,7 +336,39 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
             System.exit(0);
         }
     }
+    private void checkVersion(){
+//        PgyUpdateManager.register(this);
+        PgyUpdateManager.register(NMainActivity.this,
+                new UpdateManagerListener() {
 
+                    @Override
+                    public void onUpdateAvailable(final String result) {
+
+                        // 将新版本信息封装到AppBean中
+                        final AppBean appBean = getAppBeanFromString(result);
+                        new AlertDialog.Builder(mContext)
+                                .setTitle("更新")
+                                .setMessage("")
+                                .setNegativeButton(
+                                        "确定",
+                                        new DialogInterface.OnClickListener() {
+
+                                            @Override
+                                            public void onClick(
+                                                    DialogInterface dialog,
+                                                    int which) {
+                                                startDownloadTask(
+                                                        NMainActivity.this,
+                                                        appBean.getDownloadURL());
+                                            }
+                                        }).show();
+                    }
+
+                    @Override
+                    public void onNoUpdateAvailable() {
+                    }
+                });
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -347,6 +383,7 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
 
         // 回收积分广告占用的资源
         OffersManager.getInstance(this).onAppExit();
+        PgyUpdateManager.unregister();
     }
 
     private void issim() {

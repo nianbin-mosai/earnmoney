@@ -32,7 +32,6 @@ import com.mdxx.qmmz.utils.InterfaceTool;
 import com.mdxx.qmmz.utils.MyVolley;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.tencent.tauth.Tencent;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
@@ -65,7 +64,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 	public ImageLoader imageLoader;
 	protected TextView text_jifen;
 	protected double currmoney;
-	protected Tencent mTencent;
 	public UMSocialService mController;
 	private String moneyurl = InterfaceTool.ULR + "user/getmoney";
 	public String weixinappId = "wx2a704314ec7093bd";
@@ -79,7 +77,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 		AppManager.getAppManager().addActivity(this);
 		queue = MyVolley.getRequestQueue();
 		sp = getSharedPreferences(Configure.Project, 0);
-		mTencent = Tencent.createInstance("1105646565", this.getApplication());
 		mController = UMServiceFactory.getUMSocialService(Configure.UMSocialService);
 		initprogress();
 		initUIL();
