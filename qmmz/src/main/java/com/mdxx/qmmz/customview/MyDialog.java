@@ -10,9 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mdxx.qmmz.R;
-import com.mdxx.qmmz.activity.AdvertisementActivity;
 import com.mdxx.qmmz.activity.QhbDetailActivity;
-import com.mdxx.qmmz.activity.YaoQingActivity;
 
 public class MyDialog extends Dialog implements View.OnClickListener{
 
@@ -50,13 +48,6 @@ public class MyDialog extends Dialog implements View.OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.go_layout:
-			if(mtype == 1 || mtype == 3){
-				mcontext.startActivity(new Intent(mcontext,
-						AdvertisementActivity.class));
-			}else{
-				mcontext.startActivity(new Intent(mcontext,
-						YaoQingActivity.class));
-			}
 			break;
 		case R.id.textView3:
 			mcontext.startActivity(new Intent(mcontext,

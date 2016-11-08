@@ -1,8 +1,8 @@
 package com.mdxx.qmmz;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.multidex.MultiDexApplication;
 
 import com.mdxx.qmmz.activity.HelloActivity;
 import com.mdxx.qmmz.common.CrashCatcher;
@@ -20,7 +20,7 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import java.util.Iterator;
 import java.util.Map;
 
-public class MyApplication extends Application {
+public class MyApplication extends MultiDexApplication {
 	// 处放时间
 	public static MyApplication INSTANCE;
 	public static Map<String, Long> map;
@@ -28,8 +28,6 @@ public class MyApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 		INSTANCE = this;
-		initImageLoader(getApplicationContext());
-		MyVolley.init(this);
 		SharedPreferences pre = this.getSharedPreferences("userdata",
 				MODE_PRIVATE);
 		mUserDatas = (Map<String, Object>) pre.getAll();
@@ -44,10 +42,13 @@ public class MyApplication extends Application {
 				UserPF.getInstance().init(INSTANCE);
 				AsyncHttp.getInstance().init(INSTANCE);
 //				DataCache.getInstance().init(INSTANCE);
+				initImageLoader(getApplicationContext());
+				MyVolley.init(INSTANCE);
+				initCrashCatcher();
 				LogUtils.i("Application init finish, Time=" + (System.currentTimeMillis() - time));
 			}
 		}).start();
-		initCrashCatcher();
+
 	}
 	private void initCrashCatcher() {
 		// 崩溃捕捉

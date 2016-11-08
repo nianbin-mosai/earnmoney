@@ -1,13 +1,5 @@
 package com.mdxx.qmmz.activity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,7 +18,14 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.mdxx.qmmz.Gonggao;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.utils.InterfaceTool;
-import com.umeng.socialize.utils.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GonggaoActivity extends BaseActivity implements OnClickListener {
 
@@ -79,7 +78,6 @@ public class GonggaoActivity extends BaseActivity implements OnClickListener {
 					@Override
 					public void onResponse(JSONObject arg0) {
 						try {
-							Log.e("gonggao", "" + arg0.toString());
 							String code = arg0.getString("code");
 							if (code.equals("1")) {
 								gonggaolist.clear();
@@ -153,7 +151,6 @@ public class GonggaoActivity extends BaseActivity implements OnClickListener {
 			if (gonggao.getStatus().equals("0")) {
 				holder.text_state.setVisibility(View.GONE);
 			} else {
-				Log.e("text_state","VISIBLE");
 				holder.text_state.setVisibility(View.VISIBLE);
 			}
 			holder.text_time.setText(gonggao.getTime());

@@ -32,19 +32,6 @@ import com.mdxx.qmmz.utils.InterfaceTool;
 import com.mdxx.qmmz.utils.MyVolley;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.umeng.socialize.bean.SHARE_MEDIA;
-import com.umeng.socialize.controller.UMServiceFactory;
-import com.umeng.socialize.controller.UMSocialService;
-import com.umeng.socialize.media.QQShareContent;
-import com.umeng.socialize.media.QZoneShareContent;
-import com.umeng.socialize.media.SinaShareContent;
-import com.umeng.socialize.media.UMImage;
-import com.umeng.socialize.sso.QZoneSsoHandler;
-import com.umeng.socialize.sso.SinaSsoHandler;
-import com.umeng.socialize.sso.UMQQSsoHandler;
-import com.umeng.socialize.weixin.controller.UMWXHandler;
-import com.umeng.socialize.weixin.media.CircleShareContent;
-import com.umeng.socialize.weixin.media.WeiXinShareContent;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -64,7 +51,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 	public ImageLoader imageLoader;
 	protected TextView text_jifen;
 	protected double currmoney;
-	public UMSocialService mController;
 	private String moneyurl = InterfaceTool.ULR + "user/getmoney";
 	public String weixinappId = "wx2a704314ec7093bd";
 	public String weixinappSecret = "426825c299a4ce492314d0d5407da995";
@@ -77,7 +63,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 		AppManager.getAppManager().addActivity(this);
 		queue = MyVolley.getRequestQueue();
 		sp = getSharedPreferences(Configure.Project, 0);
-		mController = UMServiceFactory.getUMSocialService(Configure.UMSocialService);
 		initprogress();
 		initUIL();
 	}
@@ -168,8 +153,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 	
 	public void setshare() {
 		
-		getShareUrl();
-		
+
 //		mController.setShareContent("好友邀请：" + yaoqingUrl + getuseid()+InterfaceTool.getRandomString(8));
 //		// 图片
 //		mController.setShareMedia(new UMImage(this, R.drawable.ic_launcher));
@@ -233,89 +217,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 //		mController.setShareMedia(sinaContent);
 	}
 
-	private void getShareUrl(){
-		Map params = new HashMap<String, String>();
-		params.put("userid", getuseid());
-		InterfaceTool.Networkrequest(this, queue,
-				m_pDialog, InterfaceTool.ULR + "user/shaerurl",
-				new Response.Listener<JSONObject>() {
 
-					@Override
-					public void onResponse(JSONObject arg0) {
-						closewaite();
-						try {
-							String shareUrl = arg0.getString("url");
-							sp.edit().putString("shareUrl", shareUrl).commit();
-							mController.setShareContent("好友邀请：" + shareUrl);
-							// 图片
-							mController.setShareMedia(new UMImage(BaseActivity.this, R.drawable.ic_launcher));
-							QZoneSsoHandler qZoneSsoHandler = new QZoneSsoHandler(BaseActivity.this,
-									"1105646565", "1qHI5CrwTonwakOh");
-							qZoneSsoHandler.addToSocialSDK();
-							mController.getConfig().setSsoHandler(new SinaSsoHandler());
-							UMWXHandler wxHandler = new UMWXHandler(BaseActivity.this, weixinappId, weixinappSecret);
-							wxHandler.addToSocialSDK();
-							UMWXHandler wxCircleHandler = new UMWXHandler(BaseActivity.this, weixinappId, weixinappSecret);
-							wxCircleHandler.setToCircle(true);
-							wxCircleHandler.addToSocialSDK();
-							// 设置微信好友分享内容
-							WeiXinShareContent weixinContent = new WeiXinShareContent();
-							// 设置分享文字
-							weixinContent.setShareContent(shareContent);
-							// 设置title
-							weixinContent.setTitle(shareTittle);
-							// 设置分享内容跳转URL
-							weixinContent.setTargetUrl(shareUrl);
-							// 设置分享图片
-							weixinContent.setShareImage(new UMImage(BaseActivity.this, R.drawable.ic_launcher));
-							mController.setShareMedia(weixinContent);
-							// 设置微信朋友圈分享内容
-							CircleShareContent circleMedia = new CircleShareContent();
-							circleMedia.setShareContent(shareContent);
-							// 设置朋友圈title
-							circleMedia.setTitle(shareTittle);
-							circleMedia.setShareImage(new UMImage(BaseActivity.this, R.drawable.ic_launcher));
-							circleMedia.setTargetUrl(shareUrl);
-							mController.setShareMedia(circleMedia);
-							// QQ
-							UMQQSsoHandler qqSsoHandler = new UMQQSsoHandler(BaseActivity.this, "1105646565",
-									"1qHI5CrwTonwakOh");
-							qqSsoHandler.addToSocialSDK();
-							mController.getConfig().removePlatform(SHARE_MEDIA.TENCENT,
-									SHARE_MEDIA.TENCENT);
-							QQShareContent qqShareContent = new QQShareContent();
-							// 设置分享文字
-							qqShareContent.setShareContent(shareContent);
-							// 设置分享title
-							qqShareContent.setTitle(shareTittle);
-							// 设置分享图片
-							qqShareContent.setShareImage(new UMImage(BaseActivity.this, R.drawable.ic_launcher));
-							// 设置点击分享内容的跳转链接
-							qqShareContent.setTargetUrl(shareUrl);
-							mController.setShareMedia(qqShareContent);
-							QZoneShareContent qzone = new QZoneShareContent();
-							// 设置分享文字
-							qzone.setShareContent(shareContent);
-							// 设置点击消息的跳转URL
-							qzone.setTargetUrl(shareUrl);
-							// 设置分享内容的标题
-							qzone.setTitle(shareTittle);
-							// 设置分享图片
-							qzone.setShareImage(new UMImage(BaseActivity.this, R.drawable.ic_launcher));
-							mController.setShareMedia(qzone);
-							SinaShareContent sinaContent = new SinaShareContent();
-							sinaContent.setShareContent(shareContent + shareUrl);
-							sinaContent.setShareImage(new UMImage(BaseActivity.this, R.drawable.ic_launcher));
-							mController.setShareMedia(sinaContent);
-						} catch (JSONException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-
-					};
-				}, params);
-	}
-	
 	
 	public void getdbaUrl() {
 		Map params = new HashMap<String, String>();

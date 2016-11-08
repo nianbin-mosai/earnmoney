@@ -23,7 +23,6 @@ import com.mdxx.qmmz.activity.BaseActivity;
 import com.mdxx.qmmz.activity.GonggaoActivity;
 import com.mdxx.qmmz.activity.InvitationActivity;
 import com.mdxx.qmmz.activity.KeFuActivity;
-import com.mdxx.qmmz.activity.YaoQingActivity;
 import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.network.AppAction;
 import com.mdxx.qmmz.network.HttpResponse;
@@ -107,8 +106,6 @@ public class MeFragment extends Fragment implements OnClickListener {
 //					activity.islogin();
 //					return;
 //				}
-				startActivity(new Intent(activity,
-						YaoQingActivity.class));
 //			}
 			break;
 		case R.id.yaoqingmx://邀请明细

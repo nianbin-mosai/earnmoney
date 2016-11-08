@@ -19,8 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
-import com.mdxx.qmmz.Configure;
-import com.mdxx.qmmz.EventMessage;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.activity.BaseActivity;
 import com.mdxx.qmmz.common.Configs;
@@ -31,13 +29,6 @@ import com.mdxx.qmmz.utils.InterfaceTool;
 import com.pgyersdk.javabean.AppBean;
 import com.pgyersdk.update.PgyUpdateManager;
 import com.pgyersdk.update.UpdateManagerListener;
-import com.umeng.message.PushAgent;
-import com.umeng.message.proguard.k.e;
-import com.umeng.socialize.bean.SHARE_MEDIA;
-import com.umeng.socialize.controller.listener.SocializeListeners.UMAuthListener;
-import com.umeng.socialize.controller.listener.SocializeListeners.UMDataListener;
-import com.umeng.socialize.exception.SocializeException;
-import com.umeng.socialize.weixin.controller.UMWXHandler;
 import com.yow.PointListener;
 import com.yow.YoManage;
 
@@ -48,9 +39,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
-import de.greenrobot.event.EventBus;
 import tj.zl.op.AdManager;
 import tj.zl.op.listener.Interface_ActivityListener;
 import tj.zl.op.onlineconfig.OnlineConfigCallBack;
@@ -78,7 +67,6 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
     private ImageView dh_image;
     private ImageView wo_image;
     private long mExitTime;
-    private PushAgent mPushAgent;
     private Dialog logindialog;
     private AlertDialog dialog_yaoqing;
     private final String loginurl = InterfaceTool.ULR + "user/login";
@@ -409,11 +397,6 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
 //				.init();
     }
 
-    private void youmeng() {
-        UMWXHandler wxHandler = new UMWXHandler(NMainActivity.this, weixinappId,
-                weixinappSecret);
-        wxHandler.addToSocialSDK();
-    }
 
     public boolean islogin() {
         if (!sp.getBoolean("islogin", false)) {
@@ -426,7 +409,6 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
 
                         @Override
                         public void onClick(View v) {
-                            toweixin();
                         }
 
                     });
@@ -458,131 +440,7 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
         }
     }
 
-    public void toweixin() {
-        mController.doOauthVerify(NMainActivity.this, SHARE_MEDIA.WEIXIN,
-                new UMAuthListener() {
-                    @Override
-                    public void onStart(SHARE_MEDIA platform) {
-                        Toast.makeText(NMainActivity.this, "开始授权",
-                                Toast.LENGTH_SHORT).show();
-                    }
 
-                    @Override
-                    public void onError(SocializeException e,
-                                        SHARE_MEDIA platform) {
-                        Toast.makeText(NMainActivity.this, "授权失败",
-                                Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onComplete(final Bundle value,
-                                           SHARE_MEDIA platform) {
-                        mController.getPlatformInfo(NMainActivity.this,
-                                SHARE_MEDIA.WEIXIN, new UMDataListener() {
-                                    @Override
-                                    public void onStart() {
-                                        Toast.makeText(NMainActivity.this,
-                                                "开始获取资料...", Toast.LENGTH_SHORT)
-                                                .show();
-                                    }
-
-                                    @Override
-                                    public void onComplete(int status,
-                                                           Map<String, Object> info) {
-                                        if (status == 200 && info != null) {
-                                            Set<String> keys = info.keySet();
-                                            String headimgurl = "";
-                                            String openid = "";
-                                            String nickname = "";
-                                            for (String key : keys) {
-                                                if (key.equals("headimgurl")) {
-                                                    headimgurl = info.get(key)
-                                                            .toString();
-                                                } else if (key.equals("openid")) {
-                                                    openid = info.get(key)
-                                                            .toString();
-                                                } else if (key
-                                                        .equals("nickname")) {
-                                                    nickname = info.get(key)
-                                                            .toString();
-                                                }
-                                            }
-                                            tologin(nickname,
-                                                    openid,
-                                                    headimgurl,
-                                                    String.valueOf(value
-                                                            .getCharSequence("access_token")));
-                                        } else {
-                                            Toast.makeText(NMainActivity.this,
-                                                    "获取资料失败" + status,
-                                                    Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-
-                                });
-                    }
-
-                    @Override
-                    public void onCancel(SHARE_MEDIA platform) {
-                        Toast.makeText(NMainActivity.this, "授权取消",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
-    public void tologin(final String name, final String openid,
-                        final String headimgurl, final String access_tekon) {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("name", name);
-        params.put("openid", openid);
-        params.put("headimgurl", headimgurl);
-        params.put("access_token", access_tekon);
-        params.put("imei", getIMEI());
-        InterfaceTool.Networkrequest(this, queue, m_pDialog, loginurl,
-                new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        closewaite();
-                        try {
-                            int code = response.getInt("code");
-                            if (code == 2) {
-                                logindialog.dismiss();
-                                String userid = response.getString("userid");
-                                String token = response.getString("token");
-                                sp.edit().putBoolean("islogin", true)
-                                        .putString("userid", userid)
-                                        .putString("token", token).putString("name", name).commit();
-                                Toastshow("登录成功");
-                                EventBus.getDefault().post(new EventMessage("getinfo", 2, ""));
-                                mPushAgent.addAlias(userid, Configure.Project);
-                            } else if (code == 4) {
-                                Toastshow("手机已绑定其他微信号");
-                            } else if (code == 5) {
-                                Toastshow("不支持模拟器等设备");
-                            } else if (code == 1) {
-                                String token = response.getString("token");
-                                sp.edit().putString("token", token).putString("name", name).commit();
-                                yaoqing_dilog(response.getString("userid"));
-                                logindialog.dismiss();
-                                mPushAgent.addAlias(response.getString("userid"), Configure.Project);
-                                EventBus.getDefault().post(new EventMessage("getinfo", 1, ""));
-                            } else {
-                                Toastshow(response.getString("message"));
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        } catch (e e) {
-                            // TODO Auto-generated catch block
-                            e.printStackTrace();
-                        } catch (Exception e) {
-                            // TODO Auto-generated catch block
-                            e.printStackTrace();
-                        }
-
-                    }
-                }, params);
-    }
 
     public void yaoqing_dilog(final String userid) {
         String invitationnum = FileUtils.getChannel1(this);

@@ -194,7 +194,6 @@ public class QhbActivity extends BaseActivity implements OnClickListener {
 //			getdbaUrl();
 //			break;
 		case R.id.layout_sendfriend:
-			mController.openShare(this, false);
 			break;
 		case R.id.back:
 			finish();

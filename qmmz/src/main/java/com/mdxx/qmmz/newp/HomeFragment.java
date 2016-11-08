@@ -19,9 +19,6 @@ import com.mdxx.qmmz.activity.WebActivity;
 import com.mdxx.qmmz.common.ToastUtils;
 import com.mdxx.qmmz.newfeature.PayActivity;
 import com.mdxx.qmmz.utils.InterfaceTool;
-import com.umeng.socialize.bean.SHARE_MEDIA;
-import com.umeng.socialize.bean.SocializeEntity;
-import com.umeng.socialize.controller.listener.SocializeListeners.SnsPostListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -303,19 +300,6 @@ public class HomeFragment extends Fragment implements OnClickListener {
             sharetoqd_dialog.show();
     }
 
-    class MysnspostListener implements SnsPostListener {
-        @Override
-        public void onStart() {
-        }
-
-        @Override
-        public void onComplete(SHARE_MEDIA platform, int eCode,
-                               SocializeEntity entity) {
-            if (eCode == 200) {
-                Qiandao();
-            }
-        }
-    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
