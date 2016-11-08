@@ -4,27 +4,22 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Response;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.activity.BaseActivity;
 import com.mdxx.qmmz.common.Configs;
 import com.mdxx.qmmz.common.LogUtils;
 import com.mdxx.qmmz.common.UserPF;
-import com.mdxx.qmmz.utils.FileUtils;
 import com.mdxx.qmmz.utils.InterfaceTool;
 import com.pgyersdk.javabean.AppBean;
 import com.pgyersdk.update.PgyUpdateManager;
@@ -32,13 +27,8 @@ import com.pgyersdk.update.UpdateManagerListener;
 import com.yow.PointListener;
 import com.yow.YoManage;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import tj.zl.op.AdManager;
 import tj.zl.op.listener.Interface_ActivityListener;
@@ -76,64 +66,20 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nmain);
-//		PgyCrashManager.register(this);// 蒲公英
-        String channel1 = FileUtils.getChannel1(this);
-//        issim();
-//		mPushAgent = PushAgent.getInstance(this);
-//		mPushAgent.enable();
-//		initguanggao();
-//		youmeng();
         initUI();
         initYoumi();
         initYow();
         initTabData();
         checkVersion();
-//		islogin();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-//		PgyFeedbackShakeManager.register(NMainActivity.this, false);
-//		MobclickAgent.onResume(this);
-//
-//		// 版本检测方式2：带更新回调监听
-//		PgyUpdateManager.register(NMainActivity.this,
-//				new UpdateManagerListener() {
-//					@Override
-//					public void onUpdateAvailable(final String result) {
-//						final AppBean appBean = getAppBeanFromString(result);
-//
-//						new AlertDialog.Builder(NMainActivity.this)
-//								.setTitle("更新")
-//								.setMessage("")
-//								.setNegativeButton("确定",
-//										new DialogInterface.OnClickListener() {
-//
-//											@Override
-//											public void onClick(
-//													DialogInterface dialog,
-//													int which) {
-//												startDownloadTask(
-//														NMainActivity.this,
-//														appBean.getDownloadURL());
-//											}
-//										}).show();
-//
-//					}
-//
-//					@Override
-//					public void onNoUpdateAvailable() {
-////						Toast.makeText(MainActivity.this, "已经是最新版本",
-////								Toast.LENGTH_SHORT).show();
-//					}
-//				});
     }
 
     public void onPause() {
         super.onPause();
-//		PgyFeedbackShakeManager.unregister();
-//		MobclickAgent.onPause(this);
     }
 
     private void initUI() {
@@ -382,128 +328,12 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
         }
     }
 
-    @SuppressWarnings("static-access")
-    private void initguanggao() {
-        // 有米
-        AdManager.getInstance(NMainActivity.this).init(Configs.YMAppId,
-                Configs.YMAppSecret, false, false);
-        OffersManager.getInstance(NMainActivity.this).onAppLaunch();
-//		// 趣米
-//		QSdkManager.init(this, "73f3521a4e9297d4", "2d0ba3847ae2cd2a", "",
-//				getuseid());
-//		QSdkManager.getsdkInstance(this).initOfferAd(this);
-        // 聚优
-//		YoManage.getInstance(this, "cfb116dc2e79e022982faaf31977c141", "qq")
-//				.init();
-    }
-
-
-    public boolean islogin() {
-        if (!sp.getBoolean("islogin", false)) {
-            logindialog = new Dialog(this, R.style.dialog_login_style);
-            View inflate = getLayoutInflater().inflate(R.layout.dialog_login,
-                    null);
-            logindialog.setContentView(inflate);
-            inflate.findViewById(R.id.btn_login).setOnClickListener(
-                    new OnClickListener() {
-
-                        @Override
-                        public void onClick(View v) {
-                        }
-
-                    });
-            inflate.findViewById(R.id.btn_canle).setOnClickListener(
-                    new OnClickListener() {
-
-                        @Override
-                        public void onClick(View v) {
-                            logindialog.dismiss();
-                            finish();
-                        }
-                    });
-            inflate.findViewById(R.id.kefuqq).setOnClickListener(
-                    new OnClickListener() {
-
-                        @Override
-                        public void onClick(View v) {
-                            String url = "mqqwpa://im/chat?chat_type=wpa&uin="
-                                    + getString(R.string.Qkefu) + "&version=1";
-                            startActivity(new Intent(Intent.ACTION_VIEW, Uri
-                                    .parse(url)));
-                        }
-                    });
-            logindialog.setCanceledOnTouchOutside(false);
-            logindialog.show();
-            return false;
-        } else {
-            return true;
-        }
-    }
 
 
 
-    public void yaoqing_dilog(final String userid) {
-        String invitationnum = FileUtils.getChannel1(this);
-        if (invitationnum != null && !"".equals(invitationnum)) {
-            sendyaoqing(userid, invitationnum);
-        } else {
-            View inflate = getLayoutInflater().inflate(R.layout.dialog_numview,
-                    null);
-            final EditText edit_num = (EditText) inflate
-                    .findViewById(R.id.edit_num);
-            dialog_yaoqing = new AlertDialog.Builder(this)
-                    .setTitle("请输入邀请ID")
-                    .setIcon(android.R.drawable.ic_dialog_info)
-                    .setView(inflate)
-                    .setPositiveButton("确定", new AlertDialog.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            String yaoqingid = edit_num.getText().toString();
-                            sendyaoqing(userid, yaoqingid);
-                        }
-                    })
-                    .setNegativeButton("不输入",
-                            new AlertDialog.OnClickListener() {
 
-                                @Override
-                                public void onClick(DialogInterface dialog,
-                                                    int which) {
-                                    sendyaoqing(userid, "10000");
 
-                                }
-                            }).create();
-            if (!dialog_yaoqing.isShowing()) {
-                dialog_yaoqing.show();
-            }
-        }
-    }
 
-    public void sendyaoqing(String userid, String yaoqingid) {
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("userid", userid);
-        map.put("invitecode", yaoqingid);
-        InterfaceTool.Networkrequest(NMainActivity.this, queue, m_pDialog,
-                yaoqingurl, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        closewaite();
-                        try {
-                            String code = response.getString("code");
-                            if (code.equals("1")) {
-                                String userid = response.getString("userid");
-                                sp.edit().putBoolean("islogin", true)
-                                        .putString("userid", userid).commit();
-                                Toastshow("注册成功");
-                            } else {
-                                Toastshow("注册失败");
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                }, map);
-    }
 
 
     private void initYoumi() {
@@ -563,6 +393,9 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
         // 从5.3.0版本起，客户端积分托管将由 int 转换为 float
 //        float pointsBalance = PointsManager.getInstance(this).queryPoints();
 //		mTextViewPoints.setText("积分余额：" + pointsBalance);
+
+        boolean isSuccess = OffersManager.getInstance(mContext).checkOffersAdConfig();
+        LogUtils.i(isSuccess+"");
     }
 
     /**
