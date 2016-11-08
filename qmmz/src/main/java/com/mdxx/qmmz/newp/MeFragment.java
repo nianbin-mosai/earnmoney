@@ -203,7 +203,6 @@ public class MeFragment extends Fragment implements OnClickListener {
 										activity.options, null);
 							} else if (code.equals("9")) {
 								activity.sp.edit().putBoolean("islogin", false).commit();
-								activity.islogin();
 							} else {
 								activity.Toastshow(response.getString("msg"));
 							}

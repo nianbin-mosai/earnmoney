@@ -375,7 +375,6 @@ public class HomeFragment extends Fragment implements OnClickListener {
                                 note.setText(noticetext);
                             } else if (code.equals("9")) {
                                 activity.sp.edit().putBoolean("islogin", false).commit();
-                                activity.islogin();
                             } else {
                                 activity.Toastshow(response.getString("msg"));
                             }

@@ -340,7 +340,7 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
         // 自v6.3.0起，所有其他代码必须在初始化接口调用之后才能生效
         // 初始化接口，应用启动的时候调用(appId, appSecret, isTestModel, isEnableYoumiLog)
         AdManager.getInstance(this).init(Configs.YMAppId, Configs.YMAppSecret, false, true);
-
+//        AdManager.getInstance(this).init("f0c17f8844bbd845", "20d4b90ab7e0d4d1", true, true);
         // 有米android 积分墙sdk 5.0.0之后支持定制浏览器顶部标题栏的部分UI
         setOfferBrowserConfig();
 
@@ -350,7 +350,7 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
         // 3.务必在下面的OffersManager.getInstance(this).onAppLaunch();代码之前声明使用服务器回调
 
          OffersManager.getInstance(this).setUsingServerCallBack(false);
-        // OffersManager.getInstance(this).setCustomUserId("user_id");
+//         OffersManager.getInstance(this).setCustomUserId(UserPF.getInstance().getPhone());
 
         // 如果使用积分广告，请务必调用积分广告的初始化接口:
         OffersManager.getInstance(this).onAppLaunch();
