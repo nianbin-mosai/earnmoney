@@ -3,7 +3,10 @@ package com.mdxx.qmmz.newp;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,7 +26,9 @@ import com.mdxx.qmmz.utils.InterfaceTool;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import de.greenrobot.event.EventBus;
@@ -34,41 +39,32 @@ public class HomeFragment extends Fragment implements OnClickListener {
     private final String Qdburl = InterfaceTool.ULR + "user/qiandao";
     private TextView note;
     private final String infourl = InterfaceTool.ULR + "user/account";
-//	private AppConnect instance;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EventBus.getDefault().register(this);// 注事件总线
+        EventBus.getDefault().register(this);
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         activity = (NMainActivity) getActivity();
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-        view.findViewById(R.id.banner_layout).setOnClickListener(this);
+        View view = inflater.inflate(R.layout.fragment_home2, container, false);
+//        view.findViewById(R.id.banner_layout).setOnClickListener(this);
         view.findViewById(R.id.renwu_one).setOnClickListener(this);
         view.findViewById(R.id.renwu_two).setOnClickListener(this);
         view.findViewById(R.id.renwu_three).setOnClickListener(this);
         view.findViewById(R.id.renwu_four).setOnClickListener(this);
         view.findViewById(R.id.weishare).setOnClickListener(this);
         view.findViewById(R.id.weiguanzhu).setOnClickListener(this);
-        view.findViewById(R.id.g_image2).setOnClickListener(this);
-        view.findViewById(R.id.g_image3).setOnClickListener(this);
-        view.findViewById(R.id.g_image1).setOnClickListener(this);
+//        view.findViewById(R.id.g_image2).setOnClickListener(this);
+//        view.findViewById(R.id.g_image3).setOnClickListener(this);
+//        view.findViewById(R.id.g_image1).setOnClickListener(this);
         view.findViewById(R.id.g_image4).setOnClickListener(this);
         note = (TextView) view.findViewById(R.id.textView8);
-//		AppConfig config = new AppConfig();//大头鸟
-//		config.setCtx(getActivity());
-//		config.setClientUserID(activity.getuseid());
-//		instance = AppConnect.getInstance(config);
 
-//		if (activity.sp.getBoolean("islogin", false)){
-//			getinfo();
-//		}
-
+        initViewPager(view);
         return view;
     }
 
@@ -76,175 +72,49 @@ public class HomeFragment extends Fragment implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.banner_layout:
-//			if (activity.islogin()) {
-//				if ("".equals(activity.sp.getString("token", ""))) {
-//					activity.sp.edit().putBoolean("islogin", false).commit();
-//					activity.islogin();
-//					return;
-//				}
-//				activity.getdbaUrl();
-//			}
                 break;
             //有米
             case R.id.renwu_one:
-//			if (activity.islogin()) {
-//				if ("".equals(activity.sp.getString("token", ""))) {
-//					activity.sp.edit().putBoolean("islogin", false).commit();
-//					activity.islogin();
-//					return;
-//				}
-//				OffersManager.getInstance(getActivity()).setCustomUserId(
-//						UserPF.getInstance().getPhone());
-//				OffersManager.getInstance(getActivity())
-//						.setUsingServerCallBack(true);
-//				OffersManager.getInstance(getActivity()).showOffersWall();
-//			}
-                // 调用方式一：直接打开全屏积分墙
-                // OffersManager.getInstance(this).showOffersWall();
-
-                // 调用方式二：直接打开全屏积分墙，并且监听积分墙退出的事件onDestory
                 activity.showYoumiOffersWall();
                 break;
             case R.id.renwu_two:
                 activity.showYowOffersWall();
-//			ToastUtils.showToast(getActivity(),getString(R.string.tip_developing));
-                //大头鸟
-//			if (activity.islogin()) {
-//				if ("".equals(activity.sp.getString("token", ""))) {
-//					activity.sp.edit().putBoolean("islogin", false).commit();
-//					activity.islogin();
-//					return;
-//				}
-//				instance.ShowAdsOffers();
-//			}
                 break;
 
             case R.id.renwu_three:
                 ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
-//			if (activity.islogin()) {
-//				if ("".equals(activity.sp.getString("token", ""))) {
-//					activity.sp.edit().putBoolean("islogin", false).commit();
-//					activity.islogin();
-//					return;
-//				}
-//				QSdkManager.getsdkInstance().showOffers(this);
-//			}
                 break;
             case R.id.renwu_four:
                 ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
-//			if (activity.islogin()) {
-//				if ("".equals(activity.sp.getString("token", ""))) {
-//					activity.sp.edit().putBoolean("islogin", false).commit();
-//					activity.islogin();
-//					return;
-//				}
-//				YoManage.showOffer(activity, activity.getuseid());
-//			}
                 break;
             case R.id.weishare:
                 ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
-//			if (activity.islogin()) {
-//				if ("".equals(activity.sp.getString("token", ""))) {
-//					activity.sp.edit().putBoolean("islogin", false).commit();
-//					activity.islogin();
-//					return;
-//				}
-//				IVJAPI ivjapi = new IVJAPI();
-//				ivjapi.setAppid("ae7304f92345fc939e9edfb27c1d7305");
-//				ivjapi.setGameid(activity.getuseid());
-//				ivjapi.init(activity, new IVJAppidStatus() {
-//
-//					@Override
-//					public void appidStatus(int status) {
-//						switch (status) {
-//						case IVJAPI.VJ_ERROR:
-//							// 失败
-//							break;
-//						case IVJAPI.VJ_APPID_INVALID:
-//							// 广告位关闭
-//							break;
-//						case IVJAPI.VJ_SUCCESS:
-//							// 广告位打开
-//							startActivity(new Intent(activity,
-//									QdiActivity.class));
-//							break;
-//						case IVJAPI.VJ_CLOSE:
-//							// 界面被关闭
-//							break;
-//						case IVJAPI.VJ_ON_PRESENT:
-//							// 界面被展示出来
-//							break;
-//						}
-//					}
-//				});
-//			}
                 break;
             case R.id.weiguanzhu:
                 ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
                 break;
             //签到有礼
             case R.id.g_image2:
-//			if (activity.islogin()) {
-//				if ("".equals(activity.sp.getString("token", ""))) {
-//					activity.sp.edit().putBoolean("islogin", false).commit();
-//					activity.islogin();
-//					return;
-//				}
-//				getqdurl();
-//			}
                 break;
             //幸运大转盘
             case R.id.g_image3:
-//			if (activity.islogin()) {
-//				if ("".equals(activity.sp.getString("token", ""))) {
-//					activity.sp.edit().putBoolean("islogin", false).commit();
-//					activity.islogin();
-//					return;
-//				}
-//				Toast.makeText(getActivity(), "开发中...", Toast.LENGTH_SHORT)
-//						.show();
-//			}
                 break;
             //赚钱才是硬道理
             case R.id.g_image1:
-//			if (activity.islogin()) {
-//				if ("".equals(activity.sp.getString("token", ""))) {
-//					activity.sp.edit().putBoolean("islogin", false).commit();
-//					activity.islogin();
-//					return;
-//				}
-//				Toast.makeText(getActivity(), "开发中...", Toast.LENGTH_SHORT)
-//						.show();
-//			}
                 break;
             //支付宝/微信 支付
             case R.id.g_image4:
-                gotopay();
-//			if (activity.islogin()) {
-//				if ("".equals(activity.sp.getString("token", ""))) {
-//					activity.sp.edit().putBoolean("islogin", false).commit();
-//					activity.islogin();
-//					return;
-//				}
-//				Toast.makeText(getActivity(), "开发中...", Toast.LENGTH_SHORT)
-//						.show();
-//			}
+                // gotopay();
+                alipay();
                 break;
             case R.id.layout_qqkj:
-//			activity.mController.postShare(activity, SHARE_MEDIA.QZONE,
-//					new MysnspostListener());
                 break;
             case R.id.layout_wb:
-//			activity.mController.postShare(activity, SHARE_MEDIA.QQ,
-//					new MysnspostListener());
                 break;
             case R.id.layout_pyq:
-//			activity.mController.postShare(activity, SHARE_MEDIA.WEIXIN_CIRCLE,
-//					new MysnspostListener());
                 break;
         }
     }
-
 
     private void getqdurl() {
         Map params = new HashMap<String, String>();
@@ -304,9 +174,6 @@ public class HomeFragment extends Fragment implements OnClickListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//		if (requestCode == 10104) {
-//			Qiandao();
-//		}
     }
 
     private void Qiandao() {
@@ -395,10 +262,8 @@ public class HomeFragment extends Fragment implements OnClickListener {
     @Override
     public void onDestroy() {
         super.onDestroy();
-//		if (instance != null) {
-//			instance.close();
-//		}
-        EventBus.getDefault().unregister(this);// 取消事件总线
+        EventBus.getDefault().unregister(this);
+        mHandler.removeCallbacks(mRunnable);
     }
 
     private void gotopay() {
@@ -412,9 +277,9 @@ public class HomeFragment extends Fragment implements OnClickListener {
                          * If you use alwaysCallSingleChoiceCallback(), which is discussed below,
                          * returning false here won't allow the newly selected radio button to actually be selected.
                          **/
-                        if(which==0){
+                        if (which == 0) {
                             alipay();
-                        }else{
+                        } else {
                             weixinpay();
                         }
                         return true;
@@ -423,10 +288,95 @@ public class HomeFragment extends Fragment implements OnClickListener {
                 .positiveText(R.string.choose)
                 .show();
     }
-    private void alipay(){
-        startActivityForResult(new Intent(getActivity(), PayActivity.class),0);
-    }
-    private void weixinpay(){
 
+    private void alipay() {
+        startActivityForResult(new Intent(getActivity(), PayActivity.class), 0);
     }
+
+    private void weixinpay() {
+    }
+
+    /*******************************/
+
+    private ViewPager mViewPager;
+    private static final int[] IMG_IDS = new int[]{R.drawable.home_h1,
+            R.drawable.home_h2, R.drawable.home_h3};
+    private List<ImageView> mPageViews = new ArrayList<ImageView>();
+    private int mPosition;
+    private Handler mHandler = new Handler();
+    private long mLastTime;
+
+    private void initViewPager(View view) {
+        mViewPager = (ViewPager) view.findViewById(R.id.viewpager);
+        for (int i = 0; i < IMG_IDS.length; i++) {
+            ImageView imageView = new ImageView(getActivity());
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            imageView.setImageResource(IMG_IDS[i]);
+            mPageViews.add(imageView);
+        }
+        MyPageChangeListener listener = new MyPageChangeListener();
+        mViewPager.setOnPageChangeListener(listener);
+        PagerAdapter adapter = new MyPagerAdapter();
+        mViewPager.setAdapter(adapter);
+        mViewPager.setCurrentItem(1000);
+        mHandler.post(mRunnable);
+    }
+
+    class MyPagerAdapter extends PagerAdapter {
+        @Override
+        public int getCount() {
+            return Integer.MAX_VALUE;
+        }
+
+        @Override
+        public boolean isViewFromObject(View arg0, Object arg1) {
+            return arg0 == arg1;
+        }
+
+        @Override
+        public void destroyItem(View container, int position, Object object) {
+            int location = position % mPageViews.size();
+            View view = mPageViews.get(location);
+            ((ViewPager) container).removeView(view);
+        }
+
+        @Override
+        public Object instantiateItem(View container, int position) {
+            int location = position % mPageViews.size();
+            View child = mPageViews.get(location);
+            ((ViewPager) container).addView(child);
+            return child;
+        }
+    }
+
+    class MyPageChangeListener implements ViewPager.OnPageChangeListener {
+        @Override
+        public void onPageScrollStateChanged(int arg0) {
+        }
+
+        @Override
+        public void onPageScrolled(int arg0, float arg1, int arg2) {
+        }
+
+        @Override
+        public void onPageSelected(int arg0) {
+            mPosition = arg0;
+            mLastTime = System.currentTimeMillis();
+        }
+    }
+
+    private Runnable mRunnable = new Runnable() {
+        final int DELAYED = 3000;
+
+        @Override
+        public void run() {
+            long nowTime = System.currentTimeMillis();
+            if (nowTime - mLastTime > DELAYED) {
+                mPosition++;
+                mViewPager.setCurrentItem(mPosition);
+                mLastTime = System.currentTimeMillis();
+            }
+            mHandler.postDelayed(this, DELAYED);
+        }
+    };
 }
