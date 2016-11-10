@@ -43,11 +43,11 @@ public class MyApplication extends MultiDexApplication {
 				AsyncHttp.getInstance().init(INSTANCE);
 //				DataCache.getInstance().init(INSTANCE);
 				initImageLoader(getApplicationContext());
-				MyVolley.init(INSTANCE);
-				initCrashCatcher();
 				LogUtils.i("Application init finish, Time=" + (System.currentTimeMillis() - time));
 			}
 		}).start();
+		MyVolley.init(INSTANCE);
+		initCrashCatcher();
 
 	}
 	private void initCrashCatcher() {
