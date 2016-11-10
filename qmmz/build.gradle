@@ -65,7 +65,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile project(':pulltorefresh')
-
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.alibaba:fastjson:1.2.11'
@@ -75,4 +74,5 @@ dependencies {
     compile 'com.pgyersdk:sdk:2.4.0'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:multidex:1.0.1'
+    compile project(':vjlibrary')
 }

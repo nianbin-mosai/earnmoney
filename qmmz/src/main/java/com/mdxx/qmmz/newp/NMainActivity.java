@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -15,6 +16,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fingermobi.vj.activity.QdiActivity;
+import com.fingermobi.vj.listener.IVJAPI;
+import com.fingermobi.vj.listener.IVJAppidStatus;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.activity.BaseActivity;
 import com.mdxx.qmmz.common.Configs;
@@ -350,7 +354,7 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
         // 3.务必在下面的OffersManager.getInstance(this).onAppLaunch();代码之前声明使用服务器回调
 
          OffersManager.getInstance(this).setUsingServerCallBack(false);
-//         OffersManager.getInstance(this).setCustomUserId(UserPF.getInstance().getPhone());
+         OffersManager.getInstance(this).setCustomUserId(UserPF.getInstance().getPhone());
 
         // 如果使用积分广告，请务必调用积分广告的初始化接口:
         OffersManager.getInstance(this).onAppLaunch();
@@ -594,5 +598,34 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
     private void showYoumiPoints(){
         float pointsBalance = tj.zl.op.os.PointsManager.getInstance(this).queryPoints();
         LogUtils.i("有米积分余额：" + pointsBalance);
+    }
+    public void showFingermobiWall(){
+        IVJAPI ivjapi = new IVJAPI();
+        ivjapi.setAppid(Configs.FingermobiAppId);
+        ivjapi.setGameid(UserPF.getInstance().getPhone());
+        ivjapi.init(mContext, new IVJAppidStatus() {
+            @Override
+            public void appidStatus(int status) {
+                switch (status) {
+                    case IVJAPI.VJ_ERROR:
+                        // 失败
+                        break;
+                    case IVJAPI.VJ_APPID_INVALID:
+                        // 广告位关闭
+                        break;
+                    case IVJAPI.VJ_SUCCESS:
+                        // 广告位打开
+                        startActivity(new Intent(mContext,
+                                QdiActivity.class));
+                        break;
+                    case IVJAPI.VJ_CLOSE:
+                        // 界面被关闭
+                        break;
+                    case IVJAPI.VJ_ON_PRESENT:
+                        // 界面被展示出来
+                        break;
+                }
+            }
+        });
     }
 }

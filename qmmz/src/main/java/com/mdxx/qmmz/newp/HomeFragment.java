@@ -90,7 +90,8 @@ public class HomeFragment extends Fragment implements OnClickListener {
                 break;
 
             case R.id.renwu_three:
-                ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
+                activity.showFingermobiWall();
+//                ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
                 break;
             case R.id.renwu_four:
                 ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));

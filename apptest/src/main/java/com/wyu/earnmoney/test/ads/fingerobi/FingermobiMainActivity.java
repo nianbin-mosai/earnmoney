@@ -13,7 +13,7 @@ import com.fingermobi.vj.listener.IVJAppidStatus;
 import com.wyu.earnmoney.R;
 
 public class FingermobiMainActivity extends AppCompatActivity {
-    //Android半托管：cf3a1655135a131d69542fd2e088beb6
+    //Android半托管：ae7304f92345fc939e9edfb27c1d7305
     //Android全托管：3db531c723749a80de2d3686951fbf25
     private String tag = "MainActivity";
     @Override
