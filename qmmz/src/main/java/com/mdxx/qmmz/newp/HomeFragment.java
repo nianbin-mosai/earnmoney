@@ -4,9 +4,11 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,13 +16,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.Response;
 import com.mdxx.qmmz.EventMessage;
 import com.mdxx.qmmz.R;
+import com.mdxx.qmmz.activity.BaseActivity;
 import com.mdxx.qmmz.activity.WebActivity;
 import com.mdxx.qmmz.common.ToastUtils;
+import com.mdxx.qmmz.common.UserPF;
+import com.mdxx.qmmz.network.AppAction;
+import com.mdxx.qmmz.network.HttpResponse;
+import com.mdxx.qmmz.network.HttpResponseHandler;
 import com.mdxx.qmmz.newfeature.PayActivity;
+import com.mdxx.qmmz.newfeature.bean.WebViewConfigs;
 import com.mdxx.qmmz.utils.InterfaceTool;
 
 import org.json.JSONException;
@@ -34,6 +41,7 @@ import java.util.Map;
 import de.greenrobot.event.EventBus;
 
 public class HomeFragment extends Fragment implements OnClickListener {
+    private WebViewConfigs webViewConfigs = new WebViewConfigs();
     private NMainActivity activity;
     private Dialog sharetoqd_dialog;
     private final String Qdburl = InterfaceTool.ULR + "user/qiandao";
@@ -50,7 +58,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         activity = (NMainActivity) getActivity();
-        View view = inflater.inflate(R.layout.fragment_home2, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 //        view.findViewById(R.id.banner_layout).setOnClickListener(this);
         view.findViewById(R.id.renwu_one).setOnClickListener(this);
         view.findViewById(R.id.renwu_two).setOnClickListener(this);
@@ -71,8 +79,8 @@ public class HomeFragment extends Fragment implements OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.banner_layout:
-                break;
+//            case R.id.banner_layout:
+//                break;
             //有米
             case R.id.renwu_one:
                 activity.showYoumiOffersWall();
@@ -94,18 +102,17 @@ public class HomeFragment extends Fragment implements OnClickListener {
                 ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
                 break;
             //签到有礼
-            case R.id.g_image2:
-                break;
+//            case R.id.g_image2:
+//                break;
             //幸运大转盘
-            case R.id.g_image3:
-                break;
+//            case R.id.g_image3:
+//                break;
             //赚钱才是硬道理
-            case R.id.g_image1:
-                break;
+//            case R.id.g_image1:
+//                break;
             //支付宝/微信 支付
             case R.id.g_image4:
-                // gotopay();
-                alipay();
+                 gotopay();
                 break;
             case R.id.layout_qqkj:
                 break;
@@ -267,34 +274,13 @@ public class HomeFragment extends Fragment implements OnClickListener {
     }
 
     private void gotopay() {
-        new MaterialDialog.Builder(getActivity())
-                .title(R.string.title_pay_type)
-                .items(R.array.pay_items)
-                .itemsCallbackSingleChoice(-1, new MaterialDialog.ListCallbackSingleChoice() {
-                    @Override
-                    public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
-                        /**
-                         * If you use alwaysCallSingleChoiceCallback(), which is discussed below,
-                         * returning false here won't allow the newly selected radio button to actually be selected.
-                         **/
-                        if (which == 0) {
-                            alipay();
-                        } else {
-                            weixinpay();
-                        }
-                        return true;
-                    }
-                })
-                .positiveText(R.string.choose)
-                .show();
+        if(!TextUtils.isEmpty(webViewConfigs.pay)){
+            Intent intent = new Intent(getActivity(), PayActivity.class);
+            intent.putExtra("url",getFormatUrl(webViewConfigs.pay));
+            startActivityForResult(intent,0);
+        }
     }
 
-    private void alipay() {
-        startActivityForResult(new Intent(getActivity(), PayActivity.class), 0);
-    }
-
-    private void weixinpay() {
-    }
 
     /*******************************/
 
@@ -379,4 +365,32 @@ public class HomeFragment extends Fragment implements OnClickListener {
             mHandler.postDelayed(this, DELAYED);
         }
     };
+    private void getWebViewConfigs(){
+        AppAction.getWebViewConfigs(getActivity(), new HttpResponseHandler(getActivity(),HttpResponse.class,(BaseActivity)getActivity()) {
+            @Override
+            public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
+                try {
+                    JSONObject result = new JSONObject(responseString);
+                    JSONObject data = result.optJSONObject("data");
+                    webViewConfigs.exchange = data.optString("exchange");
+                    webViewConfigs.game = data.optString("game");
+                    webViewConfigs.member = data.optString("member");
+                    webViewConfigs.pay = data.optString("pay");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+        });
+    }
+    private String getFormatUrl(String url){
+        return String.format("%s?userid=%s&token=%s",url, UserPF.getInstance().getUserid(),UserPF.getInstance().getToken());
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getWebViewConfigs();
+    }
 }
