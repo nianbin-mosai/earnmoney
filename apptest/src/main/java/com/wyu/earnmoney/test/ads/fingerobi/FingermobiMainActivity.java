@@ -28,7 +28,6 @@ public class FingermobiMainActivity extends AppCompatActivity {
                 IVJAPI ivjapi = new IVJAPI();
                 ivjapi.setAppid("cf3a1655135a131d69542fd2e088beb6");
                 ivjapi.setGameid("gameid");
-
                 ivjapi.init(FingermobiMainActivity.this, new IVJAppidStatus() {
 
                     @Override

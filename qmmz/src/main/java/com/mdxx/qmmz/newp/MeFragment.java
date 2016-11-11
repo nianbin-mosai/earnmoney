@@ -68,6 +68,7 @@ public class MeFragment extends Fragment implements OnClickListener {
 		view.findViewById(R.id.rl_game_center).setOnClickListener(this);
 		view.findViewById(R.id.rl_vip).setOnClickListener(this);
 		view.findViewById(R.id.btn_logout).setOnClickListener(this);
+		view.findViewById(R.id.btn_share).setOnClickListener(this);
 		refresh_date = (ImageView) view.findViewById(R.id.refresh_date);
 		refresh_date.setOnClickListener(this);
 		loadAnimation = AnimationUtils.loadAnimation(activity,R.anim.refresh_date_anim);
@@ -150,8 +151,15 @@ public class MeFragment extends Fragment implements OnClickListener {
 			case  R.id.btn_logout:
 				logout();
 				break;
+			case R.id.btn_share:
+				share();
+				break;
 		}
 	}
+
+	private void share() {
+	}
+
 	private void logout(){
 		new MaterialDialog.Builder(getActivity()).title(getString(R.string.tip_logout))
 		.negativeText(getString(R.string.cancel))
@@ -237,7 +245,8 @@ public class MeFragment extends Fragment implements OnClickListener {
 
 		});
 	}
-	private String getFormatUrl(String url){
-		return String.format("%s?userid=%s&token=%s",url, UserPF.getInstance().getUserid(),UserPF.getInstance().getToken());
+
+	private String getFormatUrl(String url) {
+		return null;
 	}
 }

@@ -19,8 +19,8 @@
         <item>女</item>
     </string-array>
     <string-array name="pay_items">
-        <item>支付宝支付</item>
-        <item>微信支付</item>
+        <item>微信好友</item>
+        <item>朋友圈</item>
         </string-array>
 
 </resources>
