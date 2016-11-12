@@ -13,7 +13,7 @@ import com.tencent.mm.sdk.openapi.WXAPIFactory;
 
 import java.io.ByteArrayOutputStream;
 
-public class WeChatShareUtils {
+public class WeChatShareUtil {
 
     //从官网申请的合法appId
     public static final String APP_ID = "wx5c1c7f76886b182f";
@@ -22,18 +22,18 @@ public class WeChatShareUtils {
     //IWXAPI是第三方app和微信通信的openapi接口
     private IWXAPI api;
     private Context context;
-    public static WeChatShareUtils weChatShareUtils;
+    public static WeChatShareUtil weChatShareUtil;
 
-    public static WeChatShareUtils getInstance(Context context) {
-        if (weChatShareUtils == null) {
-            weChatShareUtils = new WeChatShareUtils();
+    public static WeChatShareUtil getInstance(Context context) {
+        if (weChatShareUtil == null) {
+            weChatShareUtil = new WeChatShareUtil();
         }
-        if (weChatShareUtils.api != null) {
-            weChatShareUtils.api.unregisterApp();
+        if (weChatShareUtil.api != null) {
+            weChatShareUtil.api.unregisterApp();
         }
-        weChatShareUtils.context = context;
-        weChatShareUtils.regToWx();
-        return weChatShareUtils;
+        weChatShareUtil.context = context;
+        weChatShareUtil.regToWx();
+        return weChatShareUtil;
     }
 
     //注册应用id到微信
@@ -124,19 +124,16 @@ public class WeChatShareUtils {
         return wxSdkVersion >= TIMELINE_SUPPORTED_VERSION;
     }
 
-    private byte[] bmpToByteArray(final Bitmap bmp, final boolean needRecycle) {
+    private byte[] bmpToByteArray(final Bitmap bitmap, final boolean needRecycle) {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.PNG, 100, output);
-        if (needRecycle) {
-            bmp.recycle();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, output);
+        int options = 100;
+        while (output.toByteArray().length > 32 && options != 10) {
+            output.reset(); //清空output
+            bitmap.compress(Bitmap.CompressFormat.JPEG, options, output);//这里压缩options%，把压缩后的数据存放到output中
+            options -= 10;
         }
-        byte[] result = output.toByteArray();
-        try {
-            output.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        return output.toByteArray();
 
-        return result;
     }
 }

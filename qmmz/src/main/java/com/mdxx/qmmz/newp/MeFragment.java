@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.android.volley.Response;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.activity.BaseActivity;
 import com.mdxx.qmmz.activity.GonggaoActivity;
@@ -34,9 +33,6 @@ import com.mdxx.qmmz.utils.InterfaceTool;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class MeFragment extends Fragment implements OnClickListener {
 	private WebViewConfigs webViewConfigs = new WebViewConfigs();
@@ -181,45 +177,6 @@ public class MeFragment extends Fragment implements OnClickListener {
 		})
 		.show();
 	}
-	private void getinfo() {
-		Map map = new HashMap<String, String>();
-		map.put("userid", activity.getuseid());
-		InterfaceTool.Networkrequest(activity, activity.queue, activity.m_pDialog, infourl,
-				new Response.Listener<JSONObject>() {
-
-					@Override
-					public void onResponse(JSONObject response) {
-						activity.closewaite();
-						try {
-							String code = response.getString("code");
-							if (code.equals("1")) {
-								JSONObject data = response
-										.getJSONObject("data");
-								String usemoney = data.getString("usemoney");
-								String jfusemoney = data
-										.getString("jfusemoney");
-								String headimgurl = data
-										.getString("headimgurl");
-								
-								name.setText(activity.getName());
-								userid.setText("ID:" + activity.getuseid());
-								residue.setText("余额(元):"+usemoney);
-								jifen.setText("积分:"+jfusemoney);
-								activity.sp.edit().putString("headimgurl", headimgurl)
-										.commit();
-								activity.imageLoader.displayImage(headimgurl, touxiang,
-										activity.options, null);
-							} else if (code.equals("9")) {
-								activity.sp.edit().putBoolean("islogin", false).commit();
-							} else {
-								activity.Toastshow(response.getString("msg"));
-							}
-						} catch (JSONException e) {
-							e.printStackTrace();
-						}
-					}
-				}, map);
-	}
 
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -246,7 +203,7 @@ public class MeFragment extends Fragment implements OnClickListener {
 		});
 	}
 
-	private String getFormatUrl(String url) {
-		return null;
+	private String getFormatUrl(String url){
+		return String.format("%s?userid=%s&token=%s",url, UserPF.getInstance().getUserid(),UserPF.getInstance().getToken());
 	}
 }

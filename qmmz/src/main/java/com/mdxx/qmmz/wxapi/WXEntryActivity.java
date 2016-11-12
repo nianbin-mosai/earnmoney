@@ -5,7 +5,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.mdxx.qmmz.common.WeChatShareUtils;
+import com.mdxx.qmmz.common.WeChatShareUtil;
 import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;
 import com.tencent.mm.sdk.openapi.IWXAPI;
@@ -17,7 +17,7 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        IWXAPI api = WXAPIFactory.createWXAPI(this, WeChatShareUtils.APP_ID, false);
+        IWXAPI api = WXAPIFactory.createWXAPI(this, WeChatShareUtil.APP_ID, true);
         api.handleIntent(getIntent(),this);
         finish();
     }

@@ -1,7 +1,9 @@
 package com.mdxx.qmmz.newp;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -24,9 +26,10 @@ import com.mdxx.qmmz.EventMessage;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.activity.BaseActivity;
 import com.mdxx.qmmz.activity.WebActivity;
+import com.mdxx.qmmz.common.LogUtils;
 import com.mdxx.qmmz.common.ToastUtils;
 import com.mdxx.qmmz.common.UserPF;
-import com.mdxx.qmmz.common.WeChatShareUtils;
+import com.mdxx.qmmz.common.WeChatShareUtil;
 import com.mdxx.qmmz.network.AppAction;
 import com.mdxx.qmmz.network.HttpResponse;
 import com.mdxx.qmmz.network.HttpResponseHandler;
@@ -103,6 +106,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
                 break;
             case R.id.weishare:
                 goToShare();
+//                share();
                 break;
             case R.id.weiguanzhu:
                 ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
@@ -119,6 +123,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
             //支付宝/微信 支付
             case R.id.g_image4:
                  gotopay();
+//                share();
                 break;
             case R.id.layout_qqkj:
                 break;
@@ -397,38 +402,52 @@ public class HomeFragment extends Fragment implements OnClickListener {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        weChatShareUtils = WeChatShareUtils.getInstance(getActivity());
+        LogUtils.i("onViewCreated");
+        weChatShareUtil = WeChatShareUtil.getInstance(getActivity());
         getWebViewConfigs();
     }
 
-    private WeChatShareUtils weChatShareUtils;
+    private WeChatShareUtil weChatShareUtil;
 
     private void share(){
         String sessionTitle = "分享";
         String sessionDescription = getString(R.string.app_name)+"下载链接";
         String sessionUrl = "https://www.pgyer.com/bh1Q";
         Bitmap sessionThumb = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
-        boolean result = weChatShareUtils.shareUrl(sessionUrl, sessionTitle, sessionThumb, sessionDescription, SendMessageToWX.Req.WXSceneSession);
-        if (!result) {
-            ToastUtils.showToast(getActivity(),getActivity().getString(R.string.no_wechat));
-        }
+        boolean result = weChatShareUtil.shareUrl(sessionUrl, sessionTitle, sessionThumb, sessionDescription, SendMessageToWX.Req.WXSceneSession);
+//        if (!result) {
+//            ToastUtils.showToast(getActivity(),getActivity().getString(R.string.no_wechat));
+//        }
     }
     private void shareTimeline(){
-        if (weChatShareUtils.isSupportWX()) {
-            String title = "分享";
+        if (weChatShareUtil.isSupportWX()) {
+            String title = getString(R.string.app_name)+"下载链接";
             String description = getString(R.string.app_name)+"下载链接";
             String url = "https://www.pgyer.com/bh1Q";
             Bitmap thumb = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
-            boolean result = weChatShareUtils.shareUrl(url, title, thumb, description, SendMessageToWX.Req.WXSceneTimeline);
-            if (!result) {
-                ToastUtils.showToast(getActivity(),getActivity().getString(R.string.no_wechat));
-            }
+            boolean result = weChatShareUtil.shareUrl(url, title, thumb, description, SendMessageToWX.Req.WXSceneTimeline);
+//            if (!result) {
+//                ToastUtils.showToast(getActivity(),getActivity().getString(R.string.no_wechat));
+//            }
         } else {
             ToastUtils.showToast(getActivity(),"手机上微信版本不支持分享到朋友圈");
         }
 
     }
+    private boolean isWebchatAvaliable(Context context) {
+        //检测手机上是否安装了微信
+        try {
+            context.getPackageManager().getPackageInfo("com.tencent.mm", PackageManager.GET_ACTIVITIES);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
     private void goToShare(){
+        if (!isWebchatAvaliable(getActivity())) {
+            ToastUtils.showToast(getActivity(),"手机没有安装微信");
+            return;
+        }
             new MaterialDialog.Builder(getActivity())
                     .title("分享方式")
                     .items(R.array.pay_items)

@@ -1,13 +1,5 @@
 package com.mdxx.qmmz.newp;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -27,6 +19,14 @@ import com.mdxx.qmmz.Paihang;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.utils.InterfaceTool;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class RankFragment extends Fragment implements OnClickListener {
 	private PullToRefreshListView pullListView;
 	private ListView mListView;
@@ -44,7 +44,7 @@ public class RankFragment extends Fragment implements OnClickListener {
 	private TextView yao;
 	private TextView zhouyouxiao;
 	private TextView zhourenwu;
-	private String paihangurl = InterfaceTool.ULR + "chart/index";
+	private String paihangurl = "http://wifiapp.angles1131.com/" + "chart/index";
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

@@ -53,6 +53,12 @@ public abstract class BaseWebViewActivity extends BaseActivity {
                 }
             }
         });
+        findViewById(R.id.rl_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                back();
+            }
+        });
         handleWebViewUrl();
 
     }

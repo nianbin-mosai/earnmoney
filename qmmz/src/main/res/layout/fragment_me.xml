@@ -392,6 +392,7 @@
     android:id="@+id/btn_logout"/>
 
         <Button
+            android:visibility="gone"
             android:text="@string/share"
             android:layout_margin="5dp"
             android:layout_below="@+id/btn_logout"
