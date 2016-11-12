@@ -1,5 +1,9 @@
 [
     {
+        "merged": "D:\\GitHub\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-land\\vj_activity_half_myincome.xml",
+        "source": "D:\\GitHub\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout-land\\vj_activity_half_myincome.xml"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-land\\vj_activity_half_myincome.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout-land\\vj_activity_half_myincome.xml"
     },
@@ -20,8 +24,24 @@
         "source": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout-land\\vj_activity_tixianz.xml"
     },
     {
+        "merged": "D:\\GitHub\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-land\\vj_activity_qdi.xml",
+        "source": "D:\\GitHub\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout-land\\vj_activity_qdi.xml"
+    },
+    {
+        "merged": "D:\\GitHub\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-land\\vj_activity_tixianp.xml",
+        "source": "D:\\GitHub\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout-land\\vj_activity_tixianp.xml"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-land\\vj_activity_withdrawal.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout-land\\vj_activity_withdrawal.xml"
+    },
+    {
+        "merged": "D:\\GitHub\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-land\\vj_activity_withdrawal.xml",
+        "source": "D:\\GitHub\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout-land\\vj_activity_withdrawal.xml"
+    },
+    {
+        "merged": "D:\\GitHub\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-land\\vj_activity_tixianz.xml",
+        "source": "D:\\GitHub\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout-land\\vj_activity_tixianz.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-land\\vj_activity_myincome.xml",
@@ -32,7 +52,23 @@
         "source": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout-land\\vj_activity_tixianp.xml"
     },
     {
+        "merged": "D:\\GitHub\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-land\\vj_activity_userinfo.xml",
+        "source": "D:\\GitHub\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout-land\\vj_activity_userinfo.xml"
+    },
+    {
+        "merged": "D:\\GitHub\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-land\\vj_activity_tixianq.xml",
+        "source": "D:\\GitHub\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout-land\\vj_activity_tixianq.xml"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-land\\vj_activity_taskinfo.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\github\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout-land\\vj_activity_taskinfo.xml"
+    },
+    {
+        "merged": "D:\\GitHub\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-land\\vj_activity_myincome.xml",
+        "source": "D:\\GitHub\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout-land\\vj_activity_myincome.xml"
+    },
+    {
+        "merged": "D:\\GitHub\\earnmoney\\vjlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-land\\vj_activity_taskinfo.xml",
+        "source": "D:\\GitHub\\earnmoney\\vjlibrary\\build\\intermediates\\bundles\\debug\\res\\layout-land\\vj_activity_taskinfo.xml"
     }
 ]
