@@ -2,6 +2,8 @@ package com.mdxx.qmmz.newp;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -16,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.Response;
 import com.mdxx.qmmz.EventMessage;
 import com.mdxx.qmmz.R;
@@ -23,12 +26,14 @@ import com.mdxx.qmmz.activity.BaseActivity;
 import com.mdxx.qmmz.activity.WebActivity;
 import com.mdxx.qmmz.common.ToastUtils;
 import com.mdxx.qmmz.common.UserPF;
+import com.mdxx.qmmz.common.WeChatShareUtils;
 import com.mdxx.qmmz.network.AppAction;
 import com.mdxx.qmmz.network.HttpResponse;
 import com.mdxx.qmmz.network.HttpResponseHandler;
 import com.mdxx.qmmz.newfeature.PayActivity;
 import com.mdxx.qmmz.newfeature.bean.WebViewConfigs;
 import com.mdxx.qmmz.utils.InterfaceTool;
+import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -97,7 +102,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
                 ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
                 break;
             case R.id.weishare:
-                ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
+                goToShare();
                 break;
             case R.id.weiguanzhu:
                 ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
@@ -394,4 +399,59 @@ public class HomeFragment extends Fragment implements OnClickListener {
         super.onViewCreated(view, savedInstanceState);
         getWebViewConfigs();
     }
+
+    private WeChatShareUtils weChatShareUtils;
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        weChatShareUtils = WeChatShareUtils.getInstance(getActivity());
+    }
+
+    private void share(){
+        String sessionTitle = "分享";
+        String sessionDescription = getString(R.string.app_name)+"下载链接";
+        String sessionUrl = "https://www.pgyer.com/bh1Q";
+        Bitmap sessionThumb = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+        boolean result = weChatShareUtils.shareUrl(sessionUrl, sessionTitle, sessionThumb, sessionDescription, SendMessageToWX.Req.WXSceneSession);
+        if (!result) {
+            ToastUtils.showToast(getActivity(),getActivity().getString(R.string.no_wechat));
+        }
+    }
+    private void shareTimeline(){
+        if (weChatShareUtils.isSupportWX()) {
+            String title = "分享";
+            String description = getString(R.string.app_name)+"下载链接";
+            String url = "https://www.pgyer.com/bh1Q";
+            Bitmap thumb = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+            boolean result = weChatShareUtils.shareUrl(url, title, thumb, description, SendMessageToWX.Req.WXSceneTimeline);
+            if (!result) {
+                ToastUtils.showToast(getActivity(),getActivity().getString(R.string.no_wechat));
+            }
+        } else {
+            ToastUtils.showToast(getActivity(),"手机上微信版本不支持分享到朋友圈");
+        }
+
+    }
+    private void goToShare(){
+            new MaterialDialog.Builder(getActivity())
+                    .title("分享方式")
+                    .items(R.array.pay_items)
+                    .itemsCallbackSingleChoice(-1, new MaterialDialog.ListCallbackSingleChoice() {
+                        @Override
+                        public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+                            /**
+                             * If you use alwaysCallSingleChoiceCallback(), which is discussed below,
+                             * returning false here won't allow the newly selected radio button to actually be selected.
+                             **/
+                            if(which==0){
+                                share();
+                            }else{
+                                shareTimeline();
+                            }
+                            return true;
+                        }
+                    })
+                    .positiveText(R.string.choose)
+                    .show();
+        }
 }

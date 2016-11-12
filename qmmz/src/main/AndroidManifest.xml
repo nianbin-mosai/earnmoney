@@ -220,6 +220,10 @@
             android:name="PGYER_APPID"
             android:value="284e6e764acad16c5d2278cd511632ee" >
         </meta-data>
+
+
+        <activity android:name=".wxapi.WXEntryActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

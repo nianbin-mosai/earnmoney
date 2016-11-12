@@ -2,7 +2,7 @@
 <resources>
 
     <string name="vj_app_name">ifalemeSDK</string>
-    <string name="app_name">全民秒赚</string>
+    <string name="app_name">杰臣诺</string>
     <string name="zhushi">注：邀请好友安装并微信登录，即为有效邀请。</string>
     <string name="Qqun">474131396</string>
     <string name="Qkefu">79472660</string>
@@ -37,5 +37,7 @@
     <string name="logout">退出登陆</string>
     <string name="cancel">取消</string>
     <string name="tip_logout">是否退出登陆？</string>
+    <string name="share">分享</string>
+    <string name="no_wechat">没有检测到微信</string>
 
 </resources>

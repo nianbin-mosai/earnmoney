@@ -281,12 +281,12 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
 
                     @Override
                     public void onUpdateAvailable(final String result) {
-
+                        LogUtils.i("onUpdateAvailable");
                         // 将新版本信息封装到AppBean中
                         final AppBean appBean = getAppBeanFromString(result);
                         new AlertDialog.Builder(mContext)
                                 .setTitle("更新")
-                                .setMessage("")
+                                .setMessage("检测到新版本:"+appBean.getVersionName()+",是否下载更新?")
                                 .setNegativeButton(
                                         "确定",
                                         new DialogInterface.OnClickListener() {
@@ -304,6 +304,7 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
 
                     @Override
                     public void onNoUpdateAvailable() {
+                        LogUtils.i("onNoUpdateAvailable");
                     }
                 });
     }
@@ -628,4 +629,6 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
             }
         });
     }
+
+
 }

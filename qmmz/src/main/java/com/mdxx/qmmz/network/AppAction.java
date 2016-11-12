@@ -48,7 +48,7 @@ public class AppAction {
     public static void getWebViewConfigs(Context context,HttpResponseHandler responseHandler){
         RequestParams params = new RequestParams();
         params.put("token", UserPF.getInstance().getToken());
-        params.put("userid",GlobalUtils.getMacAddress(context));
+        params.put("userid",UserPF.getInstance().getUserid());
         AsyncHttp.getInstance().execute(context,getUrl("Tool/webview"),params,AsyncHttp.METHOD_GET,responseHandler);
     }
 }
