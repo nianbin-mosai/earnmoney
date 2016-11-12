@@ -1,6 +1,7 @@
 package com.mdxx.qmmz.common;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -22,6 +23,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.mdxx.qmmz.R;
+
+import java.lang.reflect.Field;
 
 
 public class ViewUtil {
@@ -382,5 +385,24 @@ public class ViewUtil {
             }
         }});
     }
-
-}
+    public static void hideDialog(Dialog dialog){
+        try {
+            //不关闭
+            Field field = dialog.getClass().getSuperclass().getDeclaredField("mShowing");
+            field.setAccessible(true);
+            field.set(dialog, false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void showDialog(Dialog dialog){
+        try {
+            Field field = dialog.getClass().getSuperclass().getDeclaredField("mShowing");
+            field.setAccessible(true);
+            field.set(dialog, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        dialog.dismiss();
+    }
+    }

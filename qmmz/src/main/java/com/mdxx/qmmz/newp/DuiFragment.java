@@ -23,6 +23,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.Reward;
 import com.mdxx.qmmz.common.ToastUtils;
+import com.mdxx.qmmz.common.ViewUtil;
 import com.mdxx.qmmz.utils.InterfaceTool;
 
 import org.json.JSONArray;
@@ -215,13 +216,13 @@ public class DuiFragment extends Fragment implements OnClickListener {
                 builder.onNegative(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        dialog.dismiss();
+                        ViewUtil.hideDialog(dialog);
+//                        dialog.dismiss();
                     }
                 });
                 builder.onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        dialog.dismiss();
                         View cv = dialog.getCustomView();
                         EditText phoneEditText = (EditText) cv.findViewById(R.id.phoneEditText);
                         EditText scoreEditText = (EditText) cv.findViewById(R.id.scoreEditText);
@@ -230,14 +231,19 @@ public class DuiFragment extends Fragment implements OnClickListener {
                         // 检查手机号
                         if (!isMobileNO(phone)) {
                             ToastUtils.showToast(getActivity().getApplicationContext(), "请输入正确的手机号");
+                            ViewUtil.showDialog(dialog);
                             return;
                         }
                         if (!isGoodScore(score)) {
                             ToastUtils.showToast(getActivity().getApplicationContext(), "积分值必须是正整数");
+                            ViewUtil.showDialog(dialog);
                             return;
                         }
                         // 检查积分值
+                        ViewUtil.hideDialog(dialog);
                         duiScore(phone, score);
+
+
                     }
                 });
                 builder.show();
