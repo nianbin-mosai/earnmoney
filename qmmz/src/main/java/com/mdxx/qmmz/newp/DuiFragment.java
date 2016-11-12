@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.Reward;
+import com.mdxx.qmmz.common.ToastUtils;
 import com.mdxx.qmmz.utils.InterfaceTool;
 
 import org.json.JSONArray;
@@ -30,6 +32,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DuiFragment extends Fragment implements OnClickListener {
     private PullToRefreshListView pull_reward;
@@ -203,18 +207,11 @@ public class DuiFragment extends Fragment implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.duihuan_layout:
-//			if (activity.islogin()) {
-//				if ("".equals(activity.sp.getString("token", ""))) {
-//					activity.sp.edit().putBoolean("islogin", false).commit();
-//					activity.islogin();
-//					return;
-//				}
-//				activity.getdbaUrl();
-//			}
                 MaterialDialog.Builder builder = new MaterialDialog.Builder(getActivity());
                 builder.title("请输入手机号和兑换的积分数");
                 builder.negativeText("取消");
                 builder.positiveText("确定");
+                builder.customView(R.layout.dialog_dui, false);
                 builder.onNegative(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
@@ -225,11 +222,43 @@ public class DuiFragment extends Fragment implements OnClickListener {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                         dialog.dismiss();
+                        View cv = dialog.getCustomView();
+                        EditText phoneEditText = (EditText) cv.findViewById(R.id.phoneEditText);
+                        EditText scoreEditText = (EditText) cv.findViewById(R.id.scoreEditText);
+                        String phone = phoneEditText.getText().toString();
+                        String score = scoreEditText.getText().toString();
+                        // 检查手机号
+                        if (!isMobileNO(phone)) {
+                            ToastUtils.showToast(getActivity().getApplicationContext(), "请输入正确的手机号");
+                            return;
+                        }
+                        if (!isGoodScore(score)) {
+                            ToastUtils.showToast(getActivity().getApplicationContext(), "积分值必须是正整数");
+                            return;
+                        }
+                        // 检查积分值
+                        duiScore(phone, score);
                     }
                 });
-                builder.customView(R.layout.dialog_dui, false);
                 builder.show();
                 break;
         }
+    }
+
+    private boolean isMobileNO(String mobiles) {
+        Pattern p = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
+        Matcher m = p.matcher(mobiles);
+        return m.matches();
+    }
+
+    private boolean isGoodScore(String mobiles) {
+        Pattern p = Pattern.compile("^[0-9]*[1-9][0-9]*$");
+        Matcher m = p.matcher(mobiles);
+        return m.matches();
+    }
+
+    private void duiScore(String phone, String score) {
+        // 兑换
+        ToastUtils.showToast(getActivity().getApplicationContext(), phone + " : " + score);
     }
 }
