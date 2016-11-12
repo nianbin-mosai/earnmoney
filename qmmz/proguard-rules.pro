@@ -167,3 +167,7 @@
 -keep class com.baidu.mobads.appoffers.** {
 public *;
 }
+
+-libraryjars libs/pgyer_sdk_x.x.jar
+-dontwarn com.pgyersdk.**
+-keep class com.pgyersdk.** { *; }

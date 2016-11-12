@@ -23,7 +23,11 @@ import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.activity.BaseActivity;
 import com.mdxx.qmmz.common.Configs;
 import com.mdxx.qmmz.common.LogUtils;
+import com.mdxx.qmmz.common.ToastUtils;
 import com.mdxx.qmmz.common.UserPF;
+import com.mdxx.qmmz.network.AppAction;
+import com.mdxx.qmmz.network.HttpResponse;
+import com.mdxx.qmmz.network.HttpResponseHandler;
 import com.mdxx.qmmz.utils.InterfaceTool;
 import com.pgyersdk.javabean.AppBean;
 import com.pgyersdk.update.PgyUpdateManager;
@@ -34,6 +38,7 @@ import com.yow.YoManage;
 import java.util.ArrayList;
 import java.util.List;
 
+import cz.msebera.android.httpclient.Header;
 import tj.zl.op.AdManager;
 import tj.zl.op.listener.Interface_ActivityListener;
 import tj.zl.op.onlineconfig.OnlineConfigCallBack;
@@ -439,12 +444,26 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
         if (list == null || list.isEmpty()) {
             return;
         }
+        int points = 0;
         // 遍历订单并且toast提示
         for (int i = 0; i < list.size(); ++i) {
             EarnPointsOrderInfo info = list.get(i);
             LogUtils.i("onPointEarn:"+info.getMessage());
             Toast.makeText(this, info.getMessage(), Toast.LENGTH_LONG).show();
+            points+=info.getPoints();
         }
+        final int fPoint = points;
+        AppAction.addPoint(mContext, points, new HttpResponseHandler(mContext,HttpResponse.class) {
+            @Override
+            public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
+                ToastUtils.showToast(mContext,"积分已添加至服务器:"+ fPoint);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                ToastUtils.showToast(mContext,"积分添加至服务器失败");
+            }
+        });
     }
     public void showYowOffersWall(){
         YoManage.showOffer(this, UserPF.getInstance().getPhone());
@@ -553,12 +572,23 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
 
         //奖励用户 虚拟币
         @Override
-        public void givePointResult(int points, int totalPoints) {
+        public void givePointResult(final int points, int totalPoints) {
             LogUtils.i("givePointResult points=" + points + "#totalPoints=" + totalPoints);
             // points 奖励积分数
             // totalPoints 当前总积分数
             showToast("完成任务获得积分：" + points + "#当前总积分=" + totalPoints);
             showYowPoints();
+            AppAction.addPoint(mContext, points, new HttpResponseHandler(mContext,HttpResponse.class) {
+                @Override
+                public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
+                    ToastUtils.showToast(mContext,"积分已添加至服务器:"+ points);
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                    ToastUtils.showToast(mContext,"积分添加至服务器失败");
+                }
+            });
         }
 
 
