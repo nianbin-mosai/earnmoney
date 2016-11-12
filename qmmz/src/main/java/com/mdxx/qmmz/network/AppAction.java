@@ -51,4 +51,11 @@ public class AppAction {
         params.put("userid",UserPF.getInstance().getUserid());
         AsyncHttp.getInstance().execute(context,getUrl("Tool/webview"),params,AsyncHttp.METHOD_GET,responseHandler);
     }
+    public static void addPoint(Context context,int point,HttpResponseHandler responseHandler){
+        RequestParams params = new RequestParams();
+        params.put("token", UserPF.getInstance().getToken());
+        params.put("userid",UserPF.getInstance().getUserid());
+        params.put("points",point);
+        AsyncHttp.getInstance().execute(context,getUrl("order/add_points"),params,AsyncHttp.METHOD_POST,responseHandler);
+    }
 }

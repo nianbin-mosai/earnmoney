@@ -397,15 +397,11 @@ public class HomeFragment extends Fragment implements OnClickListener {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        weChatShareUtils = WeChatShareUtils.getInstance(getActivity());
         getWebViewConfigs();
     }
 
     private WeChatShareUtils weChatShareUtils;
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        weChatShareUtils = WeChatShareUtils.getInstance(getActivity());
-    }
 
     private void share(){
         String sessionTitle = "分享";
