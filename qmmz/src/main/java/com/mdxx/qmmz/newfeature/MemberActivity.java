@@ -2,7 +2,7 @@ package com.mdxx.qmmz.newfeature;
 
 import com.mdxx.qmmz.R;
 
-public class PayActivity extends BaseWebViewActivity {
+public class MemberActivity extends BaseWebViewActivity {
 
     @Override
     protected String setMtitle() {

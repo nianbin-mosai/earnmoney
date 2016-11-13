@@ -4,13 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.mdxx.qmmz.MyApplication;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.common.UserPF;
+import com.mdxx.qmmz.network.AppAction;
+import com.mdxx.qmmz.network.HttpResponse;
+import com.mdxx.qmmz.network.HttpResponseHandler;
 import com.mdxx.qmmz.newfeature.LoginActivity;
 import com.mdxx.qmmz.utils.BitMapUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class HelloActivity extends BaseActivity {
 
@@ -48,16 +55,40 @@ public class HelloActivity extends BaseActivity {
 				 
 		 getApplicationContext(), R.drawable.ic_hello_bg));
 
+		getDomain();
 
 
-		if (UserPF.getInstance().isFirstRunning()) {
-			mHandler.sendEmptyMessageDelayed(GO_GUIDE, SPLASH_DELAY_MILLIS);
-		} else {
-			mHandler.sendEmptyMessageDelayed(GO_HOME, SPLASH_DELAY_MILLIS);
-		}
 
 	}
+		private void getDomain() {
+			AppAction.getDomain(mContext, new HttpResponseHandler(mContext,HttpResponse.class,HelloActivity.this) {
+				@Override
+				public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
+					try {
+						String domain = new JSONObject(responseString).optJSONObject("data").optString("API_DOMAIN");
+						if(!TextUtils.isEmpty(domain)){
+							AppAction.baseUrl = "http://"+domain;
+						}
+						if (UserPF.getInstance().isFirstRunning()) {
+							mHandler.sendEmptyMessageDelayed(GO_GUIDE, SPLASH_DELAY_MILLIS);
+						} else {
+							mHandler.sendEmptyMessageDelayed(GO_HOME, SPLASH_DELAY_MILLIS);
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
 
+				@Override
+				public void onResponeseFail(int statusCode, HttpResponse response, String responseString) {
+					if (UserPF.getInstance().isFirstRunning()) {
+						mHandler.sendEmptyMessageDelayed(GO_GUIDE, SPLASH_DELAY_MILLIS);
+					} else {
+						mHandler.sendEmptyMessageDelayed(GO_HOME, SPLASH_DELAY_MILLIS);
+					}
+				}
+			});
+		}
 	private void goLogin() {
 		Intent intent = new Intent(HelloActivity.this, LoginActivity.class);
 		HelloActivity.this.startActivity(intent);

@@ -138,4 +138,15 @@
 
     </style>
 
+    <style name="RelativeLayout.LoginFrame" parent="Base.Layout">
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:paddingBottom">@dimen/standard_padding_large</item>
+    </style>
+    <style name="TextView.LoginLabel" parent="Base.TextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">@dimen/login_label_margin_top</item>
+    </style>
 </resources>

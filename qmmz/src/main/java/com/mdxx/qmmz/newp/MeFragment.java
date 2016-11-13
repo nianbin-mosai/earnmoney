@@ -27,6 +27,7 @@ import com.mdxx.qmmz.network.AppAction;
 import com.mdxx.qmmz.network.HttpResponse;
 import com.mdxx.qmmz.network.HttpResponseHandler;
 import com.mdxx.qmmz.newfeature.LoginActivity;
+import com.mdxx.qmmz.newfeature.MemberActivity;
 import com.mdxx.qmmz.newfeature.PayActivity;
 import com.mdxx.qmmz.newfeature.bean.WebViewConfigs;
 import com.mdxx.qmmz.utils.InterfaceTool;
@@ -64,7 +65,7 @@ public class MeFragment extends Fragment implements OnClickListener {
 		view.findViewById(R.id.rl_game_center).setOnClickListener(this);
 		view.findViewById(R.id.rl_vip).setOnClickListener(this);
 		view.findViewById(R.id.btn_logout).setOnClickListener(this);
-		view.findViewById(R.id.btn_share).setOnClickListener(this);
+		view.findViewById(R.id.btn_member).setOnClickListener(this);
 		refresh_date = (ImageView) view.findViewById(R.id.refresh_date);
 		refresh_date.setOnClickListener(this);
 		loadAnimation = AnimationUtils.loadAnimation(activity,R.anim.refresh_date_anim);
@@ -147,8 +148,13 @@ public class MeFragment extends Fragment implements OnClickListener {
 			case  R.id.btn_logout:
 				logout();
 				break;
-			case R.id.btn_share:
-				share();
+			case R.id.btn_member:
+//				share();
+				if(!TextUtils.isEmpty(webViewConfigs.member)){
+					Intent intent = new Intent(getActivity(), MemberActivity.class);
+					intent.putExtra("url",getFormatUrl(webViewConfigs.member));
+					startActivityForResult(intent,0);
+				}
 				break;
 		}
 	}

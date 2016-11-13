@@ -59,6 +59,7 @@ public abstract class BaseWebViewActivity extends BaseActivity {
                 back();
             }
         });
+        findViewById(R.id.rl_header).setVisibility(showHeader()?View.VISIBLE:View.GONE);
         handleWebViewUrl();
 
     }
@@ -96,7 +97,7 @@ public abstract class BaseWebViewActivity extends BaseActivity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 Uri uri = Uri.parse(url);
-                if (uri.getScheme().equals("alipays")) {
+                if (uri.getScheme().equals(setScheme())) {
                     try {
                         Intent intent = Intent.parseUri(url,
                                 Intent.URI_INTENT_SCHEME);
@@ -120,5 +121,11 @@ public abstract class BaseWebViewActivity extends BaseActivity {
             }
         });
         webView.loadUrl(Configs.alipayUrl);
+    }
+    protected boolean showHeader(){
+        return false;
+    }
+    protected String setScheme(){
+        return null;
     }
 }

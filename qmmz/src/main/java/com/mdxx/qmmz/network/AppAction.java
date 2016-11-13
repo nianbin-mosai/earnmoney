@@ -13,7 +13,7 @@ import com.mdxx.qmmz.common.UserPF;
  * 邮箱：nianbin@mosainet.com
  */
 public class AppAction {
-    public static final String baseUrl = "http://wapi.angles1131.com/index.php/webapi/";
+    public  static String baseUrl = "http://wapi.angles1131.com/index.php/webapi/";
     private static String  getUrl(String typeUrl){
         return baseUrl + typeUrl;
     }
@@ -57,5 +57,17 @@ public class AppAction {
         params.put("userid",UserPF.getInstance().getUserid());
         params.put("points",point);
         AsyncHttp.getInstance().execute(context,getUrl("order/add_points"),params,AsyncHttp.METHOD_POST,responseHandler);
+    }
+    public static void getDomain(Context context,HttpResponseHandler responseHandler){
+        AsyncHttp.getInstance().execute(context,"http://wapi.yunxinwifi.cc/index.php/webapi/config/config",AsyncHttp.METHOD_POST,responseHandler,false);
+    }
+    public static void forgetPassword(Context context,String mobile,String password,String code,String log_id,HttpResponseHandler responseHandler){
+        RequestParams params = new RequestParams();
+        params.put("mobile",mobile);
+        params.put("password", password);
+        params.put("code",code);
+        params.put("log_id",log_id);
+        AsyncHttp.getInstance().execute(context,getUrl("User/password_find"),params,AsyncHttp.METHOD_POST,responseHandler);
+
     }
 }

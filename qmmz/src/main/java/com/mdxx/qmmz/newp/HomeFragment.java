@@ -34,6 +34,7 @@ import com.mdxx.qmmz.network.AppAction;
 import com.mdxx.qmmz.network.HttpResponse;
 import com.mdxx.qmmz.network.HttpResponseHandler;
 import com.mdxx.qmmz.newfeature.PayActivity;
+import com.mdxx.qmmz.newfeature.GameCenterActivity;
 import com.mdxx.qmmz.newfeature.bean.WebViewConfigs;
 import com.mdxx.qmmz.utils.InterfaceTool;
 import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
@@ -74,6 +75,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
         view.findViewById(R.id.renwu_four).setOnClickListener(this);
         view.findViewById(R.id.weishare).setOnClickListener(this);
         view.findViewById(R.id.weiguanzhu).setOnClickListener(this);
+        view.findViewById(R.id.iv_game_center).setOnClickListener(this);
 //        view.findViewById(R.id.g_image2).setOnClickListener(this);
 //        view.findViewById(R.id.g_image3).setOnClickListener(this);
 //        view.findViewById(R.id.g_image1).setOnClickListener(this);
@@ -98,8 +100,8 @@ public class HomeFragment extends Fragment implements OnClickListener {
                 break;
 
             case R.id.renwu_three:
-                activity.showFingermobiWall();
-//                ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
+//                activity.showFingermobiWall();
+                ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
                 break;
             case R.id.renwu_four:
                 ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
@@ -130,6 +132,13 @@ public class HomeFragment extends Fragment implements OnClickListener {
             case R.id.layout_wb:
                 break;
             case R.id.layout_pyq:
+                break;
+            case R.id.iv_game_center:
+                if(!TextUtils.isEmpty(webViewConfigs.game)){
+                    Intent intent = new Intent(getActivity(), GameCenterActivity.class);
+                    intent.putExtra("url",getFormatUrl(webViewConfigs.game));
+                    startActivityForResult(intent,0);
+                }
                 break;
         }
     }

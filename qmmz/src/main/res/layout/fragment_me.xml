@@ -230,6 +230,7 @@
 
 
         <RelativeLayout
+            android:visibility="invisible"
             android:id="@+id/rl_pay"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -268,6 +269,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:visibility="invisible"
             android:id="@+id/rl_vip"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -307,6 +309,7 @@
 
 
         <RelativeLayout
+            android:visibility="invisible"
             android:id="@+id/rl_exchange_point"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -345,6 +348,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:visibility="invisible"
             android:id="@+id/rl_game_center"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -392,13 +396,12 @@
     android:id="@+id/btn_logout"/>
 
         <Button
-            android:visibility="gone"
-            android:text="@string/share"
+            android:text="会员中心"
             android:layout_margin="5dp"
             android:layout_below="@+id/btn_logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_share"/>
+            android:id="@+id/btn_member"/>
 
 
 
@@ -416,6 +419,7 @@
 
 
         <RelativeLayout
+            android:visibility="invisible"
             android:id="@+id/relativeLayout2"
             android:layout_width="match_parent"
             android:layout_height="70dp"

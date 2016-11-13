@@ -58,6 +58,7 @@ public class LoginActivity extends BaseActivity {
         btnSignUp = ViewUtil.findViewById(this, R.id.btnSignUp);
     }
     private void initListener() {
+        findViewById(R.id.tv_forgetpassword).setOnClickListener(this);
         tvRegion.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
         tvHelp.setOnClickListener(this);
@@ -101,9 +102,13 @@ public class LoginActivity extends BaseActivity {
                 login(etPhoneNumber.getText().toString(), HexUtil.getEncryptedPwd(etPassword.getText().toString()),etPassword.getText().toString());
                 break;
             case R.id.tvHelp:
+                startActivityForResult(new Intent(mContext,ForgetPasswordActivity.class),0);
                 break;
             case R.id.btnSignUp:
                 startActivityForResult(new Intent(mContext,RegisterActivity.class),0);
+                break;
+            case R.id.tv_forgetpassword:
+                startActivityForResult(new Intent(mContext,ForgetPasswordActivity.class),0);
                 break;
             default:
                 break;

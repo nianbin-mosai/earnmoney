@@ -1,8 +1,9 @@
 package com.mdxx.qmmz.newfeature;
 
 import com.mdxx.qmmz.R;
+import com.mdxx.qmmz.newfeature.BaseWebViewActivity;
 
-public class PayActivity extends BaseWebViewActivity {
+public class GameCenterActivity extends BaseWebViewActivity {
 
     @Override
     protected String setMtitle() {
