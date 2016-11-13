@@ -212,12 +212,12 @@ public class DuiFragment extends Fragment implements OnClickListener {
                 builder.title("请输入手机号和兑换的积分数");
                 builder.negativeText("取消");
                 builder.positiveText("确定");
+                builder.autoDismiss(false);
                 builder.customView(R.layout.dialog_dui, false);
                 builder.onNegative(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        ViewUtil.hideDialog(dialog);
-//                        dialog.dismiss();
+                        dialog.dismiss();
                     }
                 });
                 builder.onPositive(new MaterialDialog.SingleButtonCallback() {
@@ -231,19 +231,15 @@ public class DuiFragment extends Fragment implements OnClickListener {
                         // 检查手机号
                         if (!isMobileNO(phone)) {
                             ToastUtils.showToast(getActivity().getApplicationContext(), "请输入正确的手机号");
-                            ViewUtil.showDialog(dialog);
-                            return;
-                        }
-                        if (!isGoodScore(score)) {
-                            ToastUtils.showToast(getActivity().getApplicationContext(), "积分值必须是正整数");
-                            ViewUtil.showDialog(dialog);
                             return;
                         }
                         // 检查积分值
-                        ViewUtil.hideDialog(dialog);
+                        if (!isGoodScore(score)) {
+                            ToastUtils.showToast(getActivity().getApplicationContext(), "积分值必须是正整数");
+                            return;
+                        }
+                        dialog.dismiss();
                         duiScore(phone, score);
-
-
                     }
                 });
                 builder.show();

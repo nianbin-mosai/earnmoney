@@ -1,6 +1,8 @@
 package com.mdxx.qmmz.newfeature;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +29,7 @@ public abstract class BaseWebViewActivity extends BaseActivity {
     protected WebView webView;
     private TextView textView;
     protected String url;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +37,8 @@ public abstract class BaseWebViewActivity extends BaseActivity {
         setContentView(R.layout.activity_base_webview);
         initView();
     }
-    private void initView(){
+
+    private void initView() {
         textView = (TextView) findViewById(R.id.tv_title);
         textView.setText(setMtitle());
         progressBar = (ProgressBar) findViewById(R.id.myProgressBar);
@@ -59,23 +63,26 @@ public abstract class BaseWebViewActivity extends BaseActivity {
                 back();
             }
         });
-        findViewById(R.id.rl_header).setVisibility(showHeader()?View.VISIBLE:View.GONE);
+        findViewById(R.id.rl_header).setVisibility(showHeader() ? View.VISIBLE : View.GONE);
         handleWebViewUrl();
 
     }
-    private void back(){
+
+    private void back() {
         if (webView.canGoBack()) {
             webView.goBack();
         } else {
             super.onBackPressed();
         }
     }
+
     @Override
     public void onBackPressed() {
         back();
     }
-    private void clickBack(){
-        if (findViewById(R.id.rl_back) !=null) {
+
+    private void clickBack() {
+        if (findViewById(R.id.rl_back) != null) {
             findViewById(R.id.rl_back).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -89,10 +96,12 @@ public abstract class BaseWebViewActivity extends BaseActivity {
     public void onClick(View view) {
         clickBack();
     }
-    protected String setMtitle(){
+
+    protected String setMtitle() {
         return getString(R.string.title);
     }
-    protected void handleWebViewUrl(){
+
+    protected void handleWebViewUrl() {
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -103,11 +112,12 @@ public abstract class BaseWebViewActivity extends BaseActivity {
                                 Intent.URI_INTENT_SCHEME);
                         intent.addCategory("android.intent.category.BROWSABLE");
                         intent.setComponent(null);
-                        if (intent.resolveActivity(getPackageManager()) != null) {
+                        ResolveInfo ri = getPackageManager().resolveActivity(intent,
+                                PackageManager.MATCH_DEFAULT_ONLY);
+                        if (ri != null) {// 如果安装了支付宝
                             startActivity(intent);
                             finish();
-                        } else {
-                            // 没有安装支付宝
+                        } else {// 否则，没有安装支付宝
                             showToast(getString(R.string.tip_alipy_uninstall));
                             finish();
                         }
@@ -122,10 +132,12 @@ public abstract class BaseWebViewActivity extends BaseActivity {
         });
         webView.loadUrl(Configs.alipayUrl);
     }
-    protected boolean showHeader(){
+
+    protected boolean showHeader() {
         return false;
     }
-    protected String setScheme(){
+
+    protected String setScheme() {
         return null;
     }
 }
