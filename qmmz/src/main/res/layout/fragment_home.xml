@@ -24,7 +24,7 @@
             android:textSize="20sp" />
 
         <ImageView
-            android:id="@+id/wifi"
+            android:id="@+id/refresh_date"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"

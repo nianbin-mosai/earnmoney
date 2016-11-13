@@ -386,22 +386,22 @@
                 android:src="@drawable/jinru" />
         </RelativeLayout>
 
-
+        <Button
+            android:text="会员中心"
+            android:layout_margin="5dp"
+            android:layout_below="@+id/rl_game_center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_member"/>
 <Button
     android:text="@string/logout"
     android:layout_margin="5dp"
-    android:layout_below="@+id/rl_game_center"
+    android:layout_below="@+id/btn_member"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/btn_logout"/>
 
-        <Button
-            android:text="会员中心"
-            android:layout_margin="5dp"
-            android:layout_below="@+id/btn_logout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_member"/>
+
 
 
 

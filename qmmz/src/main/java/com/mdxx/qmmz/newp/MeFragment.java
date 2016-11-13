@@ -22,6 +22,7 @@ import com.mdxx.qmmz.activity.BaseActivity;
 import com.mdxx.qmmz.activity.GonggaoActivity;
 import com.mdxx.qmmz.activity.InvitationActivity;
 import com.mdxx.qmmz.activity.KeFuActivity;
+import com.mdxx.qmmz.common.LogUtils;
 import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.network.AppAction;
 import com.mdxx.qmmz.network.HttpResponse;
@@ -153,6 +154,7 @@ public class MeFragment extends Fragment implements OnClickListener {
 				if(!TextUtils.isEmpty(webViewConfigs.member)){
 					Intent intent = new Intent(getActivity(), MemberActivity.class);
 					intent.putExtra("url",getFormatUrl(webViewConfigs.member));
+					LogUtils.i(getFormatUrl(webViewConfigs.member));
 					startActivityForResult(intent,0);
 				}
 				break;

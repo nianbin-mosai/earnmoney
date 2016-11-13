@@ -17,6 +17,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,8 +35,8 @@ import com.mdxx.qmmz.common.WeChatShareUtil;
 import com.mdxx.qmmz.network.AppAction;
 import com.mdxx.qmmz.network.HttpResponse;
 import com.mdxx.qmmz.network.HttpResponseHandler;
-import com.mdxx.qmmz.newfeature.PayActivity;
 import com.mdxx.qmmz.newfeature.GameCenterActivity;
+import com.mdxx.qmmz.newfeature.PayActivity;
 import com.mdxx.qmmz.newfeature.bean.WebViewConfigs;
 import com.mdxx.qmmz.utils.InterfaceTool;
 import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
@@ -49,7 +51,10 @@ import java.util.Map;
 
 import de.greenrobot.event.EventBus;
 
+
 public class HomeFragment extends Fragment implements OnClickListener {
+    private Animation loadAnimation;
+    private ImageView refresh_date;
     private WebViewConfigs webViewConfigs = new WebViewConfigs();
     private NMainActivity activity;
     private Dialog sharetoqd_dialog;
@@ -81,7 +86,9 @@ public class HomeFragment extends Fragment implements OnClickListener {
 //        view.findViewById(R.id.g_image1).setOnClickListener(this);
         view.findViewById(R.id.g_image4).setOnClickListener(this);
         note = (TextView) view.findViewById(R.id.textView8);
-
+        refresh_date = (ImageView) view.findViewById(R.id.refresh_date);
+        refresh_date.setOnClickListener(this);
+        loadAnimation = AnimationUtils.loadAnimation(activity,R.anim.refresh_date_anim);
         initViewPager(view);
         return view;
     }
@@ -137,8 +144,13 @@ public class HomeFragment extends Fragment implements OnClickListener {
                 if(!TextUtils.isEmpty(webViewConfigs.game)){
                     Intent intent = new Intent(getActivity(), GameCenterActivity.class);
                     intent.putExtra("url",getFormatUrl(webViewConfigs.game));
+                    LogUtils.i(getFormatUrl(webViewConfigs.game));
                     startActivityForResult(intent,0);
                 }
+                break;
+            case R.id.refresh_date:
+                refresh_date.startAnimation(loadAnimation);
+                getWebViewConfigs();
                 break;
         }
     }
@@ -297,6 +309,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
         if(!TextUtils.isEmpty(webViewConfigs.pay)){
             Intent intent = new Intent(getActivity(), PayActivity.class);
             intent.putExtra("url",getFormatUrl(webViewConfigs.pay));
+            LogUtils.i(getFormatUrl(webViewConfigs.pay));
             startActivityForResult(intent,0);
         }
     }
