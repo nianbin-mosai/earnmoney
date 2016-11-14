@@ -72,6 +72,7 @@
             android:name=".activity.GonggaoActivity"
             android:label="@string/title_activity_gonggao" />
         <activity
+            android:theme="@style/AppTheme.Translucent"
             android:name=".activity.HelloActivity"
             android:screenOrientation="portrait">
             <intent-filter>

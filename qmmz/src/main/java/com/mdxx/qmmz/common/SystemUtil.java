@@ -609,4 +609,7 @@ public class SystemUtil {
         }
         return str.toString();
     }
+    public static int getDrawbleIdByName(Context context,String resName){
+        return context.getResources().getIdentifier(resName,"drawable", context.getPackageName());
+    }
 }
