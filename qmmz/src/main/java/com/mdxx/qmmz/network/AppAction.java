@@ -35,6 +35,8 @@ public class AppAction {
         RequestParams params = new RequestParams();
         params.put("mobile",mobile);
         params.put("password", password);
+        params.put("imei", GlobalUtils.getIMEI(context));
+        params.put("mac",GlobalUtils.getMacAddress(context));
         AsyncHttp.getInstance().execute(context,getUrl("User/login"),params,AsyncHttp.METHOD_POST,responseHandler);
     }
     public static void register(Context context,String mobile,String password,HttpResponseHandler responseHandler){
