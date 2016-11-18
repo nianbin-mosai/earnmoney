@@ -6,7 +6,7 @@ public class MemberActivity extends BaseWebViewActivity {
 
     @Override
     protected String setMtitle() {
-        return getString(R.string.pay);
+        return getString(R.string.member);
     }
 
     @Override

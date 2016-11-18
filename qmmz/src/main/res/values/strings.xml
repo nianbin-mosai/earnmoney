@@ -41,5 +41,6 @@
     <string name="no_wechat">没有检测到微信</string>
     <string name="submit">提交</string>
     <string name="new_password">新密码</string>
+    <string name="member">会员中心</string>
 
 </resources>

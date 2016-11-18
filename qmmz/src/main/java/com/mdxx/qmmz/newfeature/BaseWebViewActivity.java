@@ -128,7 +128,7 @@ public abstract class BaseWebViewActivity extends BaseActivity {
     }
 
     protected boolean showHeader() {
-        return false;
+        return true;
     }
 
     protected String setScheme() {

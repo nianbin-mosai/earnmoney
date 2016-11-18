@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.widget.ImageView;
 
 import com.mdxx.qmmz.MyApplication;
 import com.mdxx.qmmz.R;
@@ -14,7 +13,6 @@ import com.mdxx.qmmz.network.AppAction;
 import com.mdxx.qmmz.network.HttpResponse;
 import com.mdxx.qmmz.network.HttpResponseHandler;
 import com.mdxx.qmmz.newfeature.LoginActivity;
-import com.mdxx.qmmz.utils.BitMapUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,19 +43,21 @@ public class HelloActivity extends BaseActivity {
 		}
 	};
 	public MyApplication myApp;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_hello);
 		myApp = (MyApplication) getApplication();
-		 ImageView mguide_top = (ImageView) findViewById(R.id.guide_top);
-		 mguide_top.setImageBitmap(BitMapUtils.readBitMap(
-				 
-		 getApplicationContext(), R.drawable.ic_hello_bg));
-
-		getDomain();
-
-
+//		ImageView mguide_top = (ImageView) findViewById(R.id.guide_top);
+//		mguide_top.setImageBitmap(BitMapUtils.readBitMap(
+//				getApplicationContext(), R.drawable.ic_hello_bg));
+		mHandler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				getDomain();
+			}
+		},2000);
 
 	}
 		private void getDomain() {

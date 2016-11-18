@@ -43,8 +43,8 @@ android {
         applicationId "com.mdxx.qmmz"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 3
-        versionName "1.0.3"
+        versionCode 4
+        versionName "1.0.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -75,4 +75,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:multidex:1.0.1'
     compile project(':vjlibrary')
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.3'
 }
