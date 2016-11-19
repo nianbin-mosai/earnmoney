@@ -37,6 +37,7 @@ import com.mdxx.qmmz.network.HttpResponse;
 import com.mdxx.qmmz.network.HttpResponseHandler;
 import com.mdxx.qmmz.newfeature.GameCenterActivity;
 import com.mdxx.qmmz.newfeature.PayActivity;
+import com.mdxx.qmmz.newfeature.TaskActivity;
 import com.mdxx.qmmz.newfeature.bean.WebViewConfigs;
 import com.mdxx.qmmz.utils.InterfaceTool;
 import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
@@ -108,7 +109,13 @@ public class HomeFragment extends Fragment implements OnClickListener {
 
             case R.id.renwu_three:
 //                activity.showFingermobiWall();
-                ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
+//                ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
+                if(!TextUtils.isEmpty(webViewConfigs.task)){
+                    Intent intent = new Intent(getActivity(), TaskActivity.class);
+                    intent.putExtra("url",getFormatUrl(webViewConfigs.task));
+                    LogUtils.i(getFormatUrl(webViewConfigs.task));
+                    startActivityForResult(intent,0);
+                }
                 break;
             case R.id.renwu_four:
                 ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
@@ -409,6 +416,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
                     webViewConfigs.game = data.optString("game");
                     webViewConfigs.member = data.optString("member");
                     webViewConfigs.pay = data.optString("pay");
+                    webViewConfigs.task = data.optString("task");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

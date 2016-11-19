@@ -7,5 +7,5 @@ package com.mdxx.qmmz.newfeature.bean;
  * 邮箱：nianbin@mosainet.com
  */
 public class WebViewConfigs {
-    public String pay,member,game,exchange;
+    public String pay,member,game,exchange,task;
 }

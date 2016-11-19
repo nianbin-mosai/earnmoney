@@ -81,6 +81,7 @@ public class HelloActivity extends BaseActivity {
 
 				@Override
 				public void onResponeseFail(int statusCode, HttpResponse response, String responseString) {
+					super.onResponeseFail(statusCode,response,responseString);
 					if (UserPF.getInstance().isFirstRunning()) {
 						mHandler.sendEmptyMessageDelayed(GO_GUIDE, SPLASH_DELAY_MILLIS);
 					} else {

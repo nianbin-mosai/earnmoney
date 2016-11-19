@@ -126,10 +126,6 @@ public class RegisterActivity extends BaseActivity {
                         showToast(R.string.tip_verifycode_sending);
                     }
 
-                    @Override
-                    public void onResponeseFail(int statusCode, HttpResponse response, String responseString) {
-                        showToast(R.string.tip_getCode_fail);
-                    }
                 });
                 break;
             default:
@@ -201,18 +197,10 @@ public class RegisterActivity extends BaseActivity {
                         finish();
                     }
 
-                    @Override
-                    public void onResponeseFail(int statusCode, HttpResponse response, String responseString) {
-                        showToast(R.string.tip_register_fail);
-                    }
                 });
 
             }
 
-            @Override
-            public void onResponeseFail(int statusCode, HttpResponse response, String responseString) {
-                showToast(R.string.tip_verifycode_fail);
-            }
         });
     }
 }

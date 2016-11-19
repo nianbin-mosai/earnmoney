@@ -123,10 +123,6 @@ public class ForgetPasswordActivity extends BaseActivity {
                         showToast(R.string.tip_verifycode_sending);
                     }
 
-                    @Override
-                    public void onResponeseFail(int statusCode, HttpResponse response, String responseString) {
-                        showToast(R.string.tip_getCode_fail);
-                    }
                 });
                 break;
             default:
@@ -167,11 +163,6 @@ public class ForgetPasswordActivity extends BaseActivity {
                         ToastUtils.showToast(mContext,"修改密码成功");
                     }
                 });
-            }
-
-            @Override
-            public void onResponeseFail(int statusCode, HttpResponse response, String responseString) {
-                showToast(R.string.tip_verifycode_fail);
             }
         });
     }

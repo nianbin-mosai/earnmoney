@@ -8,4 +8,6 @@ package com.mdxx.qmmz.common;
  */
 public interface Constants {
     String registerSuccess = "registerSuccess";
+    int TypeYoumi = 11;
+    int TypeYow = 12;
 }

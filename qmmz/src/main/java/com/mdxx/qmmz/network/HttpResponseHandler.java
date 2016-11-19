@@ -16,6 +16,9 @@ import com.mdxx.qmmz.network.cache.OnGetCacheListener;
 import com.mdxx.qmmz.network.progress.DefaultProgressIndicator;
 import com.mdxx.qmmz.network.progress.IProgressIndicator;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.net.HttpURLConnection;
 
 import cz.msebera.android.httpclient.Header;
@@ -81,7 +84,7 @@ public abstract class HttpResponseHandler extends TextHttpResponseHandler implem
                                                 DataCache.getInstance().save(cacheKey, statusCode, responseString, cacheTime());
                                             }
                                         } else {
-                                            handleResponseFail(statusCode, response == null ? new HttpResponse(getString(R.string.parse_data_error)) : response, responseString);
+                                            handleResponseFail(statusCode, response == null ? new HttpResponse(getString(R.string.parse_data_error)) : response, responseString,true);
                                         }
                                     }
                                 });
@@ -89,7 +92,7 @@ public abstract class HttpResponseHandler extends TextHttpResponseHandler implem
                                 postRunnable(new Runnable() {
                                     @Override
                                     public void run() {
-                                        handleResponseFail(statusCode, new HttpResponse(getString(R.string.parse_data_error)), responseString);
+                                        handleResponseFail(statusCode, new HttpResponse(getString(R.string.parse_data_error)), responseString,false);
                                     }
                                 });
                             }
@@ -98,7 +101,7 @@ public abstract class HttpResponseHandler extends TextHttpResponseHandler implem
                             postRunnable(new Runnable() {
                                 @Override
                                 public void run() {
-                                    handleResponseFail(statusCode, new HttpResponse(getString(R.string.parse_data_error)), responseString);
+                                    handleResponseFail(statusCode, new HttpResponse(getString(R.string.parse_data_error)), responseString,false);
                                 }
                             });
                         }
@@ -111,7 +114,7 @@ public abstract class HttpResponseHandler extends TextHttpResponseHandler implem
                 }
             }
         } else {
-            handleResponseFail(statusCode, new HttpResponse(getString(R.string.server_response_value_error, statusCode)), responseString);
+            handleResponseFail(statusCode, new HttpResponse(getString(R.string.server_response_value_error, statusCode)), responseString,false);
         }
     }
 
@@ -130,7 +133,7 @@ public abstract class HttpResponseHandler extends TextHttpResponseHandler implem
         if (httpResponse == null) {
             httpResponse = new HttpResponse(responseString);
         }
-        handleResponseFail(statusCode, httpResponse, responseString);
+        handleResponseFail(statusCode, httpResponse, responseString,false);
 	}
 
     @Override
@@ -195,7 +198,7 @@ public abstract class HttpResponseHandler extends TextHttpResponseHandler implem
         if (toast != null) {
             toast.cancel();
         }
-        toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
+        toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
@@ -231,8 +234,14 @@ public abstract class HttpResponseHandler extends TextHttpResponseHandler implem
     }
 
     public void onResponeseFail(int statusCode, HttpResponse response, String responseString){
-        if (isShowToast) {
-            showToast(response.message);
+        try {
+            if (response.isError()) {
+                JSONObject result = new JSONObject(responseString);
+                String errorMessage = result.optString("message");
+                showToast(errorMessage);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 
@@ -242,9 +251,16 @@ public abstract class HttpResponseHandler extends TextHttpResponseHandler implem
 	 * @param response 项目定义的响应值
 	 * @param responseString 项目定义的响应值
 	 */
-    public void handleResponseFail(int statusCode, HttpResponse response, String responseString) {
-        onResponeseFail(statusCode, response, responseString);
-        onResponeseEnd();
+    public void handleResponseFail(int statusCode, HttpResponse response, String responseString,boolean showMessage) {
+        if (showMessage) {
+            onResponeseFail(statusCode, response, responseString);
+            onResponeseEnd();
+        }else{
+            if (isShowToast) {
+                showToast(response.message);
+            }
+        }
+
 	}
 
     public void setCacheKey(String cacheKey) {

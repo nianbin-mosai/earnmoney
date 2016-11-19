@@ -16,6 +16,9 @@ import com.wyu.earnmoney.network.progress.IProgressIndicator;
 import com.wyu.earnmoney.utils.FastJsonUtils;
 import com.wyu.earnmoney.utils.LogUtils;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.net.HttpURLConnection;
 
 import cz.msebera.android.httpclient.Header;
@@ -228,10 +231,16 @@ public abstract class HttpResponseHandler extends TextHttpResponseHandler implem
     }
 
     public void onResponeseFail(int statusCode, HttpResponse response, String responseString){
-        if (isShowToast) {
-            showToast(response.message);
+            try {
+                if (response.isError()) {
+                    JSONObject result = new JSONObject(responseString);
+                    String errorMessage = result.optString("message");
+                    showToast(errorMessage);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
-    }
 
 	/**
 	 * 错误调用

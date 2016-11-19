@@ -7,8 +7,9 @@ import java.io.Serializable;
  */
 public class HttpResponse implements Serializable {
 
-    public static final int CODE_OK = 0;// 请求返回值成功可用
-    public static final int CODE_ERROR = -500;// 错误码
+    public static final int CODE_OK = 200;// 请求返回值成功可用
+    public static final int CODE_ERROR = 300;// 错误码
+
     /**
      * 状态码，0为成功
      */
@@ -16,10 +17,19 @@ public class HttpResponse implements Serializable {
     /**
      * 状态码不为0时，才有这个值
      */
+    public int code = CODE_OK;
     public String message;
 
     public HttpResponse() {
 
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public HttpResponse(String message) {
@@ -36,6 +46,9 @@ public class HttpResponse implements Serializable {
      * @return
      */
     public boolean isSuccess() {
-        return  returnCode == CODE_OK;
+        return  code == CODE_OK;
+    }
+    public boolean isError(){
+        return code == CODE_ERROR;
     }
 }

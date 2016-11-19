@@ -148,11 +148,6 @@ public class LoginActivity extends BaseActivity {
                 finish();
             }
 
-            @Override
-            public void onResponeseFail(int statusCode, HttpResponse response, String responseString) {
-                showToast(R.string.tip_login_fail);
-            }
-
         });
     }
 

@@ -39,7 +39,7 @@ public class AsyncHttp {
     }
 
     public void init(Context context) {
-        client.setTimeout(30000); // 设置链接超时，如果不设置，默认为30s
+        client.setTimeout(15000); // 设置链接超时，如果不设置，默认为30s
         client.setCookieStore(new PersistentCookieStore(context.getApplicationContext()));
         try {
             KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());

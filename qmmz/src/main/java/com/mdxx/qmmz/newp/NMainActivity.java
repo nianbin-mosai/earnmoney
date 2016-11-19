@@ -22,6 +22,7 @@ import com.fingermobi.vj.listener.IVJAppidStatus;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.activity.BaseActivity;
 import com.mdxx.qmmz.common.Configs;
+import com.mdxx.qmmz.common.Constants;
 import com.mdxx.qmmz.common.LogUtils;
 import com.mdxx.qmmz.common.ToastUtils;
 import com.mdxx.qmmz.common.UserPF;
@@ -38,7 +39,6 @@ import com.yow.YoManage;
 import java.util.ArrayList;
 import java.util.List;
 
-import cz.msebera.android.httpclient.Header;
 import tj.zl.op.AdManager;
 import tj.zl.op.listener.Interface_ActivityListener;
 import tj.zl.op.onlineconfig.OnlineConfigCallBack;
@@ -453,15 +453,10 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
             points+=info.getPoints();
         }
         final int fPoint = points;
-        AppAction.addPoint(mContext, points, new HttpResponseHandler(mContext,HttpResponse.class) {
+        AppAction.addPoint(mContext, Constants.TypeYoumi,points,list.toString(), new HttpResponseHandler(mContext,HttpResponse.class) {
             @Override
             public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
                 ToastUtils.showToast(mContext,"积分已添加至服务器:"+ fPoint);
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                ToastUtils.showToast(mContext,"积分添加至服务器失败");
             }
         });
     }
@@ -578,16 +573,12 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
             // totalPoints 当前总积分数
             showToast("完成任务获得积分：" + points + "#当前总积分=" + totalPoints);
             showYowPoints();
-            AppAction.addPoint(mContext, points, new HttpResponseHandler(mContext,HttpResponse.class) {
+            AppAction.addPoint(mContext,Constants.TypeYow, points,"", new HttpResponseHandler(mContext,HttpResponse.class) {
                 @Override
                 public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
                     ToastUtils.showToast(mContext,"积分已添加至服务器:"+ points);
                 }
 
-                @Override
-                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                    ToastUtils.showToast(mContext,"积分添加至服务器失败");
-                }
             });
         }
 

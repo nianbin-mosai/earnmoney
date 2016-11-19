@@ -202,6 +202,7 @@ public class MeFragment extends Fragment implements OnClickListener {
 					webViewConfigs.game = data.optString("game");
 					webViewConfigs.member = data.optString("member");
 					webViewConfigs.pay = data.optString("pay");
+					webViewConfigs.task = data.optString("task");
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}

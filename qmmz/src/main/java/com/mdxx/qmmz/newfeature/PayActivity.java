@@ -27,6 +27,7 @@ public class PayActivity extends BaseWebViewActivity {
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                LogUtils.i("shouldOverrideUrlLoading:"+url);
                 Uri uri = Uri.parse(url);
                 if (uri.getScheme().equals(setScheme())) {
                     try {

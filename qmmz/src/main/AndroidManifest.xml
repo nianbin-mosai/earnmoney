@@ -170,6 +170,12 @@
             android:parentActivityName=".activity.BaseActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".newfeature.TaskActivity"
+            android:label="@string/title_activity_pay"
+            android:parentActivityName=".activity.BaseActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"></activity>
 
         <!-- 微信转发 -->
         <activity
