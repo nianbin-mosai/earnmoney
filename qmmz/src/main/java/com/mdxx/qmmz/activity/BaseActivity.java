@@ -26,12 +26,12 @@ import com.mdxx.qmmz.common.AppManager;
 import com.mdxx.qmmz.common.HintDialog;
 import com.mdxx.qmmz.common.LoadingDialog;
 import com.mdxx.qmmz.common.SystemUtil;
-import com.mdxx.qmmz.network.AsyncHttp;
 import com.mdxx.qmmz.network.progress.IProgressIndicator;
 import com.mdxx.qmmz.utils.InterfaceTool;
 import com.mdxx.qmmz.utils.MyVolley;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.zhy.http.okhttp.OkHttpUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -100,7 +100,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 		dismissLoadingDialog();
 		toast = null;
 		AppManager.getAppManager().removeActivity(this);
-		AsyncHttp.getInstance().getClient().cancelRequests(mContext, true);
+//		AsyncHttp.getInstance().getClient().cancelRequests(mContext, true);
+		OkHttpUtils.getInstance().cancelTag(this);
 	}
 
 

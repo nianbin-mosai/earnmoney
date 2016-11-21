@@ -1,1 +1,1 @@
-include ':apptest', ':litepal', ':vjlibrary', ':app', ':testwcpay', ':testalipay', ':pulltorefresh', ':qmmz', ':wifitest', ':testlib'
+include ':apptest', ':litepal', ':vjlibrary', ':app', ':testwcpay', ':testalipay', ':pulltorefresh', ':qmmz', ':wifitest', ':testlib', ':okhttputils'

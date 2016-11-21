@@ -19,8 +19,9 @@ import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.common.ViewUtil;
 import com.mdxx.qmmz.network.AppAction;
 import com.mdxx.qmmz.network.HttpResponse;
-import com.mdxx.qmmz.network.HttpResponseHandler;
+import com.mdxx.qmmz.network.OKHttpResponseHandler;
 import com.mdxx.qmmz.utils.HexUtil;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -111,7 +112,7 @@ public class ForgetPasswordActivity extends BaseActivity {
                     showToast(R.string.tip_empty_phone);
                     return;
                 }
-                AppAction.getVerifyCode(mContext,etPhoneNumber.getText().toString(),"",new HttpResponseHandler(mContext,HttpResponse.class,ForgetPasswordActivity.this) {
+                AppAction.getVerifyCode(mContext,etPhoneNumber.getText().toString(),"",new OKHttpResponseHandler(mContext,HttpResponse.class,ForgetPasswordActivity.this) {
                     @Override
                     public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
                         try {
@@ -154,10 +155,10 @@ public class ForgetPasswordActivity extends BaseActivity {
             showHintMessages(R.string.confirm_password_verify);
             return;
         }
-        AppAction.checkVerifyCode(mContext, etPhoneNumber.getText().toString(), etCode.getText().toString(),"", new HttpResponseHandler(mContext,HttpResponse.class,ForgetPasswordActivity.this) {
+        AppAction.checkVerifyCode(mContext, etPhoneNumber.getText().toString(), etCode.getText().toString(),"", new OKHttpResponseHandler(mContext,HttpResponse.class,ForgetPasswordActivity.this) {
             @Override
             public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
-                AppAction.forgetPassword(mContext,etPhoneNumber.getText().toString(), HexUtil.getEncryptedPwd(etPassword.getText().toString()),etCode.getText().toString(),UserPF.getInstance().getLogId(), new HttpResponseHandler(mContext, HttpResponse.class, ForgetPasswordActivity.this) {
+                AppAction.forgetPassword(mContext,etPhoneNumber.getText().toString(), HexUtil.getEncryptedPwd(etPassword.getText().toString()),etCode.getText().toString(),UserPF.getInstance().getLogId(), new OKHttpResponseHandler(mContext, HttpResponse.class, ForgetPasswordActivity.this) {
                     @Override
                     public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
                         ToastUtils.showToast(mContext,"修改密码成功");

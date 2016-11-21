@@ -26,7 +26,7 @@ import com.mdxx.qmmz.common.LogUtils;
 import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.network.AppAction;
 import com.mdxx.qmmz.network.HttpResponse;
-import com.mdxx.qmmz.network.HttpResponseHandler;
+import com.mdxx.qmmz.network.OKHttpResponseHandler;
 import com.mdxx.qmmz.newfeature.LoginActivity;
 import com.mdxx.qmmz.newfeature.MemberActivity;
 import com.mdxx.qmmz.newfeature.PayActivity;
@@ -192,7 +192,7 @@ public class MeFragment extends Fragment implements OnClickListener {
 		getWebViewConfigs();
 	}
 	private void getWebViewConfigs(){
-		AppAction.getWebViewConfigs(getActivity(), new HttpResponseHandler(getActivity(),HttpResponse.class,(BaseActivity)getActivity()) {
+		AppAction.getWebViewConfigs(getActivity(), new OKHttpResponseHandler(getActivity(),HttpResponse.class,(BaseActivity)getActivity()) {
 			@Override
 			public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
 				try {

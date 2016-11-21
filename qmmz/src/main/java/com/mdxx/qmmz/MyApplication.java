@@ -4,21 +4,35 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.multidex.MultiDexApplication;
 
+import com.facebook.stetho.Stetho;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
+import com.franmontiel.persistentcookiejar.ClearableCookieJar;
+import com.franmontiel.persistentcookiejar.PersistentCookieJar;
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 import com.mdxx.qmmz.activity.HelloActivity;
 import com.mdxx.qmmz.common.CrashCatcher;
 import com.mdxx.qmmz.common.LogUtils;
 import com.mdxx.qmmz.common.SystemUtil;
 import com.mdxx.qmmz.common.UserPF;
-import com.mdxx.qmmz.network.AsyncHttp;
 import com.mdxx.qmmz.utils.MyVolley;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.https.HttpsUtils;
+import com.zhy.http.okhttp.log.LoggerInterceptor;
 
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLSession;
+
+import okhttp3.OkHttpClient;
 
 public class MyApplication extends MultiDexApplication {
 	// 处放时间
@@ -40,15 +54,42 @@ public class MyApplication extends MultiDexApplication {
 			public void run() {
 				long time = System.currentTimeMillis();
 				UserPF.getInstance().init(INSTANCE);
-				AsyncHttp.getInstance().init(INSTANCE);
+
+//				AsyncHttp.getInstance().init(INSTANCE);
 //				DataCache.getInstance().init(INSTANCE);
 				initImageLoader(getApplicationContext());
 				LogUtils.i("Application init finish, Time=" + (System.currentTimeMillis() - time));
 			}
 		}).start();
+		initOkhttp();
 		MyVolley.init(INSTANCE);
 		initCrashCatcher();
 
+	}
+	private void initOkhttp(){
+		Stetho.initializeWithDefaults(this);
+		ClearableCookieJar cookieJar1 = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(getApplicationContext()));
+
+		HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
+
+//        CookieJarImpl cookieJar1 = new CookieJarImpl(new MemoryCookieStore());
+		OkHttpClient okHttpClient = new OkHttpClient.Builder()
+				.connectTimeout(10000L, TimeUnit.MILLISECONDS)
+				.readTimeout(10000L, TimeUnit.MILLISECONDS)
+				.addInterceptor(new LoggerInterceptor("TAG"))
+				.cookieJar(cookieJar1)
+				.hostnameVerifier(new HostnameVerifier()
+				{
+					@Override
+					public boolean verify(String hostname, SSLSession session)
+					{
+						return true;
+					}
+				})
+				.sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
+				.addNetworkInterceptor(new StethoInterceptor())
+				.build();
+		OkHttpUtils.initClient(okHttpClient);
 	}
 	private void initCrashCatcher() {
 		// 崩溃捕捉

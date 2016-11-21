@@ -289,7 +289,7 @@
         android:layout_height="0dp"
         android:layout_weight="4"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/home_share" />
+        app:srcCompat="@drawable/bg_game_center" />
 
     <ImageView
         android:id="@+id/g_image4"
@@ -297,5 +297,5 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/zf_" />
+        app:srcCompat="@drawable/bg_pay" />
 </LinearLayout>

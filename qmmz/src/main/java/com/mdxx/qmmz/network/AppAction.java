@@ -2,9 +2,9 @@ package com.mdxx.qmmz.network;
 
 import android.content.Context;
 
-import com.loopj.android.http.RequestParams;
 import com.mdxx.qmmz.common.GlobalUtils;
 import com.mdxx.qmmz.common.UserPF;
+import com.zhy.http.okhttp.OkHttpUtils;
 
 /**
  * 描述:
@@ -17,61 +17,80 @@ public class AppAction {
     private static String  getUrl(String typeUrl){
         return baseUrl + typeUrl;
     }
-    public static void getVerifyCode(Context context,String mobile,String userid,HttpResponseHandler responseHandler){
-        RequestParams params = new RequestParams();
-        params.put("phone",mobile);
-        params.put("userid",userid);
-        AsyncHttp.getInstance().execute(context,getUrl("User/get_code"),params,AsyncHttp.METHOD_POST,responseHandler);
-    }
-    public static void checkVerifyCode(Context context,String phone,String code,String userid,HttpResponseHandler responseHandler){
-        RequestParams params = new RequestParams();
-        params.put("phone",phone);
-        params.put("userid",userid);
-        params.put("code",code);
-        params.put("log_id", UserPF.getInstance().getLogId());
-        AsyncHttp.getInstance().execute(context,getUrl("User/check_code"),params,AsyncHttp.METHOD_POST,responseHandler);
-    }
-    public static void login(Context context,String mobile,String password,HttpResponseHandler responseHandler){
-        RequestParams params = new RequestParams();
-        params.put("mobile",mobile);
-        params.put("password", password);
-        params.put("imei", GlobalUtils.getIMEI(context));
-        params.put("mac",GlobalUtils.getMacAddress(context));
-        AsyncHttp.getInstance().execute(context,getUrl("User/login"),params,AsyncHttp.METHOD_POST,responseHandler);
-    }
-    public static void register(Context context,String mobile,String password,HttpResponseHandler responseHandler){
-        RequestParams params = new RequestParams();
-        params.put("mobile",mobile);
-        params.put("password", password);
-        params.put("imei", GlobalUtils.getIMEI(context));
-        params.put("mac",GlobalUtils.getMacAddress(context));
-        AsyncHttp.getInstance().execute(context,getUrl("User/register"),params,AsyncHttp.METHOD_POST,responseHandler);
-    }
-    public static void getWebViewConfigs(Context context,HttpResponseHandler responseHandler){
-        RequestParams params = new RequestParams();
-        params.put("token", UserPF.getInstance().getToken());
-        params.put("userid",UserPF.getInstance().getUserid());
-        AsyncHttp.getInstance().execute(context,getUrl("Tool/webview"),params,AsyncHttp.METHOD_GET,responseHandler);
-    }
-    public static void addPoint(Context context,int type,int point,String result,HttpResponseHandler responseHandler){
-        RequestParams params = new RequestParams();
-        params.put("token", UserPF.getInstance().getToken());
-        params.put("userid",UserPF.getInstance().getUserid());
-        params.put("points",point);
-        params.put("type",type);
-        params.put("result",result);
-        AsyncHttp.getInstance().execute(context,getUrl("order/add_points"),params,AsyncHttp.METHOD_POST,responseHandler);
-    }
-    public static void getDomain(Context context,HttpResponseHandler responseHandler){
-        AsyncHttp.getInstance().execute(context,"http://wapi.yunxinwifi.cc/index.php/webapi/config/config",AsyncHttp.METHOD_POST,responseHandler,false);
-    }
-    public static void forgetPassword(Context context,String mobile,String password,String code,String log_id,HttpResponseHandler responseHandler){
-        RequestParams params = new RequestParams();
-        params.put("mobile",mobile);
-        params.put("password", password);
-        params.put("code",code);
-        params.put("log_id",log_id);
-        AsyncHttp.getInstance().execute(context,getUrl("User/password_find"),params,AsyncHttp.METHOD_POST,responseHandler);
+    public static void getVerifyCode(Context context,String mobile,String userid,OKHttpResponseHandler responseHandler){
+        OkHttpUtils.post()
+                   .url(getUrl("User/get_code"))
+                    .tag(context)
+                   .addParams("phone",mobile)
+                   .addParams("userid",userid)
+                   .build().execute(responseHandler);
 
+    }
+    public static void checkVerifyCode(Context context,String phone,String code,String userid,OKHttpResponseHandler responseHandler){
+        OkHttpUtils.post()
+                .url(getUrl("User/check_code"))
+                .tag(context)
+                .addParams("phone",phone)
+                .addParams("userid",userid)
+                .addParams("code",code)
+                .addParams("log_id", UserPF.getInstance().getLogId())
+                .build().execute(responseHandler);
+    }
+    public static void login(Context context,String mobile,String password,OKHttpResponseHandler responseHandler){
+        OkHttpUtils.post()
+                .url(getUrl("User/login"))
+                .tag(context)
+                .addParams("mobile",mobile)
+                .addParams("password", password)
+                .addParams("imei", GlobalUtils.getIMEI(context))
+                .addParams("mac",GlobalUtils.getMacAddress(context))
+                .build().execute(responseHandler);
+
+    }
+    public static void register(Context context,String mobile,String password,OKHttpResponseHandler responseHandler){
+        OkHttpUtils.post()
+                .url(getUrl("User/register"))
+                .tag(context)
+                .addParams("mobile",mobile)
+                .addParams("password", password)
+                .addParams("imei", GlobalUtils.getIMEI(context))
+                .addParams("mac",GlobalUtils.getMacAddress(context))
+                .build().execute(responseHandler);
+    }
+    public static void getWebViewConfigs(Context context,OKHttpResponseHandler responseHandler){
+        OkHttpUtils.get()
+                .url(getUrl("Tool/webview"))
+                .tag(context)
+                .addParams("token", UserPF.getInstance().getToken())
+                .addParams("userid",UserPF.getInstance().getUserid())
+                .build().execute(responseHandler);
+
+    }
+    public static void addPoint(Context context,int type,int point,String result,OKHttpResponseHandler responseHandler){
+        OkHttpUtils.post()
+                .url(getUrl("order/add_points"))
+                .tag(context)
+                .addParams("token", UserPF.getInstance().getToken())
+                .addParams("userid",UserPF.getInstance().getUserid())
+                .addParams("points",point+"")
+                .addParams("type",type+"")
+                .addParams("result",result)
+                .build().execute(responseHandler);
+    }
+    public static void getDomain(Context context,OKHttpResponseHandler responseHandler){
+        OkHttpUtils.get()
+                .url("http://wapi.yunxinwifi.cc/index.php/webapi/config/config")
+                .tag(context)
+                .build().execute(responseHandler);
+    }
+    public static void forgetPassword(Context context,String mobile,String password,String code,String log_id,OKHttpResponseHandler responseHandler){
+        OkHttpUtils.post()
+                .url(getUrl("User/password_find"))
+                .tag(context)
+                .addParams("mobile",mobile)
+                .addParams("password", password)
+                .addParams("code",code)
+                .addParams("log_id",log_id)
+                .build().execute(responseHandler);
     }
 }

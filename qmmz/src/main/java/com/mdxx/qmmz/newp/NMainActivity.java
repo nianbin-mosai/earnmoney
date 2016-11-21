@@ -28,7 +28,7 @@ import com.mdxx.qmmz.common.ToastUtils;
 import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.network.AppAction;
 import com.mdxx.qmmz.network.HttpResponse;
-import com.mdxx.qmmz.network.HttpResponseHandler;
+import com.mdxx.qmmz.network.OKHttpResponseHandler;
 import com.mdxx.qmmz.utils.InterfaceTool;
 import com.pgyersdk.javabean.AppBean;
 import com.pgyersdk.update.PgyUpdateManager;
@@ -453,7 +453,7 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
             points+=info.getPoints();
         }
         final int fPoint = points;
-        AppAction.addPoint(mContext, Constants.TypeYoumi,points,list.toString(), new HttpResponseHandler(mContext,HttpResponse.class) {
+        AppAction.addPoint(mContext, Constants.TypeYoumi,points,list.toString(), new OKHttpResponseHandler(mContext,HttpResponse.class) {
             @Override
             public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
                 ToastUtils.showToast(mContext,"积分已添加至服务器:"+ fPoint);
@@ -573,7 +573,7 @@ public class NMainActivity extends BaseActivity implements OnClickListener, Poin
             // totalPoints 当前总积分数
             showToast("完成任务获得积分：" + points + "#当前总积分=" + totalPoints);
             showYowPoints();
-            AppAction.addPoint(mContext,Constants.TypeYow, points,"", new HttpResponseHandler(mContext,HttpResponse.class) {
+            AppAction.addPoint(mContext,Constants.TypeYow, points,"", new OKHttpResponseHandler(mContext,HttpResponse.class) {
                 @Override
                 public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
                     ToastUtils.showToast(mContext,"积分已添加至服务器:"+ points);
