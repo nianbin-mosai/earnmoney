@@ -30,29 +30,29 @@ import okhttp3.Response;
  * 时间：2016年11月21日 15:21
  * 邮箱：nianbin@mosainet.com
  */
-public abstract class OKHttpResponseHandler extends Callback<Response> {
+public abstract class OkhttpResponseHandler extends Callback<Response> {
     private Class<? extends HttpResponse> mClass;
     private IProgressIndicator progressIndicator;
     private Context context;
     private Toast toast;
     protected boolean isShowToast=true;
-    private OKHttpResponseHandler() {
+    private OkhttpResponseHandler() {
         super();
     }
-    public OKHttpResponseHandler(Context context) {
+    public OkhttpResponseHandler(Context context) {
         this(context, HttpResponse.class);
     }
 
-    public OKHttpResponseHandler(Context context, Class<? extends HttpResponse> mClass) {
+    public OkhttpResponseHandler(Context context, Class<? extends HttpResponse> mClass) {
         this(context, mClass, DefaultProgressIndicator.newInstance(context));
     }
 
-    public OKHttpResponseHandler(Context context, Class<? extends HttpResponse> mClass, IProgressIndicator progressIndicator) {
+    public OkhttpResponseHandler(Context context, Class<? extends HttpResponse> mClass, IProgressIndicator progressIndicator) {
         this.context = context;
         this.mClass = mClass;
         this.progressIndicator = progressIndicator;
     }
-    public OKHttpResponseHandler(Context context, Class<? extends HttpResponse> mClass, IProgressIndicator progressIndicator, boolean isShowToast) {
+    public OkhttpResponseHandler(Context context, Class<? extends HttpResponse> mClass, IProgressIndicator progressIndicator, boolean isShowToast) {
         this();
         this.context = context;
         this.mClass = mClass;

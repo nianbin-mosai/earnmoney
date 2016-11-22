@@ -1,173 +1,198 @@
-# Add project specific ProGuard rules here.
-# By default, the flags in this file are appended to flags specified
-# in /Users/mac/Documents/software/Android_sdk/tools/proguard/proguard-android.txt
-# You can edit the include path and order by changing the proguardFiles
-# directive in build.gradle.
+#############################################
 #
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# 对于一些基本指令的添加
+#
+#############################################
+# 代码混淆压缩比，在0~7之间，默认为5，一般不做修改
+-optimizationpasses 5
 
-# Add any project specific keep option here:
+# 混合时不使用大小写混合，混合后的类名为小写
+-dontusemixedcaseclassnames
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
--optimizationpasses 5          # 指定代码的压缩级别
--dontusemixedcaseclassnames   # 是否使用大小写混合
--dontpreverify           # 混淆时是否做预校验
--verbose                # 混淆时是否记录日志
+# 指定不去忽略非公共库的类
 -dontskipnonpubliclibraryclasses
+
+# 这句话能够使我们的项目混淆后产生映射文件
+# 包含有类名->混淆后类名的映射关系
+-verbose
+
+# 指定不去忽略非公共库的类成员
+-dontskipnonpubliclibraryclassmembers
+
+# 不做预校验，preverify是proguard的四个步骤之一，Android不需要preverify，去掉这一步能够加快混淆速度。
+-dontpreverify
+
+# 保留Annotation不混淆
+-keepattributes *Annotation*,InnerClasses
+
+# 避免混淆泛型
 -keepattributes Signature
 
--dontwarn com.alibaba.fastjson.**
--dontwarn android.test.**
--dontwarn org.junit.**
--dontnote com.alibaba.fastjson.**
--dontnote junit.runner.**
--dontnote junit.framework.**
--dontnote android.net.http.**
--dontnote org.apache.http.**
--dontnote com.google.**
--dontnote android.support.**
--dontnote org.junit.**
+# 抛出异常时保留代码行号
+-keepattributes SourceFile,LineNumberTable
 
--optimizations !code/simplification/arithmetic,!field/*,!class/merging/*  # 混淆时所采用的算法
+# 指定混淆是采用的算法，后面的参数是一个过滤器
+# 这个过滤器是谷歌推荐的算法，一般不做更改
+-optimizations !code/simplification/cast,!field/*,!class/merging/*
 
--keep public class * extends android.app.Activity      # 保持哪些类不被混淆
--keep public class * extends android.app.Application   # 保持哪些类不被混淆
--keep public class * extends android.app.Service       # 保持哪些类不被混淆
--keep public class * extends android.content.BroadcastReceiver  # 保持哪些类不被混淆
--keep public class * extends android.content.ContentProvider    # 保持哪些类不被混淆
--keep public class * extends android.app.backup.BackupAgentHelper # 保持哪些类不被混淆
--keep public class * extends android.preference.Preference        # 保持哪些类不被混淆
--keep public class com.android.vending.licensing.ILicensingService    # 保持哪些类不被混淆
--keep public class * extends java.lang.Throwable {*;}
--keep public class * extends java.lang.Exception {*;}
 
--keepclassmembers class * {
-    static final %                *;
-    static final java.lang.String *;
-}
+#############################################
+#
+# Android开发中一些需要保留的公共部分
+#
+#############################################
 
--keep public class * extends android.view.View {
-    public <init>(android.content.Context);
-    public <init>(android.content.Context, android.util.AttributeSet);
-    public <init>(android.content.Context, android.util.AttributeSet, int);
-    public void set*(...);
-}
--keepclassmembers class * extends android.content.Context {
-   public void *(android.view.View);
-   public void *(android.view.MenuItem);
-}
--keepclassmembers class * implements android.os.Parcelable {
-    static ** CREATOR;
-}
--keepclasseswithmembers class * {   # 保持自定义控件类不被混淆
-    public <init>(android.content.Context, android.util.AttributeSet);
-}
--keepclasseswithmembers class * {# 保持自定义控件类不被混淆
-    public <init>(android.content.Context, android.util.AttributeSet, int);
-}
--keepclassmembers class * extends android.app.Activity { # 保持自定义控件类不被混淆
-    public void *(android.view.View);
-}
--keepclassmembers enum * {     # 保持枚举 enum 类不被混淆
-    public static **[] values();
-    public static ** valueOf(java.lang.String);
-}
--keep class * implements android.os.Parcelable { # 保持 Parcelable 不被混淆
-    public static final android.os.Parcelable$Creator *;
-}
--keepattributes InnerClasses
--keep class **.R
--keep class **.R$* {
-    <fields>;
-}
--adaptresourcefilenames    **.properties,**.gif,**.jpg
--adaptresourcefilecontents **.properties,META-INF/MANIFEST.MF
--keep class * implements java.io.Serializable {*;}
--keep class com.alibaba.fastjson.** {*;}
--keep class com.itutorgroup.liveh2h.entity.** {*;}
--keep class **.Android {*;}
+# 保留我们使用的四大组件，自定义的Application等等这些类不被混淆
+# 因为这些子类都有可能被外部调用
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.Appliction
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+-keep public class * extends android.app.backup.BackupAgentHelper
+-keep public class * extends android.preference.Preference
+-keep public class * extends android.view.View
+-keep public class com.android.vending.licensing.ILicensingService
 
-# Keep native & callbacks
+
+# 保留support下的所有类及其内部类
+-keep class android.support.** {*;}
+
+# 保留继承的
+-keep public class * extends android.support.v4.**
+-keep public class * extends android.support.v7.**
+-keep public class * extends android.support.annotation.**
+
+# 保留R下面的资源
+-keep class **.R$* {*;}
+
+# 保留本地native方法不被混淆
 -keepclasseswithmembernames class * {
     native <methods>;
 }
 
--keepattributes JNINamespace
--keepattributes CalledByNative
--keepattributes *Annotation*
--keepattributes EnclosingMethod
-
-# Too many hard code reflections between xwalk wrapper and bridge,so
-# keep all xwalk classes.
--keep class org.xwalk.**{ *; }
--keep interface org.xwalk.**{ *; }
--keep class com.example.extension.**{ *; }
--keep class org.crosswalkproject.**{ *; }
-
-# Rules for org.chromium classes:
-# Keep annotations used by chromium to keep members referenced by native code
--keep class org.chromium.base.*Native*
--keep class org.chromium.base.annotations.JNINamespace
--keepclasseswithmembers class org.chromium.** {
-    @org.chromium.base.AccessedByNative <fields>;
-}
--keepclasseswithmembers class org.chromium.** {
-    @org.chromium.base.*Native* <methods>;
+# 保留在Activity中的方法参数是view的方法，
+# 这样以来我们在layout中写的onClick就不会被影响
+-keepclassmembers class * extends android.app.Activity{
+    public void *(android.view.View);
 }
 
--keep class org.chromium.** {
-    native <methods>;
+# 保留枚举类不被混淆
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
 }
 
-# Keep methods used by reflection and native code
--keep class org.chromium.base.UsedBy*
--keep @org.chromium.base.UsedBy* class *
+# 保留我们自定义控件（继承自View）不被混淆
+-keep public class * extends android.view.View{
+    *** get*();
+    void set*(***);
+    public <init>(android.content.Context);
+    public <init>(android.content.Context, android.util.AttributeSet);
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+
+# 保留Parcelable序列化类不被混淆
+-keep class * implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
+
+# 保留Serializable序列化的类不被混淆
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    !static !transient <fields>;
+    !private <fields>;
+    !private <methods>;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+
+# 对于带有回调函数的onXXEvent、**On*Listener的，不能被混淆
 -keepclassmembers class * {
-    @org.chromium.base.UsedBy* *;
+    void *(**On*Event);
+    void *(**On*Listener);
 }
 
--keep @org.chromium.base.annotations.JNINamespace* class *
--keepclassmembers class * {
-    @org.chromium.base.annotations.CalledByNative* *;
+# webView处理，项目中没有使用到webView忽略即可
+-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+    public *;
+}
+-keepclassmembers class * extends android.webkit.webViewClient {
+    public void *(android.webkit.WebView, java.lang.String, android.graphics.Bitmap);
+    public boolean *(android.webkit.WebView, java.lang.String);
+}
+-keepclassmembers class * extends android.webkit.webViewClient {
+    public void *(android.webkit.webView, jav.lang.String);
 }
 
-# Suppress unnecessary warnings.
--dontnote org.chromium.net.AndroidKeyStore
-# Objects of this type are passed around by native code, but the class
-# is never used directly by native code. Since the class is not loaded, it does
-# not need to be preserved as an entry point.
--dontnote org.chromium.net.UrlRequest$ResponseHeadersMap
+# 移除Log类打印各个等级日志的代码，打正式包的时候可以做为禁log使用，这里可以作为禁止log打印的功能使用
+# 记得proguard-android.txt中一定不要加-dontoptimize才起作用
+# 另外的一种实现方案是通过BuildConfig.DEBUG的变量来控制
+#-assumenosideeffects class android.util.Log {
+#    public static int v(...);
+#    public static int i(...);
+#    public static int w(...);
+#    public static int d(...);
+#    public static int e(...);
+#}
 
-# Generate by aapt. may only need for testing, just add them here.
--keep class org.chromium.ui.ColorPickerAdvanced { <init>(...); }
--keep class org.chromium.ui.ColorPickerMoreButton { <init>(...); }
--keep class org.chromium.ui.ColorPickerSimple { <init>(...); }
+#############################################
+#
+# 项目中特殊处理部分
+#
+#############################################
 
-# Keep our interfaces so they can be used by other ProGuard rules.
-# See http://sourceforge.net/p/proguard/bugs/466/
--keep,allowobfuscation @interface com.facebook.common.internal.DoNotStrip
+#-----------处理反射类---------------
 
 
-# Keep native methods
--keepclassmembers class * {
-    native <methods>;
-}
+
+#-----------处理js交互---------------
+
+
+
+#-----------处理实体类---------------
+# 在开发的时候我们可以将所有的实体类放在一个包内，这样我们写一次混淆就行了。
+#-keep public class com.ljd.example.entity.** {
+#    public void set*(***);
+#    public *** get*();
+#    public *** is*();
+#}
+
+
+
+
+
+#-----------处理第三方依赖库---------
+
+
+# youmi sdk
+# 有米积分墙SDK自v6.3.0版本起不用填写混淆配置，但是开发者必须要开启混淆
+
+# 趣米sdk
 -keep class com.yow.** {*;}
 -dontwarn com.yow.**
 
-#keep 命令
--keepclasscom.fingermobi.vj.** {*;}
--dontwarn class com.fingermobi.vj.**
+
+#微信转发sdk
+-keep class com.fingermobi.vj.**{
+    *;
+}
+-dontwarn class com.fingermobi.vj.** 
 -keep class com.baidu.mobads.appoffers.** {
-public *;
+     public *;
 }
 
+
+#蒲公英sdk
 -libraryjars libs/pgyer_sdk_x.x.jar
 -dontwarn com.pgyersdk.**
 -keep class com.pgyersdk.** { *; }
+
+# OkHttp3
+-dontwarn com.squareup.okhttp3.**
+-keep class com.squareup.okhttp3.** { *;}
+-dontwarn okio.**
+

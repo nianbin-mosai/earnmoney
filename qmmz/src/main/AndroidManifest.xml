@@ -63,7 +63,6 @@
         <activity android:name=".activity.DetailActivity" />
         <activity android:name=".activity.QhbDetailActivity" />
         <activity android:name=".activity.PaihangActivity" />
-        <activity android:name=".activity.QhbActivity" />
         <activity
             android:name=".activity.KeFuActivity"
             android:hardwareAccelerated="false" />

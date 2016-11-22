@@ -19,7 +19,7 @@ import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.common.ViewUtil;
 import com.mdxx.qmmz.network.AppAction;
 import com.mdxx.qmmz.network.HttpResponse;
-import com.mdxx.qmmz.network.OKHttpResponseHandler;
+import com.mdxx.qmmz.network.OkhttpResponseHandler;
 import com.mdxx.qmmz.newp.NMainActivity;
 import com.mdxx.qmmz.utils.HexUtil;
 
@@ -125,7 +125,7 @@ public class LoginActivity extends BaseActivity {
         }
     }
     private void login(final String phone,final String password,final String originPassword) {
-        AppAction.login(mContext, phone, password, new OKHttpResponseHandler(mContext,HttpResponse.class,LoginActivity.this) {
+        AppAction.login(mContext, phone, password, new OkhttpResponseHandler(mContext,HttpResponse.class,LoginActivity.this) {
             @Override
             public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
                 Intent intent = new Intent();

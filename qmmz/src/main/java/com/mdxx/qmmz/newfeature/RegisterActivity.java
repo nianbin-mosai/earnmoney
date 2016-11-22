@@ -19,7 +19,7 @@ import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.common.ViewUtil;
 import com.mdxx.qmmz.network.AppAction;
 import com.mdxx.qmmz.network.HttpResponse;
-import com.mdxx.qmmz.network.OKHttpResponseHandler;
+import com.mdxx.qmmz.network.OkhttpResponseHandler;
 import com.mdxx.qmmz.utils.HexUtil;
 
 import org.json.JSONException;
@@ -114,7 +114,7 @@ public class RegisterActivity extends BaseActivity {
                     showToast(R.string.tip_empty_name);
                     return;
                 }
-                AppAction.getVerifyCode(mContext,etPhoneNumber.getText().toString(),etName.getText().toString(), new OKHttpResponseHandler(mContext,HttpResponse.class,RegisterActivity.this) {
+                AppAction.getVerifyCode(mContext,etPhoneNumber.getText().toString(),etName.getText().toString(), new OkhttpResponseHandler(mContext,HttpResponse.class,RegisterActivity.this) {
                     @Override
                     public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
                         try {
@@ -173,10 +173,10 @@ public class RegisterActivity extends BaseActivity {
             showHintMessages(R.string.confirm_password_verify);
             return;
         }
-        AppAction.checkVerifyCode(mContext, etPhoneNumber.getText().toString(), etCode.getText().toString(), etName.getText().toString(), new OKHttpResponseHandler(mContext,HttpResponse.class,RegisterActivity.this) {
+        AppAction.checkVerifyCode(mContext, etPhoneNumber.getText().toString(), etCode.getText().toString(), etName.getText().toString(), new OkhttpResponseHandler(mContext,HttpResponse.class,RegisterActivity.this) {
             @Override
             public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
-                AppAction.register(mContext, etPhoneNumber.getText().toString(), HexUtil.getEncryptedPwd(etPassword.getText().toString()), new OKHttpResponseHandler(mContext,HttpResponse.class,RegisterActivity.this) {
+                AppAction.register(mContext, etPhoneNumber.getText().toString(), HexUtil.getEncryptedPwd(etPassword.getText().toString()), new OkhttpResponseHandler(mContext,HttpResponse.class,RegisterActivity.this) {
                     @Override
                     public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
                         showToast(R.string.tip_register_success);

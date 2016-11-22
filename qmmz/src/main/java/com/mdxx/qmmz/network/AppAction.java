@@ -17,7 +17,7 @@ public class AppAction {
     private static String  getUrl(String typeUrl){
         return baseUrl + typeUrl;
     }
-    public static void getVerifyCode(Context context,String mobile,String userid,OKHttpResponseHandler responseHandler){
+    public static void getVerifyCode(Context context,String mobile,String userid,OkhttpResponseHandler responseHandler){
         OkHttpUtils.post()
                    .url(getUrl("User/get_code"))
                     .tag(context)
@@ -26,7 +26,7 @@ public class AppAction {
                    .build().execute(responseHandler);
 
     }
-    public static void checkVerifyCode(Context context,String phone,String code,String userid,OKHttpResponseHandler responseHandler){
+    public static void checkVerifyCode(Context context,String phone,String code,String userid,OkhttpResponseHandler responseHandler){
         OkHttpUtils.post()
                 .url(getUrl("User/check_code"))
                 .tag(context)
@@ -36,7 +36,7 @@ public class AppAction {
                 .addParams("log_id", UserPF.getInstance().getLogId())
                 .build().execute(responseHandler);
     }
-    public static void login(Context context,String mobile,String password,OKHttpResponseHandler responseHandler){
+    public static void login(Context context,String mobile,String password,OkhttpResponseHandler responseHandler){
         OkHttpUtils.post()
                 .url(getUrl("User/login"))
                 .tag(context)
@@ -47,7 +47,7 @@ public class AppAction {
                 .build().execute(responseHandler);
 
     }
-    public static void register(Context context,String mobile,String password,OKHttpResponseHandler responseHandler){
+    public static void register(Context context,String mobile,String password,OkhttpResponseHandler responseHandler){
         OkHttpUtils.post()
                 .url(getUrl("User/register"))
                 .tag(context)
@@ -57,7 +57,7 @@ public class AppAction {
                 .addParams("mac",GlobalUtils.getMacAddress(context))
                 .build().execute(responseHandler);
     }
-    public static void getWebViewConfigs(Context context,OKHttpResponseHandler responseHandler){
+    public static void getWebViewConfigs(Context context,OkhttpResponseHandler responseHandler){
         OkHttpUtils.get()
                 .url(getUrl("Tool/webview"))
                 .tag(context)
@@ -66,7 +66,7 @@ public class AppAction {
                 .build().execute(responseHandler);
 
     }
-    public static void addPoint(Context context,int type,int point,String result,OKHttpResponseHandler responseHandler){
+    public static void addPoint(Context context,int type,int point,String result,OkhttpResponseHandler responseHandler){
         OkHttpUtils.post()
                 .url(getUrl("order/add_points"))
                 .tag(context)
@@ -77,13 +77,13 @@ public class AppAction {
                 .addParams("result",result)
                 .build().execute(responseHandler);
     }
-    public static void getDomain(Context context,OKHttpResponseHandler responseHandler){
+    public static void getDomain(Context context,OkhttpResponseHandler responseHandler){
         OkHttpUtils.get()
                 .url("http://wapi.yunxinwifi.cc/index.php/webapi/config/config")
                 .tag(context)
                 .build().execute(responseHandler);
     }
-    public static void forgetPassword(Context context,String mobile,String password,String code,String log_id,OKHttpResponseHandler responseHandler){
+    public static void forgetPassword(Context context,String mobile,String password,String code,String log_id,OkhttpResponseHandler responseHandler){
         OkHttpUtils.post()
                 .url(getUrl("User/password_find"))
                 .tag(context)

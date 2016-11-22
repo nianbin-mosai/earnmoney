@@ -34,7 +34,7 @@ import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.common.WeChatShareUtil;
 import com.mdxx.qmmz.network.AppAction;
 import com.mdxx.qmmz.network.HttpResponse;
-import com.mdxx.qmmz.network.OKHttpResponseHandler;
+import com.mdxx.qmmz.network.OkhttpResponseHandler;
 import com.mdxx.qmmz.newfeature.GameCenterActivity;
 import com.mdxx.qmmz.newfeature.PayActivity;
 import com.mdxx.qmmz.newfeature.TaskActivity;
@@ -406,7 +406,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
         }
     };
     private void getWebViewConfigs(){
-        AppAction.getWebViewConfigs(getActivity(), new OKHttpResponseHandler(getActivity(),HttpResponse.class,(BaseActivity)getActivity()) {
+        AppAction.getWebViewConfigs(getActivity(), new OkhttpResponseHandler(getActivity(),HttpResponse.class,(BaseActivity)getActivity()) {
             @Override
             public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
                 try {

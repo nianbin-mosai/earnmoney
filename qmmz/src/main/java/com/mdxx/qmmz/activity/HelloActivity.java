@@ -11,7 +11,7 @@ import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.network.AppAction;
 import com.mdxx.qmmz.network.HttpResponse;
-import com.mdxx.qmmz.network.OKHttpResponseHandler;
+import com.mdxx.qmmz.network.OkhttpResponseHandler;
 import com.mdxx.qmmz.newfeature.LoginActivity;
 
 import org.json.JSONException;
@@ -62,7 +62,7 @@ public class HelloActivity extends BaseActivity {
 	}
 		private void getDomain() {
 //			mHandler.sendEmptyMessageDelayed(GO_HOME, SPLASH_DELAY_MILLIS);
-			AppAction.getDomain(mContext, new OKHttpResponseHandler(mContext,HttpResponse.class,HelloActivity.this) {
+			AppAction.getDomain(mContext, new OkhttpResponseHandler(mContext,HttpResponse.class,HelloActivity.this) {
 				@Override
 				public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
 					try {
