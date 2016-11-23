@@ -114,7 +114,7 @@ public class RegisterActivity extends BaseActivity {
                     showToast(R.string.tip_empty_name);
                     return;
                 }
-                AppAction.getVerifyCode(mContext,etPhoneNumber.getText().toString(),etName.getText().toString(), new OkhttpResponseHandler(mContext,HttpResponse.class,RegisterActivity.this) {
+                AppAction.getVerifyCode(mContext,etPhoneNumber.getText().toString(),new OkhttpResponseHandler(mContext,HttpResponse.class,RegisterActivity.this) {
                     @Override
                     public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
                         try {
@@ -176,7 +176,7 @@ public class RegisterActivity extends BaseActivity {
         AppAction.checkVerifyCode(mContext, etPhoneNumber.getText().toString(), etCode.getText().toString(), etName.getText().toString(), new OkhttpResponseHandler(mContext,HttpResponse.class,RegisterActivity.this) {
             @Override
             public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
-                AppAction.register(mContext, etPhoneNumber.getText().toString(), HexUtil.getEncryptedPwd(etPassword.getText().toString()), new OkhttpResponseHandler(mContext,HttpResponse.class,RegisterActivity.this) {
+                AppAction.register(mContext, etPhoneNumber.getText().toString(), HexUtil.getEncryptedPwd(etPassword.getText().toString()),etName.getText().toString(), new OkhttpResponseHandler(mContext,HttpResponse.class,RegisterActivity.this) {
                     @Override
                     public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
                         showToast(R.string.tip_register_success);

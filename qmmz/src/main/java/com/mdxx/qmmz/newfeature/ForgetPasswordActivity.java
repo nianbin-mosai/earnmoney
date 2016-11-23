@@ -112,7 +112,7 @@ public class ForgetPasswordActivity extends BaseActivity {
                     showToast(R.string.tip_empty_phone);
                     return;
                 }
-                AppAction.getVerifyCode(mContext,etPhoneNumber.getText().toString(),"",new OkhttpResponseHandler(mContext,HttpResponse.class,ForgetPasswordActivity.this) {
+                AppAction.getVerifyCode(mContext,etPhoneNumber.getText().toString(),new OkhttpResponseHandler(mContext,HttpResponse.class,ForgetPasswordActivity.this) {
                     @Override
                     public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
                         try {

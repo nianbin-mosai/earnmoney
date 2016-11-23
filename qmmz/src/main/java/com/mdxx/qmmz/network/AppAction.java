@@ -17,12 +17,12 @@ public class AppAction {
     private static String  getUrl(String typeUrl){
         return baseUrl + typeUrl;
     }
-    public static void getVerifyCode(Context context,String mobile,String userid,OkhttpResponseHandler responseHandler){
+    public static void getVerifyCode(Context context,String mobile,OkhttpResponseHandler responseHandler){
         OkHttpUtils.post()
                    .url(getUrl("User/get_code"))
                     .tag(context)
                    .addParams("phone",mobile)
-                   .addParams("userid",userid)
+//                   .addParams("userid",userid)
                    .build().execute(responseHandler);
 
     }
@@ -31,7 +31,7 @@ public class AppAction {
                 .url(getUrl("User/check_code"))
                 .tag(context)
                 .addParams("phone",phone)
-                .addParams("userid",userid)
+                .addParams("userid","")
                 .addParams("code",code)
                 .addParams("log_id", UserPF.getInstance().getLogId())
                 .build().execute(responseHandler);
@@ -47,10 +47,11 @@ public class AppAction {
                 .build().execute(responseHandler);
 
     }
-    public static void register(Context context,String mobile,String password,OkhttpResponseHandler responseHandler){
+    public static void register(Context context,String mobile,String password,String userName,OkhttpResponseHandler responseHandler){
         OkHttpUtils.post()
                 .url(getUrl("User/register"))
                 .tag(context)
+                .addParams("name",userName)
                 .addParams("mobile",mobile)
                 .addParams("password", password)
                 .addParams("imei", GlobalUtils.getIMEI(context))

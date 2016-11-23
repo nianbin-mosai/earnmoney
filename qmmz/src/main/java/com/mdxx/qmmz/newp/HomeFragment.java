@@ -28,6 +28,7 @@ import com.mdxx.qmmz.EventMessage;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.activity.BaseActivity;
 import com.mdxx.qmmz.activity.WebActivity;
+import com.mdxx.qmmz.common.Constants;
 import com.mdxx.qmmz.common.LogUtils;
 import com.mdxx.qmmz.common.ToastUtils;
 import com.mdxx.qmmz.common.UserPF;
@@ -38,19 +39,26 @@ import com.mdxx.qmmz.network.OkhttpResponseHandler;
 import com.mdxx.qmmz.newfeature.GameCenterActivity;
 import com.mdxx.qmmz.newfeature.PayActivity;
 import com.mdxx.qmmz.newfeature.TaskActivity;
+import com.mdxx.qmmz.newfeature.bean.ShareAppRecord;
+import com.mdxx.qmmz.newfeature.bean.ShareAppRecordComparator;
 import com.mdxx.qmmz.newfeature.bean.WebViewConfigs;
+import com.mdxx.qmmz.newfeature.event.Event;
 import com.mdxx.qmmz.utils.InterfaceTool;
 import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import de.greenrobot.event.EventBus;
 
 
 public class HomeFragment extends Fragment implements OnClickListener {
@@ -308,8 +316,8 @@ public class HomeFragment extends Fragment implements OnClickListener {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
         mHandler.removeCallbacks(mRunnable);
+        EventBus.getDefault().unregister(this);
     }
 
     private void gotopay() {
@@ -325,8 +333,9 @@ public class HomeFragment extends Fragment implements OnClickListener {
     /*******************************/
 
     private ViewPager mViewPager;
-    private static final int[] IMG_IDS = new int[]{R.drawable.home_h1,
-            R.drawable.home_h2, R.drawable.home_h3};
+//    private static final int[] IMG_IDS = new int[]{R.drawable.home_h1,
+//            R.drawable.home_h2, R.drawable.home_h3};
+    private static final int[] IMG_IDS = new int[]{R.drawable.bg_banner};
     private List<ImageView> mPageViews = new ArrayList<ImageView>();
     private int mPosition;
     private Handler mHandler = new Handler();
@@ -344,14 +353,14 @@ public class HomeFragment extends Fragment implements OnClickListener {
         mViewPager.setOnPageChangeListener(listener);
         PagerAdapter adapter = new MyPagerAdapter();
         mViewPager.setAdapter(adapter);
-        mViewPager.setCurrentItem(1000);
-        mHandler.post(mRunnable);
+//        mViewPager.setCurrentItem(1000);
+//        mHandler.post(mRunnable);
     }
 
     class MyPagerAdapter extends PagerAdapter {
         @Override
         public int getCount() {
-            return Integer.MAX_VALUE;
+            return IMG_IDS.length;
         }
 
         @Override
@@ -439,7 +448,26 @@ public class HomeFragment extends Fragment implements OnClickListener {
 
     private WeChatShareUtil weChatShareUtil;
 
+    private boolean hasShared(){
+        List<ShareAppRecord> datas =  DataSupport.findAll(ShareAppRecord.class);
+        if(datas!=null){
+            List<ShareAppRecord> tempDatas = new ArrayList<>();
+            for(ShareAppRecord data : datas){
+                if(TextUtils.equals(UserPF.getInstance().getPhone(),data.getPhone())){
+                    tempDatas.add(data);
+                }
+            }
+            if(tempDatas.size()!=0){
+                Collections.sort(tempDatas,new ShareAppRecordComparator());
+                if(System.currentTimeMillis() - tempDatas.get(0).getShareTime() <= 24 * 60 * 60 *1000){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     private void share(){
+
         String sessionTitle = "分享";
         String sessionDescription = getString(R.string.app_name)+"下载链接";
         String sessionUrl = "https://www.pgyer.com/bh1Q";
@@ -474,12 +502,16 @@ public class HomeFragment extends Fragment implements OnClickListener {
         }
     }
     private void goToShare(){
+        if (hasShared()) {
+            ToastUtils.showToast(getActivity(),"你今天已经分享过了`(*∩_∩*)′");
+            return;
+        }
         if (!isWebchatAvaliable(getActivity())) {
             ToastUtils.showToast(getActivity(),"手机没有安装微信");
             return;
         }
             new MaterialDialog.Builder(getActivity())
-                    .title("分享方式")
+                    .title("分享完成后,请选择返回本应用的按钮方可获得积分")
                     .items(R.array.pay_items)
                     .itemsCallbackSingleChoice(-1, new MaterialDialog.ListCallbackSingleChoice() {
                         @Override
@@ -499,4 +531,14 @@ public class HomeFragment extends Fragment implements OnClickListener {
                     .positiveText(R.string.choose)
                     .show();
         }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onShareSuccessEvent(Event.ShareSuccessEvent event) {
+       AppAction.addPoint(getActivity(), Constants.ShareApp, 10, "", new OkhttpResponseHandler(getActivity(),HttpResponse.class,(BaseActivity)getActivity()) {
+           @Override
+           public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
+               ToastUtils.showToast(getActivity(),"添加积分成功:"+10);
+           }
+       });
+    }
 }

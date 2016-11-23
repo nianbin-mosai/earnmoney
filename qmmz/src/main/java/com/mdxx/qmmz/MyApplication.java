@@ -2,7 +2,6 @@ package com.mdxx.qmmz;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.multidex.MultiDexApplication;
 
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
@@ -25,7 +24,10 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.https.HttpsUtils;
 import com.zhy.http.okhttp.log.LoggerInterceptor;
 
+import org.litepal.LitePalApplication;
+
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -34,7 +36,7 @@ import javax.net.ssl.SSLSession;
 
 import okhttp3.OkHttpClient;
 
-public class MyApplication extends MultiDexApplication {
+public class MyApplication extends LitePalApplication {
 	// 处放时间
 	public static MyApplication INSTANCE;
 	public static Map<String, Long> map;
@@ -54,7 +56,7 @@ public class MyApplication extends MultiDexApplication {
 			public void run() {
 				long time = System.currentTimeMillis();
 				UserPF.getInstance().init(INSTANCE);
-
+				clearDatas(INSTANCE);
 //				AsyncHttp.getInstance().init(INSTANCE);
 //				DataCache.getInstance().init(INSTANCE);
 				initImageLoader(getApplicationContext());
@@ -140,7 +142,7 @@ public class MyApplication extends MultiDexApplication {
 	@SuppressWarnings("deprecation")
 	public void updateUserData() {
 		SharedPreferences.Editor editor = this.getSharedPreferences("userdata",
-				Context.MODE_PRIVATE).edit();
+				MODE_PRIVATE).edit();
 		for (Iterator<Map.Entry<String, Object>> it = mUserDatas.entrySet()
 				.iterator(); it.hasNext();) {
 			Map.Entry<String, Object> entry = it.next();
@@ -181,4 +183,19 @@ public class MyApplication extends MultiDexApplication {
 		mUserDatas.put(name, value);
 	}
 
+	public final static String MEETING_TIME = "MEETING_TIME";
+	public static void clearDatas(Context context) {
+		int duration = 7;//day
+		long lastTime = UserPF.getInstance().getLong(MEETING_TIME, 0);
+		long nowTime = System.currentTimeMillis();
+		if (lastTime != 0) {
+			long dTime = nowTime - lastTime;
+			if (dTime / 1000 / 60 / 60 / 24 > duration) {
+				UserPF.getInstance().putLong(MEETING_TIME, nowTime);
+			}
+		} else {
+			LogUtils.writeLog(context, "clearDatas", String.format(Locale.getDefault(), "nowTime:%d,lastTime:%d", nowTime, lastTime));
+			UserPF.getInstance().putLong(MEETING_TIME, nowTime);
+		}
+	}
 }
