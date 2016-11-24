@@ -139,24 +139,29 @@ public abstract class OkhttpResponseHandler extends Callback<Response> {
             Response result =  response;
             if(result!=null){
                     final int statusCode = result.code();
-                    final String responseString = result.body().string();
+
+                String responseString = result.body().string();
+                if(responseString.startsWith("\n")){
+                    responseString = responseString.replaceFirst("\n","");
+                }
                 if ((response).code() == HttpURLConnection.HTTP_OK){
                     if (null == mClass) {
                         handleResponseSuccess(statusCode, new HttpResponse(), responseString);
                     } else {
+                        final String finalResponseString = responseString;
                         Runnable parser = new Runnable() {
                             @Override
                             public void run() {
                                 try {
-                                    if (FastJsonUtils.isJson(responseString)) {
-                                        final HttpResponse response = FastJsonUtils.parseObject(responseString, mClass);
+                                    if (FastJsonUtils.isJson(finalResponseString)) {
+                                        final HttpResponse response = FastJsonUtils.parseObject(finalResponseString, mClass);
                                         postRunnable(new Runnable() {
                                             @Override
                                             public void run() {
                                                 if (response != null && response.isSuccess()) {
-                                                    handleResponseSuccess(statusCode, response, responseString);
+                                                    handleResponseSuccess(statusCode, response, finalResponseString);
                                                 } else {
-                                                    handleResponseFail(statusCode, response == null ? new HttpResponse(getString(R.string.parse_data_error)) : response, responseString,true);
+                                                    handleResponseFail(statusCode, response == null ? new HttpResponse(getString(R.string.parse_data_error)) : response, finalResponseString,true);
                                                 }
                                             }
                                         });
@@ -164,7 +169,7 @@ public abstract class OkhttpResponseHandler extends Callback<Response> {
                                         postRunnable(new Runnable() {
                                             @Override
                                             public void run() {
-                                                handleResponseFail(statusCode, new HttpResponse(getString(R.string.parse_data_error)), responseString,false);
+                                                handleResponseFail(statusCode, new HttpResponse(getString(R.string.parse_data_error)), finalResponseString,false);
                                             }
                                         });
                                     }
@@ -173,7 +178,7 @@ public abstract class OkhttpResponseHandler extends Callback<Response> {
                                     postRunnable(new Runnable() {
                                         @Override
                                         public void run() {
-                                            handleResponseFail(statusCode, new HttpResponse(getString(R.string.parse_data_error)), responseString,false);
+                                            handleResponseFail(statusCode, new HttpResponse(getString(R.string.parse_data_error)), finalResponseString,false);
                                         }
                                     });
                                 }

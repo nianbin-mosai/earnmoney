@@ -45,6 +45,7 @@ import com.mdxx.qmmz.newfeature.bean.WebViewConfigs;
 import com.mdxx.qmmz.newfeature.event.Event;
 import com.mdxx.qmmz.utils.InterfaceTool;
 import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
+import com.zhy.http.okhttp.OkHttpUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -126,7 +127,17 @@ public class HomeFragment extends Fragment implements OnClickListener {
                 }
                 break;
             case R.id.renwu_four:
-                ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
+                OkHttpUtils.get()
+                        .url("http://app.28yun.com/index.php/webapi_v2/goods/detail_body?goods_id=106311")
+                        .tag(getActivity())
+//                   .addParams("userid",userid)
+                        .build().execute(new OkhttpResponseHandler(getActivity(),HttpResponse.class,(BaseActivity)getActivity()) {
+                    @Override
+                    public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
+                            LogUtils.i(responseString);
+                    }
+                });
+//                ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
                 break;
             case R.id.weishare:
                 goToShare();
