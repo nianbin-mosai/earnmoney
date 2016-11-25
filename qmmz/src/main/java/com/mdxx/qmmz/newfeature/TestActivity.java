@@ -22,7 +22,6 @@ public class TestActivity extends BaseWebViewActivity {
     }
     protected void handleWebViewUrl() {
         result = getIntent().getStringExtra("result");
-        String target = parseDatas(result);
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -31,8 +30,8 @@ public class TestActivity extends BaseWebViewActivity {
                 return true;
             }
         });
-//        LogUtils.i(url);
-        webView.loadDataWithBaseURL(null, target, "text/html", "utf-8",
+        LogUtils.i(result);
+        webView.loadDataWithBaseURL(null, result, "text/html", "utf-8",
                 null);
     }
 }

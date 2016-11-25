@@ -39,6 +39,7 @@ import com.mdxx.qmmz.network.OkhttpResponseHandler;
 import com.mdxx.qmmz.newfeature.GameCenterActivity;
 import com.mdxx.qmmz.newfeature.PayActivity;
 import com.mdxx.qmmz.newfeature.TaskActivity;
+import com.mdxx.qmmz.newfeature.TestActivity;
 import com.mdxx.qmmz.newfeature.bean.ShareAppRecord;
 import com.mdxx.qmmz.newfeature.bean.ShareAppRecordComparator;
 import com.mdxx.qmmz.newfeature.bean.WebViewConfigs;
@@ -46,6 +47,7 @@ import com.mdxx.qmmz.newfeature.event.Event;
 import com.mdxx.qmmz.utils.InterfaceTool;
 import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
 import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -60,6 +62,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.Call;
 
 
 public class HomeFragment extends Fragment implements OnClickListener {
@@ -131,10 +134,28 @@ public class HomeFragment extends Fragment implements OnClickListener {
                         .url("http://app.28yun.com/index.php/webapi_v2/goods/detail_body?goods_id=106311")
                         .tag(getActivity())
 //                   .addParams("userid",userid)
-                        .build().execute(new OkhttpResponseHandler(getActivity(),HttpResponse.class,(BaseActivity)getActivity()) {
+                        .build().execute(new StringCallback() {
                     @Override
-                    public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
-                            LogUtils.i(responseString);
+                    public void onError(Call call, Exception e, int id) {
+
+                    }
+
+                    @Override
+                    public void onResponse(final String response, int id) {
+                        LogUtils.i(response);
+                        int index = response.indexOf("</html>");
+                        String result = response.substring(0,index+"</html>".length()-1);
+                        Intent intent = new Intent(getActivity(), TestActivity.class);
+                        intent.putExtra("result",result);
+                        LogUtils.i(result);
+                        startActivityForResult(intent,0);
+//                        mHandler.post(new Runnable() {
+//                            @Override
+//                            public void run() {
+//
+//                            }
+//                        });
+
                     }
                 });
 //                ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));

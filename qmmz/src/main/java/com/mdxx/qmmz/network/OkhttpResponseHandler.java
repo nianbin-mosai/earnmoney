@@ -138,8 +138,7 @@ public abstract class OkhttpResponseHandler extends Callback<Response> {
         if (response!=null) {
             Response result =  response;
             if(result!=null){
-                    final int statusCode = result.code();
-
+                final int statusCode = result.code();
                 String responseString = result.body().string();
                 if(responseString.startsWith("\n")){
                     responseString = responseString.replaceFirst("\n","");
@@ -148,43 +147,27 @@ public abstract class OkhttpResponseHandler extends Callback<Response> {
                     if (null == mClass) {
                         handleResponseSuccess(statusCode, new HttpResponse(), responseString);
                     } else {
-                        final String finalResponseString = responseString;
-                        Runnable parser = new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    if (FastJsonUtils.isJson(finalResponseString)) {
-                                        final HttpResponse response = FastJsonUtils.parseObject(finalResponseString, mClass);
-                                        postRunnable(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                if (response != null && response.isSuccess()) {
-                                                    handleResponseSuccess(statusCode, response, finalResponseString);
-                                                } else {
-                                                    handleResponseFail(statusCode, response == null ? new HttpResponse(getString(R.string.parse_data_error)) : response, finalResponseString,true);
-                                                }
-                                            }
-                                        });
-                                    } else {
-                                        postRunnable(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                handleResponseFail(statusCode, new HttpResponse(getString(R.string.parse_data_error)), finalResponseString,false);
-                                            }
-                                        });
-                                    }
-                                } catch (Exception e) {
-                                    LogUtils.e("解析json数据异常", e);
-                                    postRunnable(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            handleResponseFail(statusCode, new HttpResponse(getString(R.string.parse_data_error)), finalResponseString,false);
-                                        }
-                                    });
+                        try {
+                            if (FastJsonUtils.isJson(responseString)) {
+                                HttpResponse mResponse = FastJsonUtils.parseObject(responseString, mClass);
+                                if (mResponse != null && mResponse.isSuccess()) {
+                                    handleResponseSuccess(statusCode, mResponse, responseString);
+                                } else {
+                                    handleResponseFail(statusCode, mResponse == null ? new HttpResponse(getString(R.string.parse_data_error)) : mResponse, responseString,true);
                                 }
+                            } else {
+                                handleResponseFail(statusCode, new HttpResponse(getString(R.string.parse_data_error)), responseString,false);
                             }
-                        };
-                            parser.run();
+                        } catch (Exception e) {
+                            LogUtils.e("解析json数据异常", e);
+                            final String finalResponseString = responseString;
+                            postRunnable(new Runnable() {
+                                @Override
+                                public void run() {
+                                    handleResponseFail(statusCode, new HttpResponse(getString(R.string.parse_data_error)), finalResponseString,false);
+                                }
+                            });
+                        }
                     }
                 }else{
                     handleResponseFail(statusCode, new HttpResponse(getString(R.string.server_response_value_error, statusCode)), responseString,false);

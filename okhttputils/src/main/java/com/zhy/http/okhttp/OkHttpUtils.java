@@ -145,7 +145,7 @@ public class OkHttpUtils
                     }
 
                     Object o = finalCallback.parseNetworkResponse(response, id);
-                    sendSuccessResultCallback(o, finalCallback, id);
+                    sendSuccessResultCallback(o, finalCallback, id,response);
                 } catch (Exception e)
                 {
                     sendFailResultCallback(call, e, finalCallback, id);
@@ -177,7 +177,7 @@ public class OkHttpUtils
         });
     }
 
-    public void sendSuccessResultCallback(final Object object, final Callback callback, final int id)
+    public void sendSuccessResultCallback(final Object object, final Callback callback, final int id,final Response response)
     {
         if (callback == null) return;
         mPlatform.execute(new Runnable()
@@ -187,6 +187,8 @@ public class OkHttpUtils
             {
                 callback.onResponse(object, id);
                 callback.onAfter(id);
+                if (response.body() != null)
+                    response.body().close();
             }
         });
     }

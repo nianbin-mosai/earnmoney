@@ -26,6 +26,8 @@ import com.zhy.http.okhttp.log.LoggerInterceptor;
 
 import org.litepal.LitePalApplication;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
@@ -34,9 +36,11 @@ import java.util.concurrent.TimeUnit;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
 
+import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 
 public class MyApplication extends LitePalApplication {
+	private static final long HTTP_RESPONSE_DISK_CACHE_MAX_SIZE = 10 * 1024 * 1024;
 	// 处放时间
 	public static MyApplication INSTANCE;
 	public static Map<String, Long> map;
@@ -68,6 +72,24 @@ public class MyApplication extends LitePalApplication {
 		initCrashCatcher();
 
 	}
+	private Cache getOkhttpCache(){
+		File baseDir = getCacheDir();
+		if (baseDir != null) {
+			final File cacheDir = new File(baseDir, "HttpResponseCache");
+			if(!cacheDir.exists()){
+				try {
+					LogUtils.i("createdNewFile:"+cacheDir.createNewFile()+"\n"+cacheDir.getAbsolutePath());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}else{
+				LogUtils.i("createdFile:"+"\n"+cacheDir.getAbsolutePath());
+			}
+			return new Cache(cacheDir, HTTP_RESPONSE_DISK_CACHE_MAX_SIZE);
+			}
+		LogUtils.i("baseDir==null");
+		return null;
+	}
 	private void initOkhttp(){
 		Stetho.initializeWithDefaults(this);
 		ClearableCookieJar cookieJar1 = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(getApplicationContext()));
@@ -90,6 +112,7 @@ public class MyApplication extends LitePalApplication {
 				})
 				.sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
 				.addNetworkInterceptor(new StethoInterceptor())
+				.cache(getOkhttpCache())
 				.build();
 		OkHttpUtils.initClient(okHttpClient);
 	}
