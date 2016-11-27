@@ -94,4 +94,30 @@ public class AppAction {
                 .addParams("log_id",log_id)
                 .build().execute(responseHandler);
     }
+
+    public static void loginDuiba(Context context,String duibaUrl,OkhttpResponseHandler responseHandler){
+        OkHttpUtils.post()
+                .url(duibaUrl)
+                .tag(context)
+                .addParams("userid",UserPF.getInstance().getUserid())
+                .addParams("token", UserPF.getInstance().getToken())
+                .build().execute(responseHandler);
+    }
+    public static void ShareAppSuccessAction(Context context,OkhttpResponseHandler responseHandler){
+        OkHttpUtils.post()
+                .url(getUrl("wx_share_return"))
+                .tag(context)
+                .addParams("userid",UserPF.getInstance().getUserid())
+                .addParams("token", UserPF.getInstance().getToken())
+                .addParams("sharetime",System.currentTimeMillis()+"")
+                .build().execute(responseHandler);
+    }
+    public static void getShareAppConfigs(Context context,OkhttpResponseHandler responseHandler){
+        OkHttpUtils.post()
+                .url(getUrl("sign/wx_share"))
+                .tag(context)
+                .addParams("userid",UserPF.getInstance().getUserid())
+                .addParams("token", UserPF.getInstance().getToken())
+                .build().execute(responseHandler);
+    }
 }

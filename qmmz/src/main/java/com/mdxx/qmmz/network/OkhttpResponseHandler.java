@@ -143,6 +143,7 @@ public abstract class OkhttpResponseHandler extends Callback<Response> {
                 if(responseString.startsWith("\n")){
                     responseString = responseString.replaceFirst("\n","");
                 }
+                responseString = responseString.trim();
                 if ((response).code() == HttpURLConnection.HTTP_OK){
                     if (null == mClass) {
                         handleResponseSuccess(statusCode, new HttpResponse(), responseString);

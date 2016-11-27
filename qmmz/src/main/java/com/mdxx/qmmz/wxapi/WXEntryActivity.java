@@ -5,9 +5,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.mdxx.qmmz.common.LogUtils;
-import com.mdxx.qmmz.common.UserPF;
 import com.mdxx.qmmz.common.WeChatShareUtil;
-import com.mdxx.qmmz.newfeature.bean.ShareAppRecord;
 import com.mdxx.qmmz.newfeature.event.Event;
 import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;
@@ -39,7 +37,8 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
         switch (baseResp.errCode) {
             case BaseResp.ErrCode.ERR_OK:
                 result = "分享成功";
-                saveShareTime();
+                EventBus.getDefault().post(new Event.ShareSuccessEvent());
+//                saveShareTime();
                 break;
             case BaseResp.ErrCode.ERR_USER_CANCEL:
                 result = null;
@@ -51,12 +50,5 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
         if (result != null) {
             LogUtils.i(baseResp.errCode + result);
         }
-    }
-    private void saveShareTime(){
-        ShareAppRecord shareAppRecord = new ShareAppRecord();
-        shareAppRecord.setPhone(UserPF.getInstance().getPhone());
-        shareAppRecord.setShareTime(System.currentTimeMillis());
-        shareAppRecord.save();
-        EventBus.getDefault().post(new Event.ShareSuccessEvent());
     }
 }

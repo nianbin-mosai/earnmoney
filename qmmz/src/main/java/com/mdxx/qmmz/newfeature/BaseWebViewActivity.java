@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.activity.BaseActivity;
 import com.mdxx.qmmz.common.LogUtils;
+import com.pgyersdk.feedback.PgyFeedbackShakeManager;
 
 /**
  * 描述:
@@ -109,10 +110,12 @@ public abstract class BaseWebViewActivity extends BaseActivity {
     }
 
     protected boolean showHeader() {
-        return true;
+        return false;
     }
 
     protected String setScheme() {
         return "alipays";
     }
+
+
 }

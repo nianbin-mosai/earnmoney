@@ -84,7 +84,6 @@ public class CrashCatcher implements Thread.UncaughtExceptionHandler {
             dumpExceptionToSDCard(throwable);
             //这里可以通过网络上传异常信息到服务器，便于开发人员分析日志从而解决bug
             uploadExceptionToServer();
-
             //如果提供了自定义异常处理器，则使用自定义处理器，否则交由系统默认处理器处理
             if (targetUncaughtExceptionHandler != null) {
                 targetUncaughtExceptionHandler.uncaughtException(thread, throwable);
@@ -180,6 +179,7 @@ public class CrashCatcher implements Thread.UncaughtExceptionHandler {
 
     private void uploadExceptionToServer() {
         //TODO Upload Exception Message To Your Web Server
+
     }
 
 }

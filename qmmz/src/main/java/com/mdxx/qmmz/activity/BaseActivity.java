@@ -31,6 +31,8 @@ import com.mdxx.qmmz.utils.InterfaceTool;
 import com.mdxx.qmmz.utils.MyVolley;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.pgyersdk.activity.FeedbackActivity;
+import com.pgyersdk.feedback.PgyFeedbackShakeManager;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import org.json.JSONException;
@@ -426,5 +428,39 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 	@Override
 	public void dismissProgress() {
 		dismissLoadingDialog();
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		if (openFeedback()) {
+			PgyFeedbackShakeManager.setShakingThreshold(1000);
+			// 设置顶部导航栏和底部bar的颜色
+//			FeedbackActivity.setBarBackgroundColor("#FD651C");
+
+// 			设置顶部按钮和底部按钮按下时的反馈色
+//			FeedbackActivity.setBarButtonPressedColor("#ff0000");
+
+// 			设置颜色选择器的背景色
+//			FeedbackActivity.setColorPickerBackgroundColor("#ff0000");
+			// 以对话框的形式弹出
+//			PgyFeedbackShakeManager.register(mContext);
+			// 以Activity的形式打开，这种情况下必须在AndroidManifest.xml配置FeedbackActivity
+			// 打开沉浸式,默认为false
+			 FeedbackActivity.setBarImmersive(true);
+			PgyFeedbackShakeManager.register(mContext, false);
+		}
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (openFeedback()) {
+			PgyFeedbackShakeManager.unregister();
+		}
+	}
+
+	protected boolean openFeedback(){
+		return false;
 	}
 }

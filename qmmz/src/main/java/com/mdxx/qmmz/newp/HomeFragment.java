@@ -36,6 +36,7 @@ import com.mdxx.qmmz.common.WeChatShareUtil;
 import com.mdxx.qmmz.network.AppAction;
 import com.mdxx.qmmz.network.HttpResponse;
 import com.mdxx.qmmz.network.OkhttpResponseHandler;
+import com.mdxx.qmmz.newfeature.Actions;
 import com.mdxx.qmmz.newfeature.GameCenterActivity;
 import com.mdxx.qmmz.newfeature.PayActivity;
 import com.mdxx.qmmz.newfeature.TaskActivity;
@@ -56,6 +57,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.litepal.crud.DataSupport;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -130,34 +133,8 @@ public class HomeFragment extends Fragment implements OnClickListener {
                 }
                 break;
             case R.id.renwu_four:
-                OkHttpUtils.get()
-                        .url("http://app.28yun.com/index.php/webapi_v2/goods/detail_body?goods_id=106311")
-                        .tag(getActivity())
-//                   .addParams("userid",userid)
-                        .build().execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-
-                    }
-
-                    @Override
-                    public void onResponse(final String response, int id) {
-                        LogUtils.i(response);
-                        int index = response.indexOf("</html>");
-                        String result = response.substring(0,index+"</html>".length()-1);
-                        Intent intent = new Intent(getActivity(), TestActivity.class);
-                        intent.putExtra("result",result);
-                        LogUtils.i(result);
-                        startActivityForResult(intent,0);
-//                        mHandler.post(new Runnable() {
-//                            @Override
-//                            public void run() {
-//
-//                            }
-//                        });
-
-                    }
-                });
+                loginDuiba();
+//                testHtml();
 //                ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
                 break;
             case R.id.weishare:
@@ -200,6 +177,54 @@ public class HomeFragment extends Fragment implements OnClickListener {
                 getWebViewConfigs();
                 break;
         }
+    }
+    private void loginDuiba(){
+        if(!TextUtils.isEmpty(webViewConfigs.duiba)){
+            AppAction.loginDuiba(getActivity(), webViewConfigs.duiba, new OkhttpResponseHandler(getActivity(),HttpResponse.class,(BaseActivity)getActivity()) {
+                @Override
+                public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
+                    try {
+                        String duibaUrl = new JSONObject(responseString).optJSONObject("data").optString("url");
+                        if (!TextUtils.isEmpty(duibaUrl)){
+                            Actions.loginDuiba(getActivity(),duibaUrl);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+        }
+    }
+    private void testHtml() {
+        OkHttpUtils.get()
+                .url("http://app.28yun.com/index.php/webapi_v2/goods/detail_body?goods_id=106311")
+                .tag(getActivity())
+//                   .addParams("userid",userid)
+                .build().execute(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+
+            }
+
+            @Override
+            public void onResponse(final String response, int id) {
+                LogUtils.i(response);
+                int index = response.indexOf("</html>");
+                String result = response.substring(0,index+"</html>".length()-1);
+                Intent intent = new Intent(getActivity(), TestActivity.class);
+                intent.putExtra("result",result);
+                LogUtils.i(result);
+                startActivityForResult(intent,0);
+//                        mHandler.post(new Runnable() {
+//                            @Override
+//                            public void run() {
+//
+//                            }
+//                        });
+
+            }
+        });
     }
 
     private void getqdurl() {
@@ -458,6 +483,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
                     webViewConfigs.member = data.optString("member");
                     webViewConfigs.pay = data.optString("pay");
                     webViewConfigs.task = data.optString("task");
+                    webViewConfigs.duiba = data.optString("duiba");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -498,24 +524,56 @@ public class HomeFragment extends Fragment implements OnClickListener {
         }
         return false;
     }
-    private void share(){
+    private void share(String title,String content,String url,String imgUrl){
 
         String sessionTitle = "分享";
         String sessionDescription = getString(R.string.app_name)+"下载链接";
         String sessionUrl = "https://www.pgyer.com/bh1Q";
         Bitmap sessionThumb = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+        if(!TextUtils.isEmpty(title)){
+            sessionTitle = title;
+        }
+        if (!TextUtils.isEmpty(content)) {
+            sessionDescription = content;
+        }
+        if (!TextUtils.isEmpty(url)) {
+            sessionUrl = url;
+        }
+        if (!TextUtils.isEmpty(imgUrl)) {
+            try {
+                sessionThumb = BitmapFactory.decodeStream(new URL(imgUrl).openStream());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         boolean result = weChatShareUtil.shareUrl(sessionUrl, sessionTitle, sessionThumb, sessionDescription, SendMessageToWX.Req.WXSceneSession);
 //        if (!result) {
 //            ToastUtils.showToast(getActivity(),getActivity().getString(R.string.no_wechat));
 //        }
     }
-    private void shareTimeline(){
+    private void shareTimeline(String title,String content,String url,String imgUrl){
         if (weChatShareUtil.isSupportWX()) {
-            String title = getString(R.string.app_name)+"下载链接";
-            String description = getString(R.string.app_name)+"下载链接";
-            String url = "https://www.pgyer.com/bh1Q";
-            Bitmap thumb = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
-            boolean result = weChatShareUtil.shareUrl(url, title, thumb, description, SendMessageToWX.Req.WXSceneTimeline);
+            String sessionTitle = getString(R.string.app_name)+"下载链接";
+            String sessionDescription = getString(R.string.app_name)+"下载链接";
+            String sessionUrl = "https://www.pgyer.com/bh1Q";
+            Bitmap sessionThumb = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+            if(!TextUtils.isEmpty(title)){
+                sessionTitle = title;
+            }
+            if (!TextUtils.isEmpty(content)) {
+                sessionDescription = content;
+            }
+            if (!TextUtils.isEmpty(url)) {
+                sessionUrl = url;
+            }
+            if (!TextUtils.isEmpty(imgUrl)) {
+                try {
+                    sessionThumb = BitmapFactory.decodeStream(new URL(imgUrl).openStream());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            boolean result = weChatShareUtil.shareUrl(sessionUrl, sessionTitle, sessionThumb, sessionDescription, SendMessageToWX.Req.WXSceneTimeline);
 //            if (!result) {
 //                ToastUtils.showToast(getActivity(),getActivity().getString(R.string.no_wechat));
 //            }
@@ -534,34 +592,62 @@ public class HomeFragment extends Fragment implements OnClickListener {
         }
     }
     private void goToShare(){
-        if (hasShared()) {
-            ToastUtils.showToast(getActivity(),"你今天已经分享过了`(*∩_∩*)′");
-            return;
-        }
         if (!isWebchatAvaliable(getActivity())) {
             ToastUtils.showToast(getActivity(),"手机没有安装微信");
             return;
         }
-            new MaterialDialog.Builder(getActivity())
-                    .title("分享完成后,请选择返回本应用的按钮方可获得积分")
-                    .items(R.array.pay_items)
-                    .itemsCallbackSingleChoice(-1, new MaterialDialog.ListCallbackSingleChoice() {
-                        @Override
-                        public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
-                            /**
-                             * If you use alwaysCallSingleChoiceCallback(), which is discussed below,
-                             * returning false here won't allow the newly selected radio button to actually be selected.
-                             **/
-                            if(which==0){
-                                share();
-                            }else{
-                                shareTimeline();
-                            }
-                            return true;
-                        }
-                    })
-                    .positiveText(R.string.choose)
-                    .show();
+        if (hasShared()) {
+            ToastUtils.showToast(getActivity(),"你今天已经分享过了`(*∩_∩*)′");
+            return;
+        }
+        AppAction.getShareAppConfigs(getActivity(), new OkhttpResponseHandler(getActivity(),HttpResponse.class,(BaseActivity)getActivity()) {
+            @Override
+            public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
+                /**
+                 * "code": 200,
+                 "message": "微信分享配置",
+                 "data": {
+                 "wx_share_title": "杰臣诺",
+                 "wx_share_content": "下载杰臣诺",
+                 "wx_share_url": "http://www.pgyer.com/bh1Q",
+                 "wx_share_img": null,
+                 "can_wx_share": 1
+                 }
+                 */
+                try {
+                    JSONObject result = new JSONObject(responseString);
+                    JSONObject data = result.optJSONObject("data");
+                    final String title = data.optString("wx_share_title");
+                    final String content = data.optString("wx_share_content");
+                    final String url = data.optString("wx_share_url");
+                    final String imgUrl = data.optString("wx_share_img");
+                    int canShare = data.optInt("can_wx_share");
+                    new MaterialDialog.Builder(getActivity())
+                            .title("分享完成后,请选择返回本应用的按钮方可获得积分")
+                            .items(R.array.pay_items)
+                            .itemsCallbackSingleChoice(-1, new MaterialDialog.ListCallbackSingleChoice() {
+                                @Override
+                                public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+                                    /**
+                                     * If you use alwaysCallSingleChoiceCallback(), which is discussed below,
+                                     * returning false here won't allow the newly selected radio button to actually be selected.
+                                     **/
+                                    if(which==0){
+                                        share(title,content,url,imgUrl);
+                                    }else{
+                                        shareTimeline(title,content,url,imgUrl);
+                                    }
+                                    return true;
+                                }
+                            })
+                            .positiveText(R.string.choose)
+                            .show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -570,7 +656,20 @@ public class HomeFragment extends Fragment implements OnClickListener {
            @Override
            public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
                ToastUtils.showToast(getActivity(),"添加积分成功:"+10);
+                shareAppSuccess();
            }
        });
+    }
+    private void shareAppSuccess(){
+        ShareAppRecord shareAppRecord = new ShareAppRecord();
+        shareAppRecord.setPhone(UserPF.getInstance().getPhone());
+        shareAppRecord.setShareTime(System.currentTimeMillis());
+        shareAppRecord.save();
+        AppAction.ShareAppSuccessAction(getActivity(), new OkhttpResponseHandler(getActivity(),HttpResponse.class,(BaseActivity)getActivity()) {
+            @Override
+            public void onResponeseSucess(int statusCode, HttpResponse response, String responseString) {
+                    LogUtils.i("success:"+responseString);
+            }
+        });
     }
 }
