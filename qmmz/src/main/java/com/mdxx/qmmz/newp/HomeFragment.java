@@ -306,7 +306,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
     }
 
     private Runnable mRunnable = new Runnable() {
-        final int DELAYED = 2000;
+        final int DELAYED = 3000;
 
         @Override
         public void run() {
