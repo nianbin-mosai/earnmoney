@@ -51,13 +51,13 @@ public class HelloActivity extends BaseActivity {
 		myApp = (MyApplication) getApplication();
 //		ImageView mguide_top = (ImageView) findViewById(R.id.guide_top);
 //		mguide_top.setImageBitmap(BitMapUtils.readBitMap(
-//				getApplicationContext(), R.drawable.ic_hello_bg));
+//				getApplicationContext(), R.drawable.bg_hello_loading));
 		mHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
 				getDomain();
 			}
-		},2000);
+		},1500);
 
 	}
 		private void getDomain() {

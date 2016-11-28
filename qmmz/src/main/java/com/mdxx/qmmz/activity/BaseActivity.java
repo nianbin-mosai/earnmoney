@@ -461,6 +461,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 	}
 
 	protected boolean openFeedback(){
-		return false;
+		return true;
 	}
 }

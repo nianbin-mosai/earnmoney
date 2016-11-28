@@ -43,5 +43,6 @@
     <string name="new_password">新密码</string>
     <string name="member">会员中心</string>
     <string name="task">任务中心</string>
+    <string name="test">Signin and Signup in single Screen using PercentRelativeLayout. A new way to onboard users using interactive signin and signup screen.If you are looking for iOS version then its available here</string>
 
 </resources>

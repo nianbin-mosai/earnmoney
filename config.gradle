@@ -1,0 +1,27 @@
+ext {
+    android = [
+            compileSdkVersion : 23,
+            buildToolsVersion :"23.0.3",
+            minSdkVersion : 16,
+            targetSdkVersion : 21,
+            versionCode : 1,
+            versionName : "1.0"
+              ]
+    dependencies = [
+        "appcompat-v7" : 'com.android.support:appcompat-v7:23.4.0',
+        "support-v4" : 'com.android.support:support-v4:23.4.0',
+        "design" : 'com.android.support:design:23.4.0',
+        "fastjson" : 'com.alibaba:fastjson:1.2.11',
+        "async-http" : 'com.loopj.android:android-async-http:1.4.9',
+        "EasyImage" : 'com.github.jkwiecien:EasyImage:1.2.1',
+        "ucrop" : 'com.yalantis:ucrop:1.5.0',
+        "image-loader" : 'com.nostra13.universalimageloader:universal-image-loader:1.9.5',
+        "materialdialog" : 'me.drakeet.materialdialog:library:1.3.1',
+        "circleprogress" : 'com.github.lzyzsd:circleprogress:1.1.0@aar',
+        "butterknife" : 'com.jakewharton:butterknife:8.0.1',
+        "logger" : 'com.github.orhanobut:logger:1.12',
+        "analytics" : 'com.google.android.gms:play-services-analytics:9.0.2',
+        "httpclient" : 'cz.msebera.android:httpclient:4.3.6',
+        "nineoldandroids" : 'com.nineoldandroids:library:2.4.0'
+    ]
+}

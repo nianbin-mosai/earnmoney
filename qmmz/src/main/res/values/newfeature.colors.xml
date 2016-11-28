@@ -10,4 +10,6 @@
     <color name="drak_red">#A2301F</color>
     <color name="gray_d">#DDDDDD</color>
     <color name="titlebar_color">#FD651C</color>
+    <color name="colorTabNormal">@color/white</color>
+    <color name="colorTabSelected">@color/drak_red</color>
 </resources>

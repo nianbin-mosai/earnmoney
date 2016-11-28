@@ -7,17 +7,26 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
+import android.text.TextUtils;
 import android.util.Log;
 
+import com.mdxx.qmmz.BuildConfig;
+import com.mdxx.qmmz.R;
+
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
+
+import cn.mastercom.mailmodel.MailTools;
 
 /**
  * Crash 捕捉工具类
@@ -81,9 +90,14 @@ public class CrashCatcher implements Thread.UncaughtExceptionHandler {
             //打印出当前调用栈信息
             throwable.printStackTrace();
             //导出异常信息到SD卡中
-            dumpExceptionToSDCard(throwable);
+            String content = dumpExceptionToSDCard(throwable);
             //这里可以通过网络上传异常信息到服务器，便于开发人员分析日志从而解决bug
-            uploadExceptionToServer();
+            LogUtils.i(content);
+            if (!TextUtils.isEmpty(content)) {
+                if (!BuildConfig.DEBUG) {
+                    uploadExceptionToServer(content);
+                }
+            }
             //如果提供了自定义异常处理器，则使用自定义处理器，否则交由系统默认处理器处理
             if (targetUncaughtExceptionHandler != null) {
                 targetUncaughtExceptionHandler.uncaughtException(thread, throwable);
@@ -103,17 +117,17 @@ public class CrashCatcher implements Thread.UncaughtExceptionHandler {
      * @param ex
      * @throws IOException
      */
-    public void dumpExceptionToSDCard(Throwable ex) throws IOException {
+    public String dumpExceptionToSDCard(Throwable ex) throws IOException {
         //如果SD卡不存在或无法使用，则无法把异常信息写入SD卡  
         if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             Log.w(TAG, "sdcard unmounted, skip dump exception");
-            return;
+            return null;
         }
         Log.w(TAG, "sdcard mounted, dump exception");
 
         File dir = new File(Environment.getExternalStorageDirectory(), PATH);
         if (!dir.exists() && !dir.mkdirs()) {
-            return;
+            return null;
         }
         long current = System.currentTimeMillis();
         Date crashTime = new Date(current);
@@ -134,9 +148,19 @@ public class CrashCatcher implements Thread.UncaughtExceptionHandler {
             ex.printStackTrace(pw);
 
             pw.close();
+
+            String result="";
+            BufferedReader reader= new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+            String line=null;
+            for(;(line=reader.readLine())!=null;){
+                result+=line;
+            }
+            reader.close();
+            return result;
         } catch (Exception e) {
             Log.e(TAG, "dump crash info failed", e);
         }
+        return null;
     }
 
     /**
@@ -177,9 +201,29 @@ public class CrashCatcher implements Thread.UncaughtExceptionHandler {
         }
     }
 
-    private void uploadExceptionToServer() {
+    private void uploadExceptionToServer(final String content) {
         //TODO Upload Exception Message To Your Web Server
-
+        new Thread(){
+            public void run() {
+                try{
+                    String crashtime = DateTimeUtil.getCurrDateTimeStr();
+                    String content_email = crashtime + "\r\n" + content;
+                    MailTools.sendEmail(
+                            "smtp.exmail.qq.com",
+                            "465",
+                            "nianbin@mosainet.com",
+                            "Znb2238226",
+                            new String[] { "406108138@qq.com" ,"nianbin@mosainet.com"},
+                            context.getResources().getString(
+                                    R.string.app_name)
+                                    + "bug", content_email, null);
+                    LogUtils.i("发送异常日志邮件成功...");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    LogUtils.e("发送异常日志邮件失败..." + e.getMessage());
+                }
+            }
+        }.start();
     }
 
 }

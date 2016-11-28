@@ -3,17 +3,18 @@
     android:layout_height="fill_parent"
     android:background="#ffC93636">
 
-    <!--<ImageView-->
-        <!--android:id="@+id/guide_top"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:adjustViewBounds="true"-->
-        <!--android:scaleType="fitXY"-->
-        <!--android:visibility="gone" />-->
-    <pl.droidsonroids.gif.GifImageView
+    <ImageView
+        android:src="@drawable/bg_hello_loading"
+        android:id="@+id/guide_top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        />
+ <!--   <pl.droidsonroids.gif.GifImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/hello"
-        />
+        />-->
 
 </RelativeLayout>

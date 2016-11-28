@@ -27,7 +27,6 @@ import com.android.volley.Response;
 import com.mdxx.qmmz.EventMessage;
 import com.mdxx.qmmz.R;
 import com.mdxx.qmmz.activity.BaseActivity;
-import com.mdxx.qmmz.activity.WebActivity;
 import com.mdxx.qmmz.common.Constants;
 import com.mdxx.qmmz.common.LogUtils;
 import com.mdxx.qmmz.common.ToastUtils;
@@ -40,15 +39,12 @@ import com.mdxx.qmmz.newfeature.Actions;
 import com.mdxx.qmmz.newfeature.GameCenterActivity;
 import com.mdxx.qmmz.newfeature.PayActivity;
 import com.mdxx.qmmz.newfeature.TaskActivity;
-import com.mdxx.qmmz.newfeature.TestActivity;
 import com.mdxx.qmmz.newfeature.bean.ShareAppRecord;
 import com.mdxx.qmmz.newfeature.bean.ShareAppRecordComparator;
 import com.mdxx.qmmz.newfeature.bean.WebViewConfigs;
 import com.mdxx.qmmz.newfeature.event.Event;
 import com.mdxx.qmmz.utils.InterfaceTool;
 import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -64,8 +60,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import okhttp3.Call;
 
 
 public class HomeFragment extends Fragment implements OnClickListener {
@@ -112,9 +106,6 @@ public class HomeFragment extends Fragment implements OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-//            case R.id.banner_layout:
-//                break;
-            //有米
             case R.id.renwu_one:
                 activity.showYoumiOffersWall();
                 break;
@@ -123,8 +114,6 @@ public class HomeFragment extends Fragment implements OnClickListener {
                 break;
 
             case R.id.renwu_three:
-//                activity.showFingermobiWall();
-//                ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
                 if(!TextUtils.isEmpty(webViewConfigs.task)){
                     Intent intent = new Intent(getActivity(), TaskActivity.class);
                     intent.putExtra("url",getFormatUrl(webViewConfigs.task));
@@ -134,29 +123,15 @@ public class HomeFragment extends Fragment implements OnClickListener {
                 break;
             case R.id.renwu_four:
                 loginDuiba();
-//                testHtml();
-//                ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
                 break;
             case R.id.weishare:
                 goToShare();
-//                share();
                 break;
             case R.id.weiguanzhu:
                 ToastUtils.showToast(getActivity(), getString(R.string.tip_developing));
                 break;
-            //签到有礼
-//            case R.id.g_image2:
-//                break;
-            //幸运大转盘
-//            case R.id.g_image3:
-//                break;
-            //赚钱才是硬道理
-//            case R.id.g_image1:
-//                break;
-            //支付宝/微信 支付
             case R.id.g_image4:
                  gotopay();
-//                share();
                 break;
             case R.id.layout_qqkj:
                 break;
@@ -196,90 +171,8 @@ public class HomeFragment extends Fragment implements OnClickListener {
 
         }
     }
-    private void testHtml() {
-        OkHttpUtils.get()
-                .url("http://app.28yun.com/index.php/webapi_v2/goods/detail_body?goods_id=106311")
-                .tag(getActivity())
-//                   .addParams("userid",userid)
-                .build().execute(new StringCallback() {
-            @Override
-            public void onError(Call call, Exception e, int id) {
 
-            }
 
-            @Override
-            public void onResponse(final String response, int id) {
-                LogUtils.i(response);
-                int index = response.indexOf("</html>");
-                String result = response.substring(0,index+"</html>".length()-1);
-                Intent intent = new Intent(getActivity(), TestActivity.class);
-                intent.putExtra("result",result);
-                LogUtils.i(result);
-                startActivityForResult(intent,0);
-//                        mHandler.post(new Runnable() {
-//                            @Override
-//                            public void run() {
-//
-//                            }
-//                        });
-
-            }
-        });
-    }
-
-    private void getqdurl() {
-        Map params = new HashMap<String, String>();
-        InterfaceTool.Networkrequest(activity, activity.queue,
-                activity.m_pDialog, InterfaceTool.ULR + "user/qdhongdong",
-                new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject arg0) {
-                        activity.closewaite();
-                        try {
-                            String code = arg0.getString("code");
-                            if (code.equals("1")) {
-                                String imageur = arg0.getString("imageurl");
-                                String url = arg0.getString("url");
-                                showsharetoqd(imageur, url);
-                            } else {
-                                activity.Toastshow("获取签到信息失败");
-                            }
-                        } catch (JSONException e) {
-                            // TODO Auto-generated catch block
-                            e.printStackTrace();
-                        }
-
-                    }
-
-                    ;
-                }, params);
-    }
-
-    private void showsharetoqd(String iamgeurl, final String url) {
-        activity.setshare();
-        sharetoqd_dialog = new Dialog(activity, R.style.dialog_login_style);
-        View inflate = activity.getLayoutInflater().inflate(
-                R.layout.dialog_qiandao_share, null);
-        ImageView image_guanggao = (ImageView) inflate
-                .findViewById(R.id.image_guanggao);
-        activity.imageLoader.displayImage(iamgeurl, image_guanggao,
-                activity.options, null);
-        image_guanggao.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(activity, WebActivity.class).putExtra(
-                        "url", url));
-            }
-        });
-        inflate.findViewById(R.id.layout_qqkj).setOnClickListener(this);
-        inflate.findViewById(R.id.layout_pyq).setOnClickListener(this);
-        inflate.findViewById(R.id.layout_wb).setOnClickListener(this);
-        sharetoqd_dialog.setContentView(inflate);
-        if (sharetoqd_dialog != null && !sharetoqd_dialog.isShowing())
-            sharetoqd_dialog.show();
-    }
 
 
     @Override
@@ -287,52 +180,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void Qiandao() {
-        Map params = new HashMap<String, String>();
-        params.put("userid", activity.getuseid());
-        InterfaceTool.Networkrequest(activity, activity.queue,
-                activity.m_pDialog, Qdburl,
-                new Response.Listener<JSONObject>() {
 
-                    @Override
-                    public void onResponse(JSONObject arg0) {
-                        activity.closewaite();
-                        try {
-                            String code = arg0.getString("code");
-                            if (code.equals("1")) {
-                                String money = arg0.getString("money");
-                                qd_dialog("恭喜您签到获得" + money + "元");
-                            } else if (code.equals("2")) {
-                                qd_dialog("今天已经签到过了，明日赶早");
-                            } else {
-                                activity.Toastshow("请求失败");
-                            }
-                        } catch (JSONException e) {
-                            // TODO Auto-generated catch block
-                            e.printStackTrace();
-                        }
-                    }
-                }, params);
-    }
-
-    private void qd_dialog(String neirong) {
-        final Dialog qddialog = new Dialog(activity, R.style.dialog_login_style);
-        View inflate = activity.getLayoutInflater().inflate(
-                R.layout.dialog_qiandao_show, null);
-        qddialog.setContentView(inflate);
-        TextView text_neirong = (TextView) inflate
-                .findViewById(R.id.text_neirong);
-        text_neirong.setText(neirong);
-        inflate.findViewById(R.id.btn_canle).setOnClickListener(
-                new OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        qddialog.dismiss();
-                    }
-                });
-        qddialog.show();
-    }
 
     private void getinfo() {
         Map map = new HashMap<String, String>();
@@ -390,9 +238,9 @@ public class HomeFragment extends Fragment implements OnClickListener {
     /*******************************/
 
     private ViewPager mViewPager;
-//    private static final int[] IMG_IDS = new int[]{R.drawable.home_h1,
-//            R.drawable.home_h2, R.drawable.home_h3};
-    private static final int[] IMG_IDS = new int[]{R.drawable.bg_banner};
+    private static final int[] IMG_IDS = new int[]{R.drawable.ic_banner_1,
+            R.drawable.ic_banner_2, R.drawable.ic_banner_3};
+//    private static final int[] IMG_IDS = new int[]{R.drawable.bg_banner};
     private List<ImageView> mPageViews = new ArrayList<ImageView>();
     private int mPosition;
     private Handler mHandler = new Handler();
@@ -410,14 +258,14 @@ public class HomeFragment extends Fragment implements OnClickListener {
         mViewPager.setOnPageChangeListener(listener);
         PagerAdapter adapter = new MyPagerAdapter();
         mViewPager.setAdapter(adapter);
-//        mViewPager.setCurrentItem(1000);
-//        mHandler.post(mRunnable);
+        mViewPager.setCurrentItem(1000);
+        mHandler.post(mRunnable);
     }
 
     class MyPagerAdapter extends PagerAdapter {
         @Override
         public int getCount() {
-            return IMG_IDS.length;
+            return Integer.MAX_VALUE;
         }
 
         @Override
@@ -458,7 +306,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
     }
 
     private Runnable mRunnable = new Runnable() {
-        final int DELAYED = 3000;
+        final int DELAYED = 2000;
 
         @Override
         public void run() {
