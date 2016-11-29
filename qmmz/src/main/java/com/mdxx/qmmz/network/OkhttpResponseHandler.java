@@ -151,10 +151,12 @@ public abstract class OkhttpResponseHandler extends Callback<Response> {
                         try {
                             if (FastJsonUtils.isJson(responseString)) {
                                 HttpResponse mResponse = FastJsonUtils.parseObject(responseString, mClass);
-                                if (mResponse != null && mResponse.isSuccess()) {
-                                    handleResponseSuccess(statusCode, mResponse, responseString);
-                                } else {
-                                    handleResponseFail(statusCode, mResponse == null ? new HttpResponse(getString(R.string.parse_data_error)) : mResponse, responseString,true);
+                                if (mResponse != null) {
+                                    if(mResponse.isSuccess()){
+                                        handleResponseSuccess(statusCode, mResponse, responseString);
+                                    }else{
+                                        handleResponseFail(statusCode, mResponse, responseString,true);
+                                    }
                                 }
                             } else {
                                 handleResponseFail(statusCode, new HttpResponse(getString(R.string.parse_data_error)), responseString,false);
@@ -165,7 +167,7 @@ public abstract class OkhttpResponseHandler extends Callback<Response> {
                             postRunnable(new Runnable() {
                                 @Override
                                 public void run() {
-                                    handleResponseFail(statusCode, new HttpResponse(getString(R.string.parse_data_error)), finalResponseString,false);
+                                    handleResponseFail(statusCode, new HttpResponse("解析json数据异常"), finalResponseString,false);
                                 }
                             });
                         }
