@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.facebook.stetho.Stetho;
-import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.franmontiel.persistentcookiejar.ClearableCookieJar;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
@@ -111,8 +110,8 @@ public class MyApplication extends LitePalApplication {
 					}
 				})
 				.sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
-				.addNetworkInterceptor(new StethoInterceptor())
-				.cache(getOkhttpCache())
+//				.addNetworkInterceptor(new StethoInterceptor())
+//				.cache(getOkhttpCache())
 				.build();
 		OkHttpUtils.initClient(okHttpClient);
 	}

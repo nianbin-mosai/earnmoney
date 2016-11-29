@@ -4,7 +4,6 @@
     android:background="#ffC93636">
 
     <ImageView
-        android:src="@drawable/bg_hello_loading"
         android:id="@+id/guide_top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

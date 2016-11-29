@@ -377,7 +377,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
         String sessionTitle = "分享";
         String sessionDescription = getString(R.string.app_name)+"下载链接";
         String sessionUrl = "https://www.pgyer.com/bh1Q";
-        Bitmap sessionThumb = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+        Bitmap sessionThumb = BitmapFactory.decodeResource(getResources(), getActivity().getResources().getBoolean(R.bool.isJcn)?R.mipmap.ic_launcher:R.mipmap.ic_launcher2);
         if(!TextUtils.isEmpty(title)){
             sessionTitle = title;
         }
@@ -404,7 +404,7 @@ public class HomeFragment extends Fragment implements OnClickListener {
             String sessionTitle = getString(R.string.app_name)+"下载链接";
             String sessionDescription = getString(R.string.app_name)+"下载链接";
             String sessionUrl = "https://www.pgyer.com/bh1Q";
-            Bitmap sessionThumb = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+            Bitmap sessionThumb = BitmapFactory.decodeResource(getResources(), getActivity().getResources().getBoolean(R.bool.isJcn)?R.mipmap.ic_launcher:R.mipmap.ic_launcher2);
             if(!TextUtils.isEmpty(title)){
                 sessionTitle = title;
             }
