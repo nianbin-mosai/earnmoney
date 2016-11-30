@@ -33,4 +33,5 @@
     <color name="vj_textred">#FF644E</color>
     <color name="vj_textgrayno">#b2b2b2</color>
     <color name="vj_whitebarbgstroke">#DCDCDC</color>
+    <color name="gray_blue">#f0effd</color>
 </resources>
