@@ -66,6 +66,10 @@ public abstract class OkhttpResponseHandler extends Callback<Response> {
 
     @Override
     public void onError(Call call, Exception e, int id) {
+        if(e!=null && e.toString()!=null){
+            LogUtils.e(e.toString());
+            showToast(e.toString());
+        }
     }
 
     @Override
@@ -155,45 +159,42 @@ public abstract class OkhttpResponseHandler extends Callback<Response> {
                                     if(mResponse.isSuccess()){
                                         handleResponseSuccess(statusCode, mResponse, responseString);
                                     }else{
-                                        handleResponseFail(statusCode, mResponse, responseString,true);
+                                        handleResponseFail(statusCode, mResponse, responseString);
                                     }
                                 }
                             } else {
-                                handleResponseFail(statusCode, new HttpResponse(getString(R.string.parse_data_error)), responseString,false);
+                                showToast(getString(R.string.parse_data_error));
+                                LogUtils.e(getString(R.string.parse_data_error));
                             }
                         } catch (Exception e) {
                             LogUtils.e("解析json数据异常", e);
-                            final String finalResponseString = responseString;
                             postRunnable(new Runnable() {
                                 @Override
                                 public void run() {
-                                    handleResponseFail(statusCode, new HttpResponse("解析json数据异常"), finalResponseString,false);
+                                    showToast("解析json数据异常");
                                 }
                             });
                         }
                     }
                 }else{
-                    handleResponseFail(statusCode, new HttpResponse(getString(R.string.server_response_value_error, statusCode)), responseString,false);
+                    showToast(getString(R.string.server_response_value_error, statusCode));
+                    LogUtils.e(String.format("errorCode=%d,errorMessage:%s",statusCode,responseString));
                 }
             }
         }
     }
-    public void handleResponseFail(int statusCode, HttpResponse response, String responseString,boolean showMessage) {
-        if (showMessage) {
+    public void handleResponseFail(int statusCode, HttpResponse response, String responseString) {
             onResponeseFail(statusCode, response, responseString);
-        }else{
-            if (isShowToast) {
-                showToast(response.message);
-            }
-        }
 
     }
     public void onResponeseFail(int statusCode, HttpResponse response, String responseString){
         try {
-            if (response.isError()) {
+            if (!response.isSuccess()) {
                 JSONObject result = new JSONObject(responseString);
+                int errorCode = result.optInt("code");
                 String errorMessage = result.optString("message");
                 showToast(errorMessage);
+                LogUtils.e(String.format("code=%d,message=%s",errorCode,errorMessage));
             }
         } catch (JSONException e) {
             e.printStackTrace();
