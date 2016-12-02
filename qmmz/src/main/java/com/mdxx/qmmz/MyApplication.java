@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.facebook.stetho.Stetho;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.franmontiel.persistentcookiejar.ClearableCookieJar;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
@@ -21,6 +22,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.https.HttpsUtils;
+import com.zhy.http.okhttp.intercoptor.CacheInterceptor;
 import com.zhy.http.okhttp.log.LoggerInterceptor;
 
 import org.litepal.LitePalApplication;
@@ -72,7 +74,7 @@ public class MyApplication extends LitePalApplication {
 
 	}
 	private Cache getOkhttpCache(){
-		File baseDir = getCacheDir();
+		File baseDir = getExternalCacheDir();
 		if (baseDir != null) {
 			final File cacheDir = new File(baseDir, "HttpResponseCache");
 			if(!cacheDir.exists()){
@@ -110,8 +112,9 @@ public class MyApplication extends LitePalApplication {
 					}
 				})
 				.sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
-//				.addNetworkInterceptor(new StethoInterceptor())
-//				.cache(getOkhttpCache())
+				.addNetworkInterceptor(new StethoInterceptor())
+				.addNetworkInterceptor(new CacheInterceptor())
+				.cache(getOkhttpCache())
 				.build();
 		OkHttpUtils.initClient(okHttpClient);
 	}

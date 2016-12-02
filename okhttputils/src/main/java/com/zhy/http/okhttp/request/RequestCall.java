@@ -6,6 +6,7 @@ import com.zhy.http.okhttp.callback.Callback;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.CacheControl;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -120,5 +121,28 @@ public class RequestCall
         }
     }
 
-
+    public RequestCall cacheMaxAge(int maxAge, TimeUnit timeUnit){
+        getOkHttpRequest().getBuilder().cacheControl(new CacheControl.Builder().maxAge(maxAge,timeUnit).build());
+        return this;
+    }
+    public RequestCall cacheMaxStale(int maxStale, TimeUnit timeUnit){
+        getOkHttpRequest().getBuilder().cacheControl(new CacheControl.Builder().maxStale(maxStale,timeUnit).build());
+        return this;
+    }
+    public RequestCall cacheMaxAge(int maxAge){
+        getOkHttpRequest().getBuilder().cacheControl(new CacheControl.Builder().maxAge(maxAge,TimeUnit.SECONDS).build());
+        return this;
+    }
+    public RequestCall cacheMaxStale(int maxStale){
+        getOkHttpRequest().getBuilder().cacheControl(new CacheControl.Builder().maxStale(maxStale,TimeUnit.SECONDS).build());
+        return this;
+    }
+    public RequestCall cacheForceCache(){
+        getOkHttpRequest().getBuilder().cacheControl(CacheControl.FORCE_CACHE);
+        return this;
+    }
+    public RequestCall cacheForceNetwork(){
+        getOkHttpRequest().getBuilder().cacheControl(CacheControl.FORCE_NETWORK);
+        return this;
+    }
 }

@@ -22,8 +22,12 @@ public abstract class OkHttpRequest
 
     protected Request.Builder builder = new Request.Builder();
 
+    public Request.Builder getBuilder() {
+        return builder;
+    }
+
     protected OkHttpRequest(String url, Object tag,
-                            Map<String, String> params, Map<String, String> headers,int id)
+                            Map<String, String> params, Map<String, String> headers, int id)
     {
         this.url = url;
         this.tag = tag;
